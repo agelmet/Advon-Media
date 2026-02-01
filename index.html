@@ -29,11 +29,16 @@
             animation: {
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 6s ease-in-out infinite',
+              'shimmer': 'shimmer 3s linear infinite',
             },
             keyframes: {
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-20px)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
               }
             }
           }
@@ -59,7 +64,7 @@
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 80px; /* Wider beam */
+        width: 50px; /* Wider beam */
         height: 100%;
         background: linear-gradient(180deg,
           rgba(71, 200, 245, 0.1) 0%,
@@ -85,7 +90,7 @@
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 200px; /* Wider glow */
+        width: 160px; /* Wider glow */
         height: 100%;
         background: linear-gradient(180deg,
           transparent 0%,
@@ -140,7 +145,7 @@
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 80px; /* Adjusted for wider beam */
+        width: 60px; /* Adjusted for wider beam */
         height: 100%;
         overflow: hidden;
         pointer-events: none;
@@ -209,13 +214,86 @@
       
       @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
 
+      /* Rolls Royce Stars Canvas */
+      #star-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+
       /* Logo Effects */
       .logo-glow {
         filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5));
         transition: filter 0.3s ease;
       }
       .logo-glow:hover {
-        filter: drop-shadow(0 0 15px rgba(71, 200, 245, 0.8));
+        filter: drop-shadow(0 0 20px rgba(71, 200, 245, 0.9));
+      }
+
+      /* Text Shimmer Effect */
+      .text-shimmer {
+        background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: shimmer 4s linear infinite;
+      }
+
+      /* Enhanced Glassmorphism & Service Animations */
+      .glass-panel {
+        background: rgba(8, 18, 25, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(71, 200, 245, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .glass-panel:hover {
+        border-color: rgba(71, 200, 245, 0.4);
+        box-shadow: 0 0 30px rgba(71, 200, 245, 0.15);
+        transform: translateY(-5px);
+      }
+
+      .service-list-item {
+        transition: transform 0.2s ease-in-out, color 0.2s;
+      }
+      .glass-panel:hover .service-list-item:hover {
+        transform: translateX(5px);
+        color: white;
+      }
+      .service-check-icon {
+        transition: all 0.3s ease;
+      }
+      .glass-panel:hover .service-list-item:hover .service-check-icon {
+        filter: drop-shadow(0 0 5px #47c8f5);
+        transform: scale(1.1);
+      }
+
+      /* Trust Badge Shimmer */
+      .trust-badge-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .trust-badge-shimmer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+        transform: skewX(-20deg) translateX(-150%);
+        animation: badge-shimmer 3s infinite;
+      }
+      @keyframes badge-shimmer {
+        0%, 80% { transform: skewX(-20deg) translateX(-150%); }
+        100% { transform: skewX(-20deg) translateX(150%); }
       }
 
       /* Mouse Trail */
@@ -240,7 +318,7 @@
       .reveal {
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        transition: all 1s cubic-bezier(0.5, 0, 0, 1);
       }
       .reveal.active {
         opacity: 1;
@@ -268,10 +346,8 @@
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
       <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
       
-      <!-- Stars -->
-      <div class="absolute inset-0 opacity-70 animate-pulse-slow" 
-           style="background-image: radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.8) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.7) 50%, transparent 50%), radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.8) 50%, transparent 50%), radial-gradient(2px 2px at 40% 60%, rgba(71,200,245,0.4) 50%, transparent 50%); background-size: 100% 100%;">
-      </div>
+      <!-- Canvas for Rolls Royce Star Effect -->
+      <canvas id="star-canvas"></canvas>
 
       <!-- Enhanced Laser Beam -->
       <div class="laser-beam-main">
@@ -313,7 +389,7 @@
             </nav>
 
             <div class="flex items-center gap-4">
-                <div class="hidden md:flex items-center px-3 py-1.5 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-xs font-bold text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.15)]">
+                <div class="hidden md:flex items-center px-3 py-1.5 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-xs font-bold text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.15)] hover:shadow-[0_0_25px_rgba(71,200,245,0.3)] transition-shadow">
                     🇬🇷 EL
                 </div>
                 <button class="md:hidden text-electric-cyan p-2" id="mobile-menu-btn">
@@ -340,12 +416,12 @@
             <div class="container max-w-7xl mx-auto px-6 text-center z-10">
                 <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-8 shadow-[0_0_20px_rgba(71,200,245,0.2)]">
                     <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_10px_#47c8f5]"></span>
-                    <span class="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ΨΗΦΙΑΚΟΣ ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΣ</span>
+                    <span class="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ADVON MEDIA</span>
                 </div>
 
                 <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[0.95] tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                     Μετατρέπουμε<br/>
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-none">Επισκέπτες</span> σε <span class="text-electric-cyan drop-shadow-[0_0_35px_rgba(71,200,245,0.6)]">Πελάτες</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-none">Επισκέπτες</span> σε <span class="text-shimmer drop-shadow-[0_0_35px_rgba(71,200,245,0.6)]">Πελάτες</span>
                 </h1>
 
                 <p class="reveal text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
@@ -355,12 +431,12 @@
 
                 <div class="reveal flex flex-wrap items-center justify-center gap-4">
                     <a href="#services" class="group px-8 py-4 bg-electric-cyan text-[#050a0e] font-bold text-lg uppercase tracking-wide rounded-xl shadow-[4px_4px_0_#c9ff00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#c9ff00] transition-all flex items-center gap-2">
-                        Ξεκινήστε Τώρα
+                        ΥΠΗΡΕΣΙΕΣ
                         <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                     <a href="#portfolio" class="group px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-bold text-lg uppercase tracking-wide rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] transition-all flex items-center gap-2 backdrop-blur-sm">
                         <i data-lucide="play" class="w-5 h-5 fill-current"></i>
-                        Δείτε το έργο μας
+                        ΠΟΡΤΦΟΛΙΟ
                     </a>
                 </div>
             </div>
@@ -398,7 +474,7 @@
 
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Website Service -->
-                    <div class="reveal bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full hover:-translate-y-2">
+                    <div class="reveal glass-panel rounded-2xl p-8 group flex flex-col h-full">
                         <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors shadow-[0_0_20px_rgba(71,200,245,0.1)]">
                             <i data-lucide="globe" class="w-7 h-7 text-electric-cyan"></i>
                         </div>
@@ -409,10 +485,10 @@
                         <h3 class="text-xl font-bold mb-4 font-display">Κατασκευή Ιστοσελίδας</h3>
                         <p class="text-gray-400 mb-6 leading-relaxed flex-grow">Επαγγελματική ιστοσελίδα που κατακτά υψηλές θέσεις στη Google.</p>
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Επαγγελματικός σχεδιασμός</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>SEO βελτιστοποίηση</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Mobile responsive</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Παράδοση σε 5-10 ημέρες</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Επαγγελματικός σχεδιασμός</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>SEO βελτιστοποίηση</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Mobile responsive</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Παράδοση σε 5-10 ημέρες</li>
                         </ul>
                         <div class="mt-auto space-y-3">
                             <a href="#contact" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:shadow-[0_0_20px_rgba(71,200,245,0.4)] transition-all uppercase tracking-wide text-sm">Δωρεάν Κατασκευή <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
@@ -421,7 +497,7 @@
                     </div>
 
                     <!-- NFC Service -->
-                    <div class="reveal bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full hover:-translate-y-2 delay-100">
+                    <div class="reveal glass-panel rounded-2xl p-8 group flex flex-col h-full delay-100">
                         <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors shadow-[0_0_20px_rgba(71,200,245,0.1)]">
                             <i data-lucide="star" class="w-7 h-7 text-electric-cyan"></i>
                         </div>
@@ -431,12 +507,11 @@
                         </div>
                         <h3 class="text-xl font-bold mb-4 font-display">Ανέπαφη Βάση Αξιολογήσεων</h3>
                         <p class="text-gray-400 mb-6 leading-relaxed flex-grow">50+ νέες αξιολογήσεις κάθε μήνα. Ανεβείτε στην κορυφή της Google σε 3 μήνες.</p>
-                        <!-- GIF Removed from here, moved to Modal -->
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Αύξηση κριτικών Google</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Βελτίωση τοπικού SEO</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Εύκολη χρήση (NFC)</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Χωρίς μηνιαία συνδρομή</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Αύξηση κριτικών Google</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Βελτίωση τοπικού SEO</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Εύκολη χρήση (NFC)</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Χωρίς μηνιαία συνδρομή</li>
                         </ul>
                         <div class="mt-auto space-y-3">
                             <a href="#contact" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:shadow-[0_0_20px_rgba(71,200,245,0.4)] transition-all uppercase tracking-wide text-sm">Αγορά Τώρα <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
@@ -445,7 +520,7 @@
                     </div>
 
                     <!-- Social Media Service -->
-                    <div class="reveal bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full hover:-translate-y-2 delay-200">
+                    <div class="reveal glass-panel rounded-2xl p-8 group flex flex-col h-full delay-200">
                         <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors shadow-[0_0_20px_rgba(71,200,245,0.1)]">
                             <i data-lucide="instagram" class="w-7 h-7 text-electric-cyan"></i>
                         </div>
@@ -455,10 +530,10 @@
                         <h3 class="text-xl font-bold mb-4 font-display">Διαχείριση Social Media</h3>
                         <p class="text-gray-400 mb-6 leading-relaxed flex-grow">Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.</p>
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>3 posts/εβδομάδα</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Hashtag research</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Copywriting</li>
-                            <li class="flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>Μηνιαία αναφορά</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>3 posts/εβδομάδα</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Hashtag research</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Copywriting</li>
+                            <li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>Μηνιαία αναφορά</li>
                         </ul>
                         <div class="mt-auto space-y-3">
                             <a href="#contact" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:shadow-[0_0_20px_rgba(71,200,245,0.4)] transition-all uppercase tracking-wide text-sm">Δωρεάν Δοκιμή <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
@@ -468,7 +543,7 @@
                 </div>
 
                 <div class="reveal mt-16 text-center">
-                    <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white shadow-lg shadow-electric-cyan/10">
+                    <span class="trust-badge-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white shadow-lg shadow-electric-cyan/10 hover:bg-electric-cyan/10 transition-colors cursor-default">
                         <i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>
                         Χωρίς δεσμεύσεις - Cancel Anytime
                     </span>
@@ -513,46 +588,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="reviews-grid">
-                     <!-- Static Reviews Content -->
-                     <div class="reveal bg-[#081219]/90 backdrop-blur-md border border-electric-cyan/10 p-8 rounded-2xl hover:border-electric-cyan/30 transition-all hover:-translate-y-1">
-                        <div class="flex gap-1 mb-6">
-                            <i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i>
-                        </div>
-                        <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[80px]">"Εξαιρετική συνεργασία! Η ιστοσελίδα μου είναι πανέμορφη και επαγγελματική."</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6971f55f10cc271c81fea3a5.jpg" alt="Ελένη Τσιαλιάφα" class="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20">
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Ελένη Τσιαλιάφα</h4>
-                                <span class="text-xs text-gray-500 flex items-center gap-1"><div class="w-3 h-3 bg-white rounded-full flex items-center justify-center"><span class="text-[8px] font-bold text-black">G</span></div>Google Review</span>
-                            </div>
-                        </div>
-                     </div>
-                     <div class="reveal bg-[#081219]/90 backdrop-blur-md border border-electric-cyan/10 p-8 rounded-2xl hover:border-electric-cyan/30 transition-all hover:-translate-y-1 delay-100">
-                        <div class="flex gap-1 mb-6">
-                            <i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i>
-                        </div>
-                        <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[80px]">"Άψογη εξυπηρέτηση και αποτέλεσμα. Συστήνω ανεπιφύλακτα!"</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6971f55feb392b2fe07f71ee.jpg" alt="Στράτος Χατζηστρατής" class="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20">
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Στράτος Χατζηστρατής</h4>
-                                <span class="text-xs text-gray-500 flex items-center gap-1"><div class="w-3 h-3 bg-white rounded-full flex items-center justify-center"><span class="text-[8px] font-bold text-black">G</span></div>Google Review</span>
-                            </div>
-                        </div>
-                     </div>
-                     <div class="reveal bg-[#081219]/90 backdrop-blur-md border border-electric-cyan/10 p-8 rounded-2xl hover:border-electric-cyan/30 transition-all hover:-translate-y-1 delay-200">
-                        <div class="flex gap-1 mb-6">
-                            <i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i><i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i>
-                        </div>
-                        <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[80px]">"Πολύ επαγγελματική δουλειά. Η ιστοσελίδα μου έχει αυξήσει τα ραντεβού μου."</p>
-                        <div class="flex items-center gap-4">
-                            <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6971f55f4a646477494b4daf.jpg" alt="Μαρία Φασούλα" class="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20">
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Μαρία Φασούλα</h4>
-                                <span class="text-xs text-gray-500 flex items-center gap-1"><div class="w-3 h-3 bg-white rounded-full flex items-center justify-center"><span class="text-[8px] font-bold text-black">G</span></div>Google Review</span>
-                            </div>
-                        </div>
-                     </div>
+                     <!-- Reviews injected via JS -->
                 </div>
 
                 <div class="reveal text-center">
@@ -572,7 +608,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="reveal bg-[#081219] border border-electric-cyan/10 rounded-xl overflow-hidden group hover:border-electric-cyan/30 transition-colors">
+                    <div class="reveal glass-panel rounded-xl overflow-hidden group">
                         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-medium hover:text-electric-cyan transition-colors">
                             Τι είναι η Advon Media;
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
@@ -581,7 +617,7 @@
                             <div class="pb-6">Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο.</div>
                         </div>
                     </div>
-                    <div class="reveal bg-[#081219] border border-electric-cyan/10 rounded-xl overflow-hidden group hover:border-electric-cyan/30 transition-colors">
+                    <div class="reveal glass-panel rounded-xl overflow-hidden group">
                         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-medium hover:text-electric-cyan transition-colors">
                             Ποιες υπηρεσίες προσφέρετε;
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
@@ -590,7 +626,7 @@
                             <div class="pb-6">Κατασκευή ιστοσελίδων, δημιουργία περιεχομένου + διαχείριση social media και ανέπαφες (NFC) βάσεις αξιολογήσεων.</div>
                         </div>
                     </div>
-                    <div class="reveal bg-[#081219] border border-electric-cyan/10 rounded-xl overflow-hidden group hover:border-electric-cyan/30 transition-colors">
+                    <div class="reveal glass-panel rounded-xl overflow-hidden group">
                         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-medium hover:text-electric-cyan transition-colors">
                             Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
@@ -599,7 +635,7 @@
                             <div class="pb-6">Από τη στιγμή που έχουμε λάβει όλο το υλικό, μπορούμε να ολοκληρώσουμε την κατασκευή σε 5-10 ημέρες.</div>
                         </div>
                     </div>
-                    <div class="reveal bg-[#081219] border border-electric-cyan/10 rounded-xl overflow-hidden group hover:border-electric-cyan/30 transition-colors">
+                    <div class="reveal glass-panel rounded-xl overflow-hidden group">
                         <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-medium hover:text-electric-cyan transition-colors">
                             Πώς μπορώ να επικοινωνήσω;
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
@@ -620,7 +656,7 @@
                 <p class="reveal text-xl text-gray-400 mb-12">Στείλτε μας email με το τηλέφωνό σας για να συζητήσουμε τι ακριβώς χρειάζεστε.</p>
 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <a href="mailto:advonmd@gmail.com" class="reveal group bg-[#081219] border border-electric-cyan/20 p-8 rounded-2xl hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                    <a href="mailto:advonmd@gmail.com" class="reveal group glass-panel p-8 rounded-2xl transition-all duration-300">
                         <div class="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(71,200,245,0.1)]">
                             <i data-lucide="mail" class="w-7 h-7"></i>
                         </div>
@@ -628,7 +664,7 @@
                         <p class="text-electric-cyan flex items-center justify-center gap-2">advonmd@gmail.com <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
                     </a>
 
-                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal group bg-[#081219] border border-electric-cyan/20 p-8 rounded-2xl hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300 delay-100 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal group glass-panel p-8 rounded-2xl transition-all duration-300 delay-100">
                         <div class="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(71,200,245,0.1)]">
                             <i data-lucide="instagram" class="w-7 h-7"></i>
                         </div>
@@ -673,7 +709,12 @@
     <!-- Scripts -->
     <script>
         // Data for Portfolio and Modals
+        const DEFAULT_AVATAR = 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=';
         const portfolioItems = [
+            { image: 'https://github.com/agelmet/Image-hosting-/blob/main/11.jpg?raw=true', url: 'https://talamagka-psychologos.gr/home', name: 'Ταλαμάγκα Ελπίδα - Ψυχολόγος' },
+            { image: 'https://github.com/agelmet/Image-hosting-/blob/main/22.jpg?raw=true', url: 'https://roza-psychologist.gr', name: 'Χαρουτιουνιάν Ρόζα - Ψυχολόγος' },
+            { image: 'https://github.com/agelmet/Image-hosting-/blob/main/33.jpg?raw=true', url: 'https://zampelis-psychology.gr', name: 'Ζαμπέλης Στέφανος - Ψυχολόγος' },
+            { image: 'https://github.com/agelmet/Image-hosting-/blob/main/44.jpg?raw=true', url: 'https://nakou-psychologos.gr', name: 'Νάκου Δήμητρα - Ψυχολόγος' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff573cc5fde7d814b0c.png', url: 'https://rhodesdentist.gr', name: 'Γλυνός Γεώργιος - Οδοντίατρος' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff57002eeb8d74c581c.png', url: 'https://apartmentsin-greece.gr', name: 'Αθήνα + Κρήτη - Διαμερίσματα' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff5be2f992fd50c4409.png', url: 'https://pediatrician-ioannisloukas.gr/en', name: 'Λουκάς Ιωάννης - Παιδίατρος' },
@@ -705,6 +746,32 @@
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/684c2972fbe6f42e908208cb.jpeg', url: 'https://giamouris-paidiatros.gr', name: 'Γιαμούρης Μανόλης - Παιδίατρος' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/684c29722809a9b32a06926f.jpeg', url: 'https://theodosis-orila.gr', name: 'Θεοδώσης Πέτρος - Ωτορινολαρυγγολόγος' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/684c297251e5e5089ade7e7e.jpeg', url: 'https://zormpa-dentist.gr', name: 'Ζορμπά Θωμαής - Οδοντίατρος' },
+        ];
+
+        const reviews = [
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjXyvVDSorQzQz3Z-zsqvl68SOOgYiq4C3UBH8punVUaFZrC7wDkug=w144-h144-p-rp-mo-br100', name: 'Ελπίδα Ταλαμάγκα', rating: 5, text: 'Ειμαι ψυχολόγος και συνεργάστηκα με την Advon Media για τη δημιουργία του επαγγελματικού μου site. Τα παιδιά είναι εξαιρετικά!!! Άψογη δουλειά, 100% επαγγελματίες & πολύ συνεπείς. Πολύ ευγενικοί & διατεθειμένοι να συζητήσουν την όποια αλλαγή, ώστε το site μου να είναι ακριβώς όπως το είχα φανταστει!! Άγγελε σε ευχαριστώ!!' },
+            { image: DEFAULT_AVATAR + 'Ρόζα+Χαρουτιουνιάν', name: 'Ρόζα Χαρουτιουνιάν', rating: 5, text: 'Η συνεργασία μου με την ομάδα της Advon Media και ιδιαίτερα με τον κύριο Άγγελο για τη δημιουργία του επαγγελματικού μου προφίλ ήταν εξαιρετική. Από την πρώτη στιγμή ήταν ευγενικός, προσιτός και πραγματικά πρόθυμος να ακούσει τις επιθυμίες μου. Έδειξε επαγγελματισμό, συνέπεια και ενδιαφέρον για το καλύτερο δυνατό αποτέλεσμα, δίνοντας προσοχή στη λεπτομέρεια και προτείνοντας πολύ καλές ιδέες. Τους συστήνω σε όποιον αναζητά ποιοτική δουλειά και άριστη συνεργασία. Ευχαριστώ πολύ! Ρόζα Χαρουτιουνιάν, Ψυχολόγος - Ψυχοθεραπεύτρια.' },
+            { image: DEFAULT_AVATAR + 'Χρύσα+Οικονόμου', name: 'Χρύσα Οικονόμου', rating: 5, text: 'Εξαιρετική η ομάδα τους! Άψογη ολη η συνεργασία μας! Απο την πρώτη μας επικοινωνία, έγινε αντιληπτός ο επαγγελματισμός και η εμπειρία τους. Κατασκεύασαν με μεγάλη ταχύτητα, συνέπεια και αισθητική το website μου. Ήταν πάντα διαθέσιμοι να απαντήσουν στις απορίες μου, να προτείνουν λύσεις και να υλοποιήσουν άμεσα όποια τροποποίηση θέλησα να κάνω. Τους συστήνω ανεπιφύλακτα γιατι το τελικό αποτέλεσμα ξεπερασε τις προσδοκίες μου!' },
+            { image: DEFAULT_AVATAR + 'Ναταλία+Γρυλωνάκη', name: 'Ναταλία Γρυλωνάκη', rating: 5, text: 'Εξαιρετικοί επαγγελματίες. Ευγενικοί και ιδιαίτερα πρόθυμοι εξαρχής να λύσουν όλες μου τις απορίες και να κάνουν όποια τροποποίηση επιθυμούσα. Συνεπείς και δημιουργικοί. Το τελικό αποτέλεμα σύγχρονο, λειτουργικό και καλαίσθητο με άφησε απόλυτα ικανοποιημένη. Τους συστήνω ανεπιφύλακτα.' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjXwzVoH8tFi5PJF8D8skvbm3K_MVRDQOVJDpeCoiW7ldSBbVCM=w144-h144-p-rp-mo-br100', name: 'Στυλιανίδου Σοφία', rating: 5, text: 'Εξαιρετικοί επαγγελματίες υπήρξε άμεση ανταπόκριση στη δημιουργία της ιστοσελίδας μου. Τέλος ήταν ανοιχτοί να μου εξηγήσουν την οποιαδήποτε απορία είχα και να αλλάξουν οτιδήποτε χρειάστηκε. Τους συστήνω ανεπιφύλακτα.' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjUIFeV7kJ81o_SxrHrpj0c_WK6-zPwV-xoJGSduKwsBrps_nN8=w144-h144-p-rp-mo-br100', name: 'Εμμανουέλα Παππά', rating: 5, text: 'Τα παιδιά ήταν εξαιρετικά επαγγελματίες, ευγενικοί και πρόθυμοι να βοηθήσουν σε κάθε στάδιο της δημιουργίας του site μου. Δούλεψαν με απίστευτη ταχύτητα, άκουσαν προσεκτικά τι ήθελα ! Το site βγήκε ακριβώς όπως το είχα φανταστεί ,απλό , σύγχρονο, λειτουργικό και αισθητικά άψογο. Τους συστήνω ανεπιφύλακτα!' },
+            { image: DEFAULT_AVATAR + 'Μαρία+Φασούλα', name: 'Μαρία Φασούλα', rating: 5, text: 'Άριστοι επαγγελματίες! Πολύ αξιόπιστοι και συνεπείς στα χρονοδιαγράμματα, με εξαιρετική επικοινωνία και επαγγελματική συμπεριφορά. Η ιστοσελίδα παραδόθηκε ακριβώς όπως τη φανταζόμουνα, λειτουργική και καλαίσθητη. Τους συνιστώ ανεπιφύλακτα για όποιον αναζητά ποιοτική και υπεύθυνη δουλειά!!!' },
+            { image: DEFAULT_AVATAR + 'Ελένη+Τσιαλιάφα', name: 'Ελένη Τσιαλιάφα', rating: 5, text: 'Άψογοι επαγγελματίες με συνέπεια και ταχύτητα στην εξυπηρέτηση. Λεπτομερής και προσεγμένη δουλειά. Μπράβο στην ομάδα! Τους συστήνω ανεπιφύλακτα. Τσιαλιάφα Ελένη Χειρ.Οδοντίατρος' },
+            { image: DEFAULT_AVATAR + 'Σοφία+Βασιλειάδου', name: 'Σοφία Βασιλειάδου', rating: 5, text: 'Όλη η ομάδα της Advon Media λειτούργησε με φοβερό επαγγελματισμό και μεγάλη ταχύτητα. Το αποτέλεσμα ξεπέρασε τις προσδοκίες μου, τους ευχαριστώ πολύ και εννοείται ότι συστήνω την Advon Media ανεπιφύλακτα!' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjX1bbMbwmzkQEWSP45s29CBn4twUfVMISTrmfepCc8o3z9P8foekg=w144-h144-p-rp-mo-br100', name: 'Σμαράγδα Δημητρά', rating: 5, text: 'Εξαιρετική δουλειά, πολύ καλή επικοινωνία' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjVL1O97zqNUKHWBzFz9HIbvUc6__rUq_HdJELt-S-OZhixDk3fR=w144-h144-p-rp-mo-ba3-br100', name: 'Παναγιώτης Ιατρούδης', rating: 5, text: 'Πολύ καλή και επαγγελματική συνεργασία για την κατασκευή της ιστοσελίδας μου. Τους έχω ήδη συστήσει και σε άλλους! Ιατρούδης Παναγιώτης Οδοντίατρος' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjWaGCVmAUJX0HX3Fxdt8YIs7h8Yn9py1LkLWI2h1lIqBvhgk89t=w144-h144-p-rp-mo-ba5-br100', name: 'Γλυνός Γιώργος', rating: 5, text: 'Εξαιρετικά αποτελέσματα θα τους σύστηνα ανεπιφύλακτα! Μου έλυσαν τα χέρια με την οργάνωση των ραντεβού μου, ενώ η πελατεία στο οδοντιατρείο μου στη Ρόδο άρχισε να αυξάνεται από τον πρώτο κιόλας μήνα της συνεργασία μας! Τα παιδιά με βοήθησαν άμεσα σε ό,τι τους ζητούσα και έχουν εξαιρετικά συστήματά και γνώσεις σε social media και ΑΙ.' },
+            { image: DEFAULT_AVATAR + 'Βασιλική+Μπέλλου', name: 'Βασιλική Μπέλλου', rating: 5, text: 'Άριστοι επαγγελματίες. Άψογη συνεργασία. Μεταξωτη συμπεριφορά σε όλα τους. Ευγενεια, διαθεσιμότητα, χαμόγελο και ταχύτητα διεκπεραίωσης. Ειδικά ο Aggelos Metridis, μεταξωτος σε όλα του και κυρίως στον επαγγελματισμό του. Τους συστήνω ανεπιφύλακτα. Ευχαριστώ θερμά για την συνεργασία μας.' },
+            { image: DEFAULT_AVATAR + 'Χριστίνα+Πανουσοπούλου', name: 'Χριστίνα Πανουσοπούλου', rating: 5, text: 'Εξαιρετική δουλειά! Έμεινα πολύ ευχαριστημένη με τη συνεργασία που είχαμε. Υπήρχε πάντα άμεση ανταπόκριση και με βοήθησαν σε ότι χρειάστηκα με διακριτικές αλλά εύστοχες προτάσεις. Συστήνεται ανεπιφύλακτα!' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjWET2TOFMS6lP_kbfwEgZsd4p_ptFmUSiCsQ66VwPYv6Gd8--Q=w144-h144-p-rp-mo-br100', name: 'Εμμανουέλα Ροκαδάκη', rating: 5, text: 'Άψογη δουλεία και συνεργασία. Με βοήθησαν πραγματικά σε ό,τι χρειάστηκα και υπήρχε πάντα άμεση ανταπόκριση. Ασύγκριτοι!' },
+            { image: DEFAULT_AVATAR + 'Άσπα+Βούζα', name: 'Άσπα Βούζα', rating: 5, text: 'Παρά πολύ ευχαριστημένη με τη δουλειά των παιδιών. Άψογη συνεργασία και άμεση επικοινωνία Άσπα Βούζα - Οφθαλμιάτρος' },
+            { image: DEFAULT_AVATAR + 'Θωμαή+Ζορμπά', name: 'Θωμαή Ζορμπά', rating: 5, text: 'Παρά πολύ καλή δουλειά και συνεργασία θα τους σύστηνα ανεπιφύλακτα - Θωμαη Ζορμπά Οδοντίατρος' },
+            { image: DEFAULT_AVATAR + 'Ξένια+Παπαβραμίδου', name: 'Ξένια Παπαβραμίδου', rating: 5, text: 'Εξαιρετική δουλειά! Πολύ συνεπείς, με άμεσα αποτελέσματα.' },
+            { image: DEFAULT_AVATAR + 'Ελένη+Αστρά', name: 'Ελένη Αστρά', rating: 5, text: 'Πολύ επαγγελματική δουλειά και άριστη συνεργασία - Ελένη Αστρά - Παιδίατρος' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjX9BSnfQVN3UY1kaqCVAO3J3YPFk6N_Ojtsr4chAJTQ1J96Clc=w144-h144-p-rp-mo-br100', name: 'Ιωάννης Λουκάς', rating: 5, text: 'Εξαιρετικοί επαγγελματίες και απόλυτα συνεπείς και καταρτισμένοι! Συστήνονται ανεπιφύλακτα.' },
+            { image: DEFAULT_AVATAR + 'Μαρούσα+Σκυλάκη', name: 'Μαρούσα Σκυλάκη', rating: 5, text: 'ΑΨΟΓΗ ΔΟΥΛΕΙΑ ΚΑΙ ΣΥΝΕΡΓΑΣΙΑ ΜΕ ΑΜΕΣΗ ΕΠΙΚΟΙΝΩΝΙΑ. ΜΑΡΟΥΣΑ ΣΚΥΛΑΚΗ, ΔΕΡΜΑΤΟΛΟΓΟΣ.' },
+            { image: DEFAULT_AVATAR + 'Φάνη+Φιλιπποπούλου', name: 'Φάνη Φιλιπποπούλου', rating: 5, text: '' },
+            { image: DEFAULT_AVATAR + 'Στράτος+Χατζηστρατής', name: 'Στράτος Χατζηστρατής', rating: 5, text: '' },
         ];
 
         const serviceModals = {
@@ -785,6 +852,104 @@
             document.body.appendChild(dot);
             setTimeout(() => dot.remove(), 600);
         });
+
+        // Rolls Royce Star Effect (Canvas)
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let stars = [];
+        let shootingStars = [];
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            initStars();
+        }
+
+        function initStars() {
+            const starCount = Math.floor(width * height / 2000); // Increased density (was 3000)
+            for (let i = 0; i < starCount; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 2 + 0.5,
+                    opacity: Math.random(),
+                    speed: Math.random() * 0.05 + 0.01,
+                    twinkleSpeed: Math.random() * 0.02 + 0.005,
+                    twinkleDir: 1
+                });
+            }
+        }
+
+        function createShootingStar() {
+            if (Math.random() < 0.01) { // Chance per frame
+                shootingStars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height / 2,
+                    length: Math.random() * 80 + 20,
+                    speed: Math.random() * 15 + 10,
+                    angle: Math.PI / 4,
+                    opacity: 1
+                });
+            }
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Static/Twinkling Stars
+            stars.forEach(star => {
+                // Twinkle
+                star.opacity += star.twinkleSpeed * star.twinkleDir;
+                if (star.opacity > 1 || star.opacity < 0.2) {
+                    star.twinkleDir *= -1;
+                }
+
+                // Move slightly (Rolls Royce "moving" effect)
+                star.y -= star.speed;
+                if (star.y < 0) star.y = height;
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.opacity)})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Shooting Stars
+            createShootingStar();
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const star = shootingStars[i];
+                
+                star.x += Math.cos(star.angle) * star.speed;
+                star.y += Math.sin(star.angle) * star.speed;
+                star.opacity -= 0.02;
+
+                if (star.opacity <= 0 || star.x > width || star.y > height) {
+                    shootingStars.splice(i, 1);
+                    continue;
+                }
+
+                const gradient = ctx.createLinearGradient(star.x, star.y, star.x - Math.cos(star.angle) * star.length, star.y - Math.sin(star.angle) * star.length);
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+                gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(star.x, star.y);
+                ctx.lineTo(star.x - Math.cos(star.angle) * star.length, star.y - Math.sin(star.angle) * star.length);
+                ctx.stroke();
+            }
+
+            requestAnimationFrame(animateStars);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animateStars();
 
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -939,8 +1104,30 @@
             }
         });
 
+        // Reviews rendering logic
+        const reviewsGrid = document.getElementById('reviews-grid');
+        function renderReviews() {
+            reviewsGrid.innerHTML = reviews.map((review, i) => `
+                <div class="reveal glass-panel p-8 rounded-2xl" style="animation-delay: ${i * 100}ms">
+                    <div class="flex gap-1 mb-6">
+                        ${Array(review.rating).fill('<i data-lucide="star" class="w-4 h-4 fill-[#FBBC04] text-[#FBBC04]"></i>').join('')}
+                    </div>
+                    <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[80px]">"${review.text}"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="${review.image}" alt="${review.name}" class="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20">
+                        <div>
+                            <h4 class="font-bold text-sm text-white">${review.name}</h4>
+                            <span class="text-xs text-gray-500 flex items-center gap-1"><div class="w-3 h-3 bg-white rounded-full flex items-center justify-center"><span class="text-[8px] font-bold text-black">G</span></div>Google Review</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons(); // re-init icons
+        }
+
         // Initial Render
         renderPortfolio();
+        renderReviews();
 
         // Scroll Animations (Intersection Observer)
         function observeElements() {

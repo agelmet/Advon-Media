@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Menu, X, Check, ChevronLeft, ChevronRight, ExternalLink, Mail, 
   ArrowRight, ArrowUpRight, Play, ChevronDown, Globe, Star, Instagram 
@@ -10,6 +10,116 @@ import { ServiceType, ServiceData } from './types';
 // --- Components ---
 
 const Background = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    let stars: {x: number, y: number, size: number, opacity: number, speed: number, twinkleSpeed: number, twinkleDir: number}[] = [];
+    let shootingStars: {x: number, y: number, length: number, speed: number, angle: number, opacity: number}[] = [];
+
+    const initStars = () => {
+        stars = [];
+        const starCount = Math.floor(width * height / 2000); // Increased density (was 3000)
+        for (let i = 0; i < starCount; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 2 + 0.5, // Increased size range (0.5 to 2.5)
+                opacity: Math.random(),
+                speed: Math.random() * 0.05 + 0.01,
+                twinkleSpeed: Math.random() * 0.02 + 0.005,
+                twinkleDir: 1
+            });
+        }
+    };
+
+    initStars();
+
+    const createShootingStar = () => {
+        if (Math.random() < 0.01) { // Chance per frame
+            shootingStars.push({
+                x: Math.random() * width,
+                y: Math.random() * height / 2,
+                length: Math.random() * 80 + 20,
+                speed: Math.random() * 15 + 10,
+                angle: Math.PI / 4,
+                opacity: 1
+            });
+        }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+      
+      // Stars
+      stars.forEach(star => {
+        star.opacity += star.twinkleSpeed * star.twinkleDir;
+        if (star.opacity > 1 || star.opacity < 0.2) {
+            star.twinkleDir *= -1;
+        }
+        star.y -= star.speed;
+        if (star.y < 0) star.y = height;
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.opacity)})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Shooting Stars
+      createShootingStar();
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const star = shootingStars[i];
+          star.x += Math.cos(star.angle) * star.speed;
+          star.y += Math.sin(star.angle) * star.speed;
+          star.opacity -= 0.02;
+
+          if (star.opacity <= 0 || star.x > width || star.y > height) {
+              shootingStars.splice(i, 1);
+              continue;
+          }
+
+          const gradient = ctx.createLinearGradient(star.x, star.y, star.x - Math.cos(star.angle) * star.length, star.y - Math.sin(star.angle) * star.length);
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+          gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(star.x - Math.cos(star.angle) * star.length, star.y - Math.sin(star.angle) * star.length);
+          ctx.stroke();
+      }
+
+      requestAnimationFrame(animate);
+    }
+    
+    const animationId = requestAnimationFrame(animate);
+
+    const handleResize = () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        initStars();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+        window.removeEventListener('resize', handleResize);
+        cancelAnimationFrame(animationId);
+    };
+  }, []);
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
        <style>{`
@@ -168,16 +278,25 @@ const Background = () => {
       }
       
       @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+
+      /* Shimmer Text Effect */
+      .text-shimmer {
+        background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: shimmer 4s linear infinite;
+      }
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
       `}</style>
       <div className="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
       
-      {/* Stars - Simulated with CSS radial gradients for performance */}
-      <div className="absolute inset-0 opacity-70 animate-pulse-slow" 
-           style={{ 
-             backgroundImage: 'radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.8) 50%, transparent 50%), radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.7) 50%, transparent 50%), radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.8) 50%, transparent 50%), radial-gradient(2px 2px at 40% 60%, rgba(71,200,245,0.4) 50%, transparent 50%)',
-             backgroundSize: '100% 100%'
-           }}>
-      </div>
+      {/* Canvas for Star Animation */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-70" />
 
       {/* Enhanced Laser Beam */}
       <div className="laser-beam-main">
@@ -264,7 +383,7 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full"
+      className="bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full hover:translate-y-[-5px]"
     >
       <div className="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors">
         <Icon className="w-7 h-7 text-electric-cyan" />
@@ -293,10 +412,14 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
 
       <ul className="space-y-3 mb-8">
         {service.features.map((feature, i) => (
-          <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
+          <motion.li 
+            key={i} 
+            className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors cursor-default"
+            whileHover={{ x: 5 }}
+          >
             <Check className="w-4 h-4 text-electric-cyan shrink-0" />
             {feature}
-          </li>
+          </motion.li>
         ))}
       </ul>
 
@@ -319,7 +442,7 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
   );
 };
 
-function App() {
+export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 12;
@@ -420,7 +543,7 @@ function App() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-              <span className="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ΨΗΦΙΑΚΟΣ ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΣ</span>
+              <span className="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ADVON MEDIA</span>
             </motion.div>
 
             <motion.h1 
@@ -430,7 +553,7 @@ function App() {
               className="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[0.95] tracking-tight"
             >
               Μετατρέπουμε<br/>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">Επισκέπτες</span> σε <span className="text-electric-cyan drop-shadow-[0_0_30px_rgba(71,200,245,0.3)]">Πελάτες</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">Επισκέπτες</span> σε <span className="text-shimmer drop-shadow-[0_0_30px_rgba(71,200,245,0.3)]">Πελάτες</span>
             </motion.h1>
 
             <motion.p 
@@ -453,7 +576,7 @@ function App() {
                 href="#services" 
                 className="px-8 py-4 bg-electric-cyan text-[#050a0e] font-bold text-lg uppercase tracking-wide rounded-xl shadow-[4px_4px_0_#c9ff00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#c9ff00] transition-all flex items-center gap-2"
               >
-                Ξεκινήστε Τώρα
+                ΥΠΗΡΕΣΙΕΣ
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a 
@@ -461,7 +584,7 @@ function App() {
                 className="px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-bold text-lg uppercase tracking-wide rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] transition-all flex items-center gap-2"
               >
                 <Play className="w-5 h-5 fill-current" />
-                Δείτε το έργο μας
+                ΠΟΡΤΦΟΛΙΟ
               </a>
             </motion.div>
           </div>
@@ -512,7 +635,7 @@ function App() {
             </div>
 
             <div className="mt-16 text-center">
-              <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white">
+              <span className="trust-badge-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white cursor-default">
                 <Check className="w-4 h-4 text-electric-cyan" />
                 Χωρίς δεσμεύσεις - Cancel Anytime
               </span>
@@ -732,5 +855,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
