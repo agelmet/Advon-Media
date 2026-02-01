@@ -4,7 +4,7 @@ import {
   ArrowRight, ArrowUpRight, Play, ChevronDown, Globe, Star, Instagram 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioItems, reviews, faqItems, servicesData } from './data';
+import { content } from './data';
 import { ServiceType, ServiceData } from './types';
 
 // --- Components ---
@@ -28,12 +28,13 @@ const Background = () => {
 
     const initStars = () => {
         stars = [];
-        const starCount = Math.floor(width * height / 2000); // Increased density (was 3000)
+        // Increased density significantly for more stars
+        const starCount = Math.floor(width * height / 1500); 
         for (let i = 0; i < starCount; i++) {
             stars.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 2 + 0.5, // Increased size range (0.5 to 2.5)
+                size: Math.random() * 2 + 0.5,
                 opacity: Math.random(),
                 speed: Math.random() * 0.05 + 0.01,
                 twinkleSpeed: Math.random() * 0.02 + 0.005,
@@ -45,7 +46,7 @@ const Background = () => {
     initStars();
 
     const createShootingStar = () => {
-        if (Math.random() < 0.01) { // Chance per frame
+        if (Math.random() < 0.015) { // Slightly increased chance
             shootingStars.push({
                 x: Math.random() * width,
                 y: Math.random() * height / 2,
@@ -123,51 +124,31 @@ const Background = () => {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
        <style>{`
-      /* --- Updated Laser Beam Animation --- */
       .laser-beam-main {
         position: absolute;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 80px; /* Wider beam */
+        width: 80px;
         height: 100%;
-        background: linear-gradient(180deg,
-          rgba(71, 200, 245, 0.1) 0%,
-          rgba(71, 200, 245, 0.4) 10%,
-          rgba(71, 200, 245, 0.9) 30%,
-          rgba(71, 200, 245, 1) 50%,
-          rgba(71, 200, 245, 0.9) 70%,
-          rgba(71, 200, 245, 0.4) 90%,
-          rgba(71, 200, 245, 0.1) 100%
-        );
-        box-shadow: 
-          0 0 30px rgba(71, 200, 245, 0.9),
-          0 0 60px rgba(71, 200, 245, 0.7);
+        background: linear-gradient(180deg, rgba(71, 200, 245, 0.1) 0%, rgba(71, 200, 245, 0.4) 10%, rgba(71, 200, 245, 0.9) 30%, rgba(71, 200, 245, 1) 50%, rgba(71, 200, 245, 0.9) 70%, rgba(71, 200, 245, 0.4) 90%, rgba(71, 200, 245, 0.1) 100%);
+        box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
         animation: laser-pour 1.5s ease-in-out infinite, laser-glow 2s ease-in-out infinite;
         border-radius: 10px;
         will-change: transform, opacity;
         z-index: 2;
       }
-      
       .laser-beam-main::before {
         content: '';
         position: absolute;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 200px; /* Wider glow */
+        width: 200px;
         height: 100%;
-        background: linear-gradient(180deg,
-          transparent 0%,
-          rgba(71, 200, 245, 0.05) 20%,
-          rgba(71, 200, 245, 0.15) 50%,
-          rgba(71, 200, 245, 0.05) 80%,
-          transparent 100%
-        );
+        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.05) 20%, rgba(71, 200, 245, 0.15) 50%, rgba(71, 200, 245, 0.05) 80%, transparent 100%);
         filter: blur(20px);
       }
-      
-      /* Splash Effect at Bottom */
       .laser-splash {
         position: absolute;
         bottom: 0;
@@ -175,18 +156,12 @@ const Background = () => {
         transform: translateX(-50%);
         width: 300px;
         height: 150px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.6) 0%,
-          rgba(71, 200, 245, 0.3) 30%,
-          rgba(71, 200, 245, 0.1) 60%,
-          transparent 100%
-        );
+        background: radial-gradient(ellipse at center bottom, rgba(71, 200, 245, 0.6) 0%, rgba(71, 200, 245, 0.3) 30%, rgba(71, 200, 245, 0.1) 60%, transparent 100%);
         filter: blur(30px);
         animation: splash-pulse 1.5s ease-in-out infinite;
         will-change: transform, opacity;
         z-index: 3;
       }
-      
       .laser-splash::before {
         content: '';
         position: absolute;
@@ -195,27 +170,20 @@ const Background = () => {
         transform: translateX(-50%);
         width: 150px;
         height: 80px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.8) 0%,
-          rgba(71, 200, 245, 0.4) 40%,
-          transparent 100%
-        );
+        background: radial-gradient(ellipse at center bottom, rgba(71, 200, 245, 0.8) 0%, rgba(71, 200, 245, 0.4) 40%, transparent 100%);
         filter: blur(15px);
         animation: splash-inner 1s ease-in-out infinite;
       }
-      
-      /* Particle drops falling */
       .laser-particles {
         position: absolute;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
-        width: 80px; /* Adjusted for wider beam */
+        width: 80px;
         height: 100%;
         overflow: hidden;
         pointer-events: none;
       }
-      
       .laser-particle {
         position: absolute;
         width: 4px;
@@ -224,47 +192,35 @@ const Background = () => {
         border-radius: 2px;
         animation: particle-fall 0.8s linear infinite;
       }
-      
       .laser-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
       .laser-particle:nth-child(2) { left: 30%; animation-delay: 0.2s; }
       .laser-particle:nth-child(3) { left: 50%; animation-delay: 0.4s; }
       .laser-particle:nth-child(4) { left: 70%; animation-delay: 0.6s; }
       .laser-particle:nth-child(5) { left: 90%; animation-delay: 0.3s; }
-      
       @keyframes particle-fall {
         0% { top: -30px; opacity: 0; }
         10% { opacity: 1; }
         90% { opacity: 1; }
         100% { top: 100%; opacity: 0; }
       }
-      
       @keyframes laser-pour {
         0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
         25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); }
         50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); }
         75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); }
       }
-      
       @keyframes laser-glow {
-        0%, 100% {
-          box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
-        }
-        50% {
-          box-shadow: 0 0 50px rgba(71, 200, 245, 1), 0 0 100px rgba(71, 200, 245, 0.8);
-        }
+        0%, 100% { box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7); }
+        50% { box-shadow: 0 0 50px rgba(71, 200, 245, 1), 0 0 100px rgba(71, 200, 245, 0.8); }
       }
-      
       @keyframes splash-pulse {
         0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
         50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
       }
-      
       @keyframes splash-inner {
         0%, 100% { opacity: 0.7; }
         50% { opacity: 1; }
       }
-      
-      /* Secondary beams */
       .laser-beam-secondary {
         position: absolute;
         top: 0;
@@ -276,10 +232,7 @@ const Background = () => {
         border-radius: 2px;
         z-index: 1;
       }
-      
       @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-
-      /* Shimmer Text Effect */
       .text-shimmer {
         background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%);
         background-size: 200% auto;
@@ -292,13 +245,28 @@ const Background = () => {
         0% { background-position: -200% 0; }
         100% { background-position: 200% 0; }
       }
+      .trust-badge-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .trust-badge-shimmer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+        transform: skewX(-20deg) translateX(-150%);
+        animation: badge-shimmer 3s infinite;
+      }
+      @keyframes badge-shimmer {
+        0%, 80% { transform: skewX(-20deg) translateX(-150%); }
+        100% { transform: skewX(-20deg) translateX(150%); }
+      }
       `}</style>
       <div className="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
-      
-      {/* Canvas for Star Animation */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-70" />
-
-      {/* Enhanced Laser Beam */}
       <div className="laser-beam-main">
         <div className="laser-particles">
           {[...Array(5)].map((_, i) => (
@@ -307,16 +275,10 @@ const Background = () => {
         </div>
       </div>
       <div className="laser-splash"></div>
-      
-      {/* Secondary beams for extra effect */}
       <div className="laser-beam-secondary" style={{ left: '45%' }}></div>
       <div className="laser-beam-secondary" style={{ left: '55%' }}></div>
-
-      {/* Ambient Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
       <div className="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.04)] blur-[150px] rounded-full"></div>
-      
-      {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.8)_100%)]"></div>
     </div>
   );
@@ -374,7 +336,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, content }) => {
   );
 };
 
-const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData) => void }> = ({ service, onReadMore }) => {
+const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData) => void; moreInfoText: string }> = ({ service, onReadMore, moreInfoText }) => {
   const Icon = service.icon;
   
   return (
@@ -403,7 +365,6 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
         {service.shortDesc}
       </p>
 
-      {/* GIF for NFC Service */}
       {service.id === ServiceType.NFC && (
          <div className="mb-6 rounded-lg overflow-hidden border border-electric-cyan/20">
            <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" alt="NFC Tech" className="w-full h-auto object-cover opacity-80" />
@@ -435,7 +396,7 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
           onClick={() => onReadMore(service)}
           className="w-full py-2 text-sm text-electric-cyan/80 hover:text-electric-cyan underline underline-offset-4 decoration-electric-cyan/30 hover:decoration-electric-cyan transition-all"
         >
-          Περισσότερες πληροφορίες
+          {moreInfoText}
         </button>
       </div>
     </motion.div>
@@ -443,19 +404,21 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
 };
 
 export default function App() {
+  const [lang, setLang] = useState<'el' | 'en'>('el');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 12;
-  const totalPages = Math.ceil(portfolioItems.length / itemsPerPage);
   
   const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   
-  // Ensure we are ready to render
-  const [isReady, setIsReady] = useState(false);
-  useEffect(() => {
-    setIsReady(true);
-  }, []);
+  // Data based on language
+  const t = content[lang];
+  const totalPages = Math.ceil(t.portfolioItems.length / itemsPerPage);
+
+  const toggleLanguage = () => {
+    setLang(prev => prev === 'el' ? 'en' : 'el');
+  };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -464,7 +427,7 @@ export default function App() {
   const nextPage = () => setCurrentPage((prev) => (prev + 1) % totalPages);
   const prevPage = () => setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
 
-  const visiblePortfolio = portfolioItems.slice(
+  const visiblePortfolio = t.portfolioItems.slice(
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
@@ -487,22 +450,36 @@ export default function App() {
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-electric-cyan">
-              {['Υπηρεσίες', 'Πορτφόλιο', 'Αξιολογήσεις', 'FAQ', 'Επικοινωνία'].map((item) => (
-                 <a 
-                   key={item} 
-                   href={`#${item === 'FAQ' ? 'faq' : item === 'Επικοινωνία' ? 'contact' : item === 'Αξιολογήσεις' ? 'reviews' : item === 'Πορτφόλιο' ? 'portfolio' : 'services'}`} 
-                   className="relative group py-2"
-                 >
-                   {item}
+                 <a href="#services" className="relative group py-2">
+                   {t.nav.services}
                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
                  </a>
-              ))}
+                 <a href="#portfolio" className="relative group py-2">
+                   {t.nav.portfolio}
+                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
+                 </a>
+                 <a href="#reviews" className="relative group py-2">
+                   {t.nav.reviews}
+                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
+                 </a>
+                 <a href="#faq" className="relative group py-2">
+                   {t.nav.faq}
+                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
+                 </a>
+                 <a href="#contact" className="relative group py-2">
+                   {t.nav.contact}
+                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300"></span>
+                 </a>
             </nav>
 
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center px-3 py-1.5 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-xs font-bold text-electric-cyan">
-                 🇬🇷 EL
-              </div>
+              <button 
+                onClick={toggleLanguage}
+                className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-xs font-bold text-electric-cyan hover:bg-electric-cyan/20 transition-all"
+              >
+                 <span>{lang === 'el' ? '🇬🇧' : '🇬🇷'}</span>
+                 {t.nav.lang}
+              </button>
               <button 
                 className="md:hidden text-electric-cyan p-2"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -522,11 +499,14 @@ export default function App() {
                 className="md:hidden bg-[#050a0e] border-b border-electric-cyan/20 overflow-hidden"
               >
                 <nav className="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
-                  {['Services', 'Portfolio', 'Reviews', 'FAQ', 'Contact'].map((item) => (
-                    <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMobileMenuOpen(false)}>
-                      {item === 'Services' ? 'Υπηρεσίες' : item === 'Portfolio' ? 'Πορτφόλιο' : item === 'Reviews' ? 'Αξιολογήσεις' : item === 'Contact' ? 'Επικοινωνία' : item}
-                    </a>
-                  ))}
+                  <a href="#services" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.services}</a>
+                  <a href="#portfolio" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.portfolio}</a>
+                  <a href="#reviews" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.reviews}</a>
+                  <a href="#faq" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.faq}</a>
+                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>{t.nav.contact}</a>
+                  <button onClick={toggleLanguage} className="flex items-center gap-2 mt-4 text-white">
+                    <span>{lang === 'el' ? '🇬🇧' : '🇬🇷'}</span> Switch to {t.nav.lang}
+                  </button>
                 </nav>
               </motion.div>
             )}
@@ -543,7 +523,7 @@ export default function App() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-              <span className="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ADVON MEDIA</span>
+              <span className="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">{t.hero.badge}</span>
             </motion.div>
 
             <motion.h1 
@@ -552,8 +532,8 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[0.95] tracking-tight"
             >
-              Μετατρέπουμε<br/>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">Επισκέπτες</span> σε <span className="text-shimmer drop-shadow-[0_0_30px_rgba(71,200,245,0.3)]">Πελάτες</span>
+              {t.hero.titlePrefix}<br/>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">{t.hero.titleHighlight1}</span> {t.hero.titleConnector} <span className="text-shimmer drop-shadow-[0_0_30px_rgba(71,200,245,0.3)]">{t.hero.titleHighlight2}</span>
             </motion.h1>
 
             <motion.p 
@@ -562,8 +542,7 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
             >
-              Οι πιο αποτελεσματικές λύσεις marketing για τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες.
-              Ανεβείτε στην κορυφή των αποτελεσμάτων χωρίς ρίσκο.
+              {t.hero.subtitle}
             </motion.p>
 
             <motion.div 
@@ -576,7 +555,7 @@ export default function App() {
                 href="#services" 
                 className="px-8 py-4 bg-electric-cyan text-[#050a0e] font-bold text-lg uppercase tracking-wide rounded-xl shadow-[4px_4px_0_#c9ff00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#c9ff00] transition-all flex items-center gap-2"
               >
-                ΥΠΗΡΕΣΙΕΣ
+                {t.hero.ctaPrimary}
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a 
@@ -584,7 +563,7 @@ export default function App() {
                 className="px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-bold text-lg uppercase tracking-wide rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] transition-all flex items-center gap-2"
               >
                 <Play className="w-5 h-5 fill-current" />
-                ΠΟΡΤΦΟΛΙΟ
+                {t.hero.ctaSecondary}
               </a>
             </motion.div>
           </div>
@@ -593,12 +572,7 @@ export default function App() {
         {/* Stats Section */}
         <section className="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { num: "2+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
-              { num: "50+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
-              { num: "100%", label: "ΕΠΙΤΥΧΙΑ" },
-              { num: "30+", label: "5-STAR REVIEWS" }
-            ].map((stat, i) => (
+            {t.stats.map((stat, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -620,15 +594,17 @@ export default function App() {
         <section id="services" className="py-32 relative">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-20">
-              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Υπηρεσίες</span>
-              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">Λύσεις που Αποδίδουν</h2>
+              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">{t.sectionTitles.services}</span>
+              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">{t.sectionTitles.servicesMain}</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">{t.sectionTitles.servicesSub}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {servicesData.map((service) => (
+              {t.servicesData.map((service) => (
                 <ServiceCard 
                   key={service.id} 
                   service={service} 
+                  moreInfoText={service.moreInfo}
                   onReadMore={(s) => setSelectedService(s)} 
                 />
               ))}
@@ -637,7 +613,7 @@ export default function App() {
             <div className="mt-16 text-center">
               <span className="trust-badge-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white cursor-default">
                 <Check className="w-4 h-4 text-electric-cyan" />
-                Χωρίς δεσμεύσεις - Cancel Anytime
+                {t.sectionTitles.noCommitment}
               </span>
             </div>
           </div>
@@ -647,8 +623,9 @@ export default function App() {
         <section id="portfolio" className="py-32 bg-[#0a1418]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-20">
-              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Πορτφόλιο</span>
-              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">Δείτε μερικές από τις Δουλειές μας</h2>
+              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">{t.sectionTitles.portfolio}</span>
+              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">{t.sectionTitles.portfolioMain}</h2>
+              <p className="text-gray-400">{t.sectionTitles.portfolioSub}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -669,7 +646,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                       <h3 className="text-lg font-bold text-white mb-2">{item.name}</h3>
                       <span className="flex items-center gap-2 text-sm font-bold text-electric-cyan">
-                        Προβολή Ιστοσελίδας <ExternalLink className="w-4 h-4" />
+                        {t.sectionTitles.viewSite} <ExternalLink className="w-4 h-4" />
                       </span>
                     </div>
                   </motion.a>
@@ -703,12 +680,12 @@ export default function App() {
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-20">
-              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Αξιολογήσεις</span>
-              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">Τι λένε οι πελάτες μας</h2>
+              <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">{t.sectionTitles.reviews}</span>
+              <h2 className="text-4xl md:text-5xl font-black font-display mb-4">{t.sectionTitles.reviewsMain}</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {reviews.map((review, i) => (
+              {t.reviews.map((review, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -746,7 +723,7 @@ export default function App() {
                  rel="noopener noreferrer"
                  className="inline-flex items-center gap-2 px-8 py-4 border border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wide"
                >
-                 Δείτε Όλες τις Αξιολογήσεις
+                 {t.sectionTitles.viewAllReviews}
                  <ExternalLink className="w-5 h-5" />
                </a>
             </div>
@@ -757,11 +734,11 @@ export default function App() {
         <section id="faq" className="py-20 bg-[#0a1418]">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black font-display mb-4">Συχνές Ερωτήσεις</h2>
+              <h2 className="text-3xl md:text-4xl font-black font-display mb-4">{t.sectionTitles.faq}</h2>
             </div>
 
             <div className="space-y-4">
-              {faqItems.map((item, i) => (
+              {t.faqItems.map((item, i) => (
                 <div key={i} className="bg-[#081219] border border-electric-cyan/10 rounded-xl overflow-hidden">
                   <button 
                     onClick={() => toggleFaq(i)}
@@ -793,10 +770,10 @@ export default function App() {
         {/* Contact Section */}
         <section id="contact" className="py-32 relative">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Επικοινωνία</span>
-            <h2 className="text-4xl md:text-6xl font-black font-display mb-8">Ας Συνεργαστούμε</h2>
+            <span className="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block">{t.sectionTitles.contact}</span>
+            <h2 className="text-4xl md:text-6xl font-black font-display mb-8">{t.sectionTitles.contactMain}</h2>
             <p className="text-xl text-gray-400 mb-12">
-              Στείλτε μας email με το τηλέφωνό σας για να συζητήσουμε τι ακριβώς χρειάζεστε.
+              {t.sectionTitles.contactSub}
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -835,11 +812,11 @@ export default function App() {
 
         <footer className="py-8 bg-white border-t border-electric-cyan/20 text-[#050a0e]">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm font-medium">© 2026 Advon Media. Με επιφύλαξη παντός δικαιώματος.</p>
+            <p className="text-sm font-medium">© 2026 Advon Media. {lang === 'el' ? 'Με επιφύλαξη παντός δικαιώματος.' : 'All rights reserved.'}</p>
             <div className="flex gap-6 text-sm font-medium">
-              <a href="#services" className="hover:text-electric-cyan transition-colors">Υπηρεσίες</a>
-              <a href="#portfolio" className="hover:text-electric-cyan transition-colors">Πορτφόλιο</a>
-              <a href="#contact" className="hover:text-electric-cyan transition-colors">Επικοινωνία</a>
+              <a href="#services" className="hover:text-electric-cyan transition-colors">{t.nav.services}</a>
+              <a href="#portfolio" className="hover:text-electric-cyan transition-colors">{t.nav.portfolio}</a>
+              <a href="#contact" className="hover:text-electric-cyan transition-colors">{t.nav.contact}</a>
             </div>
           </div>
         </footer>
