@@ -2,6 +2,7 @@ export interface PortfolioItem {
   image: string;
   url: string;
   name: string;
+  nameEn?: string;
 }
 
 export interface Review {

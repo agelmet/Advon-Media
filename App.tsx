@@ -445,7 +445,7 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 12;
+  const itemsPerPage = 21; // Changed from 12 to 21
   const totalPages = Math.ceil(portfolioItems.length / itemsPerPage);
   
   const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
