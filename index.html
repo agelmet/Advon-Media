@@ -7,12 +7,10 @@
     <meta name="description" content="Οι πιο αποτελεσματικές λύσεις marketing για τοπικές επιχειρήσεις. Δωρεάν κατασκευή ιστοσελίδας, διαχείριση social media, αξιολογήσεις Google." />
     <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" />
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -31,6 +29,7 @@
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 6s ease-in-out infinite',
               'shimmer': 'shimmer 3s linear infinite',
+              'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
             },
             keyframes: {
               float: {
@@ -40,6 +39,10 @@
               shimmer: {
                 '0%': { backgroundPosition: '-200% 0' },
                 '100%': { backgroundPosition: '200% 0' },
+              },
+              'glow-pulse': {
+                '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
+                '50%': { opacity: 1, transform: 'scale(1.2)' },
               }
             }
           }
@@ -47,17 +50,41 @@
       }
     </script>
 
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
       /* Custom Scrollbar */
-      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: #050a0e; }
-      ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.3); border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #47c8f5; }
+      ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.4); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #47c8f5; box-shadow: 0 0 10px #47c8f5; }
       
       body { background-color: #050a0e; color: white; overflow-x: hidden; cursor: default; }
+      
+      main { transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+      /* --- Animated Cyber Grid --- */
+      .cyber-grid {
+        position: absolute;
+        bottom: 0;
+        left: -50%;
+        width: 200%;
+        height: 100vh;
+        background-image: 
+          linear-gradient(to right, rgba(71, 200, 245, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(71, 200, 245, 0.05) 1px, transparent 1px);
+        background-size: 60px 60px;
+        transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px);
+        animation: grid-scroll 20s linear infinite;
+        mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
+        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
+        z-index: 1;
+        pointer-events: none;
+      }
+      @keyframes grid-scroll {
+        0% { transform: perspective(600px) rotateX(70deg) translateY(0) translateZ(-200px); }
+        100% { transform: perspective(600px) rotateX(70deg) translateY(60px) translateZ(-200px); }
+      }
 
       /* --- Updated Laser Beam Animation --- */
       .laser-beam-main {
@@ -74,17 +101,6 @@
         will-change: transform, opacity;
         z-index: 2;
       }
-      .laser-beam-main::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 160px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.05) 20%, rgba(71, 200, 245, 0.15) 50%, rgba(71, 200, 245, 0.05) 80%, transparent 100%);
-        filter: blur(20px);
-      }
       .laser-splash {
         position: absolute;
         bottom: 0;
@@ -97,18 +113,6 @@
         animation: splash-pulse 1.5s ease-in-out infinite;
         will-change: transform, opacity;
         z-index: 3;
-      }
-      .laser-splash::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 80px;
-        background: radial-gradient(ellipse at center bottom, rgba(71, 200, 245, 0.8) 0%, rgba(71, 200, 245, 0.4) 40%, transparent 100%);
-        filter: blur(15px);
-        animation: splash-inner 1s ease-in-out infinite;
       }
       .laser-particles {
         position: absolute;
@@ -153,231 +157,230 @@
         0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
         50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
       }
-      @keyframes splash-inner {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      .laser-beam-secondary {
-        position: absolute;
-        top: 0;
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.1) 15%, rgba(71, 200, 245, 0.4) 40%, rgba(71, 200, 245, 0.5) 50%, rgba(71, 200, 245, 0.4) 60%, rgba(71, 200, 245, 0.1) 85%, transparent 100%);
-        box-shadow: 0 0 10px rgba(71, 200, 245, 0.5);
-        animation: laser-pour-secondary 2s ease-in-out infinite;
-        border-radius: 2px;
-        z-index: 1;
-      }
-      @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
 
       #star-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-      .logo-glow { filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5)); transition: filter 0.3s ease; }
-      .logo-glow:hover { filter: drop-shadow(0 0 20px rgba(71, 200, 245, 0.9)); }
-      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
-      .glass-panel { background: rgba(8, 18, 25, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(71, 200, 245, 0.1); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-      .glass-panel:hover { border-color: rgba(71, 200, 245, 0.4); box-shadow: 0 0 30px rgba(71, 200, 245, 0.15); transform: translateY(-5px); }
-      .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
-      .glass-panel:hover .service-list-item:hover { transform: translateX(5px); color: white; }
-      .service-check-icon { transition: all 0.3s ease; }
-      .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 5px #47c8f5); transform: scale(1.1); }
-      .trust-badge-shimmer { position: relative; overflow: hidden; }
-      .trust-badge-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: badge-shimmer 3s infinite; }
-      @keyframes badge-shimmer { 0%, 80% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(150%); } }
-      .trail-dot { position: fixed; width: 8px; height: 8px; background: #47c8f5; border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 10px #47c8f5, 0 0 20px #47c8f5; animation: fadeOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-      @keyframes fadeOut { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(0.2); opacity: 0; } }
-      .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
-      .reveal.active { opacity: 1; transform: translateY(0); }
-      .modal-open { overflow: hidden; }
-    </style>
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@^19.2.4",
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-        "framer-motion": "https://esm.sh/framer-motion@^12.29.2"
+      
+      /* --- Custom Ambient Cursor --- */
+      #cursor-glow {
+        position: fixed;
+        top: 0; left: 0;
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9998;
+        transition: width 0.3s, height 0.3s;
+        will-change: transform;
       }
-    }
-    </script>
-</head>
-<body class="font-body antialiased selection:bg-electric-cyan/30 selection:text-white">
 
-    <!-- Background Elements -->
+      .logo-glow { filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5)); transition: filter 0.3s ease; }
+      .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(71, 200, 245, 1)); }
+      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
+      
+      /* --- Enhanced Glass Panel & 3D Tilt --- */
+      .glass-panel { 
+        background: rgba(8, 18, 25, 0.5); 
+        backdrop-filter: blur(16px); 
+        -webkit-backdrop-filter: blur(16px); 
+        border: 1px solid rgba(71, 200, 245, 0.15); 
+        box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
+        transition: border-color 0.4s ease, box-shadow 0.4s ease; 
+        transform-style: preserve-3d;
+      }
+      .glass-panel:hover { 
+        border-color: rgba(71, 200, 245, 0.5); 
+        box-shadow: inset 0 0 20px rgba(71,200,245,0.1), 0 15px 40px rgba(71, 200, 245, 0.2); 
+      }
+      .glass-panel > * { transform: translateZ(30px); }
+
+      .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
+      .glass-panel:hover .service-list-item:hover { transform: translateX(8px) translateZ(30px); color: white; }
+      .service-check-icon { transition: all 0.3s ease; }
+      .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 8px #47c8f5); transform: scale(1.2); }
+      
+      .trust-badge-shimmer { position: relative; overflow: hidden; }
+      .trust-badge-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: badge-shimmer 3s infinite; }
+      @keyframes badge-shimmer { 0%, 80% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(150%); } }
+      
+      .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+      .modal-open { overflow: hidden; }
+      
+      /* Glowing Text Selection */
+      ::selection { background: rgba(71, 200, 245, 0.4); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="font-body antialiased">
+
+    <div id="cursor-glow"></div>
+
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
       <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
       <canvas id="star-canvas"></canvas>
+      <div class="cyber-grid"></div>
+      
       <div class="laser-beam-main">
         <div class="laser-particles">
           <div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div>
         </div>
       </div>
       <div class="laser-splash"></div>
-      <div class="laser-beam-secondary" style="left: 45%;"></div>
-      <div class="laser-beam-secondary" style="left: 55%;"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
-      <div class="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.04)] blur-[150px] rounded-full"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.8)_100%)]"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.06)] blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.85)_100%)]"></div>
     </div>
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/80 backdrop-blur-md border-b border-electric-cyan/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" id="main-header">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/70 backdrop-blur-xl border-b border-electric-cyan/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" id="main-header">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
             <a href="#" class="flex items-center gap-3 group">
                 <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" class="h-10 w-auto logo-glow">
             </a>
 
-            <!-- Desktop Nav -->
-            <nav id="desktop-nav" class="hidden md:flex items-center gap-8 text-sm font-medium text-electric-cyan">
-                <!-- Injected via JS -->
-            </nav>
+            <nav id="desktop-nav" class="hidden md:flex items-center gap-10 text-sm font-semibold text-electric-cyan tracking-wide">
+                </nav>
 
-            <div class="flex items-center gap-4">
-                <button onclick="toggleLanguage()" id="lang-btn" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-xs font-bold text-electric-cyan hover:bg-electric-cyan/20 hover:shadow-[0_0_25px_rgba(71,200,245,0.3)] transition-all cursor-pointer">
-                    <!-- Injected via JS -->
-                </button>
-                <button class="md:hidden text-electric-cyan p-2" id="mobile-menu-btn">
+            <div class="flex items-center gap-2 md:gap-4">
+                <button onclick="triggerLanguageSwitch()" id="mobile-lang-btn" class="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all duration-300 cursor-pointer">
+                    </button>
+                
+                <button onclick="triggerLanguageSwitch()" id="lang-btn" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/40 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_25px_rgba(71,200,245,0.6)] transition-all duration-300 cursor-pointer">
+                    </button>
+                
+                <button class="md:hidden text-electric-cyan p-2 hover:bg-electric-cyan/10 rounded-lg transition-colors" id="mobile-menu-btn">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden bg-[#050a0e] border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0" id="mobile-menu">
+        <div class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0 relative z-0" id="mobile-menu">
             <nav id="mobile-nav-content" class="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
-                <!-- Injected via JS -->
-            </nav>
+                </nav>
         </div>
     </header>
 
-    <main class="relative z-10">
-        <!-- Hero Section -->
+    <main class="relative z-10" id="main-content">
         <section class="relative min-h-screen flex items-center justify-center pt-20 pb-20 overflow-hidden">
             <div class="container max-w-7xl mx-auto px-6 text-center z-10" id="hero-content">
-                <!-- Injected via JS -->
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8" id="stats-grid">
-                <!-- Injected via JS -->
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="py-32 relative">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="reveal text-center mb-20" id="services-header">
-                    <!-- Injected via JS -->
                 </div>
+        </section>
+
+        <section class="py-20 border-y border-electric-cyan/20 bg-[#0a1418]/60 backdrop-blur-md shadow-[inset_0_0_80px_rgba(0,0,0,0.8)] relative">
+            <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(71,200,245,0.03)_50%,transparent_100%)] pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10" id="stats-grid">
+                </div>
+        </section>
+
+        <section id="services" class="py-32 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="reveal text-center mb-20" id="services-header">
+                    </div>
 
                 <div class="grid md:grid-cols-3 gap-8" id="services-grid">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
 
                 <div class="reveal mt-16 text-center" id="services-footer">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-32 bg-[#0a1418]">
-            <div class="max-w-7xl mx-auto px-6">
+        <section id="portfolio" class="py-32 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1418] to-transparent z-0 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="reveal text-center mb-20" id="portfolio-header">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
 
                 <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 min-h-[400px]">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
 
                 <div class="reveal flex justify-center items-center gap-6">
-                    <button id="prev-btn" class="p-3 rounded-full border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
-                        <i data-lucide="chevron-left" class="w-6 h-6 text-electric-cyan"></i>
+                    <button id="prev-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
                     </button>
                     <div id="pagination-dots" class="flex gap-2">
-                        <!-- Injected via JS -->
-                    </div>
-                    <button id="next-btn" class="p-3 rounded-full border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
-                        <i data-lucide="chevron-right" class="w-6 h-6 text-electric-cyan"></i>
+                        </div>
+                    <button id="next-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Section -->
         <section id="reviews" class="py-32 relative overflow-hidden">
-             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full"></div>
+             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[80%] bg-electric-cyan/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="reveal text-center mb-20" id="reviews-header">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="reviews-grid">
-                     <!-- Injected via JS -->
-                </div>
+                     </div>
 
                 <div class="reveal text-center" id="reviews-footer">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="py-20 bg-[#0a1418]">
-            <div class="max-w-3xl mx-auto px-6">
+        <section id="faq" class="py-24 relative">
+            <div class="max-w-3xl mx-auto px-6 relative z-10">
                 <div class="reveal text-center mb-16" id="faq-header">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
 
                 <div class="space-y-4" id="faq-container">
-                    <!-- Injected via JS -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-32 relative">
-            <div class="max-w-4xl mx-auto px-6 text-center" id="contact-container">
-                <!-- Injected via JS -->
-            </div>
+        <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10" id="contact-container">
+                </div>
         </section>
     </main>
 
-    <footer class="py-8 bg-white border-t border-electric-cyan/20 text-[#050a0e] relative z-20">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4" id="footer-content">
-            <!-- Injected via JS -->
-        </div>
+    <footer class="py-10 bg-[#050a0e] border-t border-electric-cyan/30 text-gray-400 relative z-20 shadow-[0_-10px_40px_rgba(71,200,245,0.1)]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6" id="footer-content">
+            </div>
     </footer>
 
-    <!-- Modal Overlay -->
     <div id="modal-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
-        <div id="modal-content" class="relative bg-[#0a1418] border border-electric-cyan/30 w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-[0_0_50px_rgba(71,200,245,0.15)] transform scale-95 opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-[#050a0e]/90 backdrop-blur-md transition-opacity opacity-0" id="modal-backdrop"></div>
+        <div id="modal-content" class="relative bg-[#0a1418]/95 backdrop-blur-xl border border-electric-cyan/50 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl shadow-[0_0_60px_rgba(71,200,245,0.2)] transform scale-95 opacity-0 transition-all duration-400 cubic-bezier(0.16, 1, 0.3, 1)">
             <div class="sticky top-0 right-0 p-4 flex justify-end bg-gradient-to-b from-[#0a1418] to-transparent z-10">
-                <button onclick="closeModal()" class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors">
+                <button onclick="closeModal()" class="p-2 rounded-full bg-electric-cyan/10 hover:bg-electric-cyan hover:text-[#050a0e] text-electric-cyan transition-all">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            <div class="px-8 pb-8 pt-2">
-                <h3 id="modal-title" class="text-2xl font-display font-bold text-electric-cyan mb-6 text-center leading-tight"></h3>
-                <div id="modal-image-container" class="mb-6 hidden"></div>
-                <div id="modal-body" class="space-y-4 text-gray-300 leading-relaxed font-body"></div>
+            <div class="px-8 pb-10 pt-2">
+                <h3 id="modal-title" class="text-3xl font-display font-black text-white mb-8 text-center leading-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"></h3>
+                <div id="modal-image-container" class="mb-8 hidden"></div>
+                <div id="modal-body" class="space-y-5 text-gray-300 leading-relaxed font-body text-lg"></div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
         // --- TRANSLATION & DATA ---
         let currentLang = 'el';
         const DEFAULT_AVATAR = 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=';
 
+        // HELPER: Strips Greek accents for perfect capitalization styling
+        function elUpper(str) {
+            if (typeof str !== 'string') return str;
+            return str.toUpperCase()
+                .replace(/Ά/g, 'Α')
+                .replace(/Έ/g, 'Ε')
+                .replace(/Ή/g, 'Η')
+                .replace(/Ί/g, 'Ι')
+                .replace(/Ό/g, 'Ο')
+                .replace(/Ύ/g, 'Υ')
+                .replace(/Ώ/g, 'Ω')
+                .replace(/Ϊ/g, 'Ι')
+                .replace(/Ϋ/g, 'Υ');
+        }
+
         const translations = {
             el: {
+                title: 'Advon Media | Ψηφιακές Λύσεις Marketing',
                 nav: { services: 'Υπηρεσίες', portfolio: 'Πορτφόλιο', reviews: 'Αξιολογήσεις', faq: 'FAQ', contact: 'Επικοινωνία', lang: 'EN' },
                 hero: {
                     badge: 'ADVON MEDIA',
@@ -413,6 +416,7 @@
                 footer: { rights: 'Με επιφύλαξη παντός δικαιώματος.' }
             },
             en: {
+                title: 'Advon Media | Digital Marketing Solutions',
                 nav: { services: 'Services', portfolio: 'Portfolio', reviews: 'Reviews', faq: 'FAQ', contact: 'Contact', lang: 'EL' },
                 hero: {
                     badge: 'ADVON MEDIA',
@@ -454,6 +458,11 @@
                 { id: 'WEBSITE', icon: 'globe', price: 'ΔΩΡΕΑΝ', priceNote: '(μόνο 10.83€/μήνα hosting)', title: 'Κατασκευή Ιστοσελίδας', shortDesc: 'Επαγγελματική ιστοσελίδα που κατακτά υψηλές θέσεις στη Google.', features: ['Επαγγελματικός σχεδιασμός', 'SEO βελτιστοποίηση', 'Mobile responsive', 'Παράδοση σε 5-10 ημέρες'], cta: 'Δωρεάν Κατασκευή', more: 'Περισσότερες πληροφορίες', modal: { title: 'Δωρεάν Κατασκευή Ιστοσελίδας', body: ['Δεν είναι κάποιο μάρκετινγκ τρικ, όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι εντελώς δωρεάν.', 'Το μόνο κόστος για εσάς που δεν μπορούμε να καλύψουμε έιναι η φιλοξενία της ιστοσελίδας σε σέρβερ στο διαδίκτυο (γνωστό και ως hosting) και το domain name (το www.παράδειγμα.gr). Τα αναλαμβάνουμε και τα 2 σαν διαδικασίες εμείς!', 'Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται στο πορτφόλιο μας για να μπορούμε στο μέλλον και εμείς να έχουμε υψηλές τιμές και κέρδη.', 'Συνολικά είναι μόνο 10.83€/μήνα (που θα πληρώνατε όπως και να έχει, όπου και αν κατασκευάζατε μια ιστοσελίδα, όπως πληρώνουν και όλοι που ήδη έχουν).', 'Aναβαθμίστε την επαγγελματική σας παρουσία στο διαδίκτυο και μετατρέψτε τους επισκέπτες της ιστοσελίδας σας σε αφοσιωμένους πελάτες!', 'Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας δεν είναι απλώς ένα επιπλέον εργαλείο — είναι μια αναγκαιότητα για κάθε ελεύθερο επαγγελματία και επιχείρηση που θέλει να ξεχωρίσει στον ψηφιακό κόσμο.', 'Μια καλά σχεδιασμένη ιστοσελίδα σας βοηθά να κατακτήσετε υψηλότερες θέσεις στις μηχανές αναζήτησης, καθώς η Google αξιολογεί τις ιστοσελίδες ως πιο αξιόπιστες και με πιο ολοκληρωμένο προφίλ.', 'Η ιστοσελίδα σας λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα και προβάλλοντας την επιχείρησή σας ως σοβαρή και αξιόπιστη στους επισκέπτες. Επιπλέον, προσφέρει στους χρήστες εύκολη πρόσβαση σε όλες τις απαραίτητες πληροφορίες, καθιστώντας την εμπειρία τους πιο άνετη και άμεση.'] } },
                 { id: 'NFC', icon: 'star', price: '25€', priceNote: 'εφάπαξ', title: 'Ανέπαφη Βάση Αξιολογήσεων', shortDesc: '50+ νέες αξιολογήσεις κάθε μήνα. Ανεβείτε στην κορυφή της Google σε 3 μήνες.', features: ['Αύξηση κριτικών Google', 'Βελτίωση τοπικού SEO', 'Εύκολη χρήση (NFC)', 'Χωρίς μηνιαία συνδρομή'], cta: 'Αγορά Τώρα', more: 'Περισσότερες πληροφορίες', modal: { title: 'Ανέπαφη Βάση Αξιολογήσεων', image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif', body: ['Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.', 'Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της.', 'Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.', 'Αλλά δεν είναι μόνο οι πελάτες που επηρεάζονται!', 'Η Google, ως μηχανή αναζήτησης, θέλει να παρέχει τα πιο στοχευμένα αλλά και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.', 'Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε ή δεν επενδύουν τον χρόνο να ψάξουν.', 'Με την ανέπαφη βάση αξιολογήσεων μας μπορείτε να αποκτάτε τούλαχιστον 50 νέες κριτικές κάθε μήνα έυκολα και γρήγορα!', 'Υπολογίστε και μόνοι σας (πχ 8 πελάτες ανά ημέρα, 20 εργάσιμες = 160 πελάτες τον μήνα. Αν λιγότεροι από τους μισόυς, οι 50, σας αφήσουν μια αξιολόγηση, έχετε 150 νέες σε 3 μήνες).'] } },
                 { id: 'SOCIAL', icon: 'instagram', price: '87€/μήνα', title: 'Διαχείριση Social Media', shortDesc: 'Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.', features: ['3 posts/εβδομάδα', 'Hashtag research', 'Copywriting', 'Μηνιαία αναφορά'], cta: 'Δωρεάν Δοκιμή', more: 'Περισσότερες πληροφορίες', modal: { title: 'ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΔΙΑΧΕΙΡΙΣΗ SOCIAL MEDIA', body: ['• Επαγγελματικά Επεξεργασμένα Posts ανά ημέρα : Δημοσιεύουμε αναρτήσεις που τραβούν την προσοχή των πελατών σας, χρησιμοποιώντας προγράμματα επεξεργασίας συνδυαστικής αξίας 300+ευρώ τον μήνα, όπως Adscreative.io, Photoroom, Photoshop, Adobe Premium, Canvas Pro, Picsart Pro και άλλα.', '• Έρευνα Hashtags: Χρησιμοποιούμε τα καλύτερα hashtags ανάλογα με την επιχείρηση, τις υπηρεσίες, το κοινό και την τοποθεσία για να ενισχύσουμε την απήχησή σας και να σας φέρουμε μπροστά σε νέο κοινό.', '• Επαγγελματική Κειμενογραφία για κάθε ανάρτηση που οδηγούν τον αναγνώστη σε μια επιθυμητή ενέργεια (πχ να κλείσει ραντεβού κλπ)', '• Επεξεργασία - Δημιουργία επαγγελματικού βιογραφικού για το προφιλ σας', '• Αναφορές Προόδου: Παρέχουμε μηνιαία ανάλυση της ανάπτυξης των ακολούθων και της αλληλεπίδρασης με τις δημοσιεύσεις σας.', '• Ευκολία & Άνεση: Το μόνο που χρειάζεται να κάνετε είναι να μας στείλετε φωτογραφίες της επιχείρησής σας μέσω WeTransfer, και εμείς θα αναλάβουμε τα υπόλοιπα. Αν δεν έχετε μπορούμε να δημιουργούμε εμείς δικά μας designs, χωρίς καμία επένδυση χρόνου από εσάς!', 'Δωρεάν Δοκιμή', 'No contracts - cancel anytime', '----', 'Γιατί να Μας Επιλέξετε:', 'Οικονομικό πακέτο & Χωρίς Ρίσκο: Με μόνο 87 ευρώ τον μήνα και εγγύηση επιστροφής χρημάτων, αφαιρούμε κάθε ρίσκο από την απόφασή σας. Αν δεν είστε απόλυτα ικανοποιημένοι, σας επιστρέφουμε τα χρήματά σας – χωρίς ερωτήσεις.', 'Προσωποποιημένη Υπηρεσία: Προσαρμόζουμε το περιεχόμενο σύμφωνα με τις ανάγκες της επιχείρησής σας, ώστε να αντανακλά την ταυτότητα και το στυλ σας.', 'Άμεση Έναρξη: Κλείστε τη θέση σας τώρα – διαθέτουμε μόνο λίγες θέσεις για νέους πελάτες κάθε μήνα, ώστε να διατηρήσουμε την ποιότητα της υπηρεσίας μας.', 'Καμία Δέσμευση: Μπορείτε να σταματήσετε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια.', 'Αποτέλεσμα: Περισσότεροι Πελάτες & Επαγγελματική Παρουσία', 'Με τη σωστή διαχείριση του Instagram, θα δείτε αυξημένη αλληλεπίδραση, μεγαλύτερη βάση πελατών, και ένα προφίλ που προσελκύει την προσοχή και δημιουργεί εμπιστοσύνη.', 'Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα.', 'Στείλτε μας email στο advonmd@gmail.com για περαιτέρω επικοινωνία. (το ελέγχουμε καθημερινά)'] } }
+            ],
+            en: [
+                { id: 'WEBSITE', icon: 'globe', price: 'FREE', priceNote: '(only 10.83€/mo hosting)', title: 'Website Creation', shortDesc: 'Professional website that ranks high on Google.', features: ['Pro Design', 'SEO Optimized', 'Mobile Responsive', '5-10 Days Delivery'], cta: 'Get Started Free', more: 'Learn More', modal: { title: 'Free Website Creation', body: ["It's not a marketing trick, the creation that normally costs 700-2000€+, is completely free.", "The only cost we can't cover is the hosting and domain name (e.g. www.example.com). We handle the process for you!", "We do this to build our portfolio so we can charge higher rates in the future.", "It's only 10.83€/month total (which you'd pay anywhere else anyway, just like everyone who has a website).", "Upgrade your online presence and turn visitors into loyal clients!", "In 2025, having a professional website is not just an extra tool - it's a necessity for every freelancer and business that wants to stand out in the digital world.", "A well-designed website helps you achieve higher positions in search engines, as Google evaluates websites as more reliable and with a more complete profile.", "Your website acts as your digital storefront, enhancing your professional image and promoting your business as serious and reliable to visitors. Furthermore, it offers users easy access to all necessary information, making their experience more comfortable and immediate."] } },
+                { id: 'NFC', icon: 'star', price: '25€', priceNote: 'one-time', title: 'Contactless Review Stand', shortDesc: '50+ new reviews monthly. Reach the top of Google in 3 months.', features: ['Increase Google Reviews', 'Improve Local SEO', 'Easy to use (NFC)', 'No monthly fee'], cta: 'Buy Now', more: 'Learn More', modal: { title: 'Contactless Review Stand', image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif', body: ['Reach the top of Google and get 150 new reviews in less than 3 months.', 'The first thing people do when searching for a business is check its reviews.', 'If you have very few, it is very likely you will lose customers to the competition.', 'But it is not only customers who are affected!', 'Google, as a search engine, wants to provide the most targeted and valid results, thus giving primary importance to reviews.', 'When you ask your customers, they usually forget or do not invest the time to search.', 'With our contactless review base, you can get at least 50 new reviews every month easily and quickly!', 'Calculate for yourself (e.g., 8 customers per day, 20 working days = 160 customers a month. If fewer than half, 50, leave a review, you have 150 new ones in 3 months).'] } },
+                { id: 'SOCIAL', icon: 'instagram', price: '87€/mo', title: 'Social Media Management', shortDesc: 'Professional posts, hashtag research, copywriting. 7-day free trial.', features: ['3 posts/week', 'Hashtag research', 'Copywriting', 'Monthly Report'], cta: 'Free Trial', more: 'Learn More', modal: { title: 'PROFESSIONAL SOCIAL MEDIA MANAGEMENT', body: ['• Professionally Edited Posts per day: We publish posts that catch your customers\' attention, using editing programs with a combined value of 300+ euros per month, such as Adscreative.io, Photoroom, Photoshop, Adobe Premium, Canvas Pro, Picsart Pro, and more.', '• Hashtag Research: We use the best hashtags depending on the business, services, audience, and location to boost your reach and get you in front of new audiences.', '• Professional Copywriting for every post that leads the reader to a desired action (e.g., booking an appointment, etc.)', '• Editing - Creation of a professional bio for your profile', '• Progress Reports: We provide a monthly analysis of follower growth and interaction with your posts.', '• Ease & Comfort: All you need to do is send us photos of your business via WeTransfer, and we will take care of the rest. If you don\'t have any, we can create our own designs, without any time investment from you!', 'Free Trial', 'No contracts - cancel anytime', '----', 'Why Choose Us:', 'Economical Package & Risk-Free: For only 87 euros per month and a money-back guarantee, we remove all risk from your decision. If you are not completely satisfied, we return your money - no questions asked.', 'Personalized Service: We tailor the content according to the needs of your business, so it reflects your identity and style.', 'Immediate Start: Book your spot now - we only have a few spots for new clients each month to maintain the quality of our service.', 'No Commitment: You can stop at any time without long-term contracts.', 'Result: More Customers & Professional Presence', 'With proper Instagram management, you will see increased interaction, a larger customer base, and a profile that attracts attention and builds trust.', 'Sign up today and secure the special price of 87€/month.', 'Send us an email at advonmd@gmail.com for further communication. (we check it daily)'] } }
             ]
         };
 
@@ -528,7 +537,7 @@
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45fa6b7b92a418f1cd.jpg', url: 'https://yiota-kalliontzaki.gr', name: 'Γιώτα Καλλιοντζάκη - Ψυχολόγος', nameEn: 'Yiota Kalliontzaki - Psychologist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f870383a9c67.jpg', url: 'https://karouzioanna-psychologist.gr', name: 'ΙΩΑΝΝΑ ΚΑΡΟΥΖΗ ΨΥΧΟΛΟΓΟΣ - ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ', nameEn: 'Ioanna Karouzi Psychologist - Psychotherapist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45ee19cf418bb2e495.jpg', url: 'https://asimakopoulou-psychologos.gr', name: 'Ιωάννα Ασημακοπούλου Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Ioanna Asimakopoulou Psychologist - Psychotherapist' },
-            { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d47889396f554.jpg', url: 'https://elenakovaiou-psychologist.gr', name: 'Έλενα Κωβαίου Ψυχολόγος – Ψυχοθεραπεύτρια', nameEn: 'Elena Kovaiou Psychologist - Psychotherapist' },
+            { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d47889396f554.jpg', url: 'https://elenakovaiou-psychologist.gr', name: 'Έλενα Κωβαίου Ψυχολόγος – Ψυχοθεραπεύτρια', nameEn: 'Elena Kovaiou Psychologist - Psychotherapist' }
         ];
 
         const reviews = [
@@ -539,15 +548,26 @@
             { image: DEFAULT_AVATAR + 'Χρύσα+Οικονόμου', name: 'Χρύσα Οικονόμου', rating: 5, text: 'Εξαιρετική η ομάδα τους! Άψογη ολη η συνεργασία μας! Απο την πρώτη μας επικοινωνία, έγινε αντιληπτός ο επαγγελματισμός και η εμπειρία τους. Κατασκεύασαν με μεγάλη ταχύτητα, συνέπεια και αισθητική το website μου. Ήταν πάντα διαθέσιμοι να απαντήσουν στις απορίες μου, να προτείνουν λύσεις και να υλοποιήσουν άμεσα όποια τροποποίηση θέλησα να κάνω. Τους συστήνω ανεπιφύλακτα γιατι το τελικό αποτέλεσμα ξεπερασε τις προσδοκίες μου!', textEn: 'Excellent team! Our entire collaboration was flawless! From our first communication, their professionalism and experience were evident. They constructed my website with great speed, consistency and aesthetics. They were always available to answer my questions, propose solutions and immediately implement any modification I wanted to make. I highly recommend them because the final result exceeded my expectations!' },
             { image: DEFAULT_AVATAR + 'Ναταλία+Γρυλωνάκη', name: 'Ναταλία Γρυλωνάκη', rating: 5, text: 'Εξαιρετικοί επαγγελματίες. Ευγενικοί και ιδιαίτερα πρόθυμοι εξαρχής να λύσουν όλες μου τις απορίες και να κάνουν όποια τροποποίηση επιθυμούσα. Συνεπείς και δημιουργικοί. Το τελικό αποτέλεμα σύγχρονο, λειτουργικό και καλαίσθητο με άφησε απόλυτα ικανοποιημένη. Τους συστήνω ανεπιφύλακτα.', textEn: 'Excellent professionals. Polite and particularly willing from the start to solve all my questions and make any modification I desired. Consistent and creative. The final result modern, functional and elegant left me completely satisfied. I recommend them unreservedly.' },
             { image: 'https://lh3.googleusercontent.com/a-/ALV-UjXwzVoH8tFi5PJF8D8skvbm3K_MVRDQOVJDpeCoiW7ldSBbVCM=w144-h144-p-rp-mo-br100', name: 'Στυλιανίδου Σοφία', rating: 5, text: 'Εξαιρετικοί επαγγελματίες υπήρξε άμεση ανταπόκριση στη δημιουργία της ιστοσελίδας μου. Τέλος ήταν ανοιχτοί να μου εξηγήσουν την οποιαδήποτε απορία είχα και να αλλάξουν οτιδήποτε χρειάστηκε. Τους συστήνω ανεπιφύλακτα.', textEn: 'Excellent professionals, there was an immediate response to the creation of my website. Finally, they were open to explain any question I had and to change anything needed. I recommend them unreservedly.' },
-            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjUIFeV7kJ81o_SxrHrpj0c_WK6-zPwV-xoJGSduKwsBrps_nN8=w144-h144-p-rp-mo-br100', name: 'Εμμανουέλα Παππά', rating: 5, text: 'Τα παιδιά ήταν εξαιρετικά επαγγελματίες, ευγενικοί και πρόθυμοι να βοηθήσουν σε κάθε στάδιο της δημιουργίας του site μου. Δούλεψαν με απίστευτη ταχύτητα, άκουσαν προσεκτικά τι ήθελα ! Το site βγήκε ακριβώς όπως το είχα φανταστεί ,απλό , σύγχρονο, λειτουργικό και αισθητικά άψογο. Τους συστήνω ανεπιφύλακτα!', textEn: 'The guys were extremely professional, polite and willing to help at every stage of creating my site. They worked with incredible speed, listened carefully to what I wanted! The site came out exactly as I had imagined, simple, modern, functional and aesthetically flawless. I recommend them unreservedly!' },
+            { image: 'https://lh3.googleusercontent.com/a-/ALV-UjUIFeV7kJ81o_SxrHrpj0c_WK6-zPwV-xoJGSduKwsBrps_nN8=w144-h144-p-rp-mo-br100', name: 'Εμμανουέλα Παππά', rating: 5, text: 'Τα παιδιά ήταν εξαιρετικά επαγγελματίες, ευγενικοί και πρόθυμοι να βοηθήσουν σε κάθε στάδιο της δημιουργίας του site μου. Δούλεψαν με απίστευτη ταχύτητα, άκουσαν προσεκτικά τι ήθελα ! Το site βγήκε ακριβώς όπως το είχα φανταστει ,απλό , σύγχρονο, λειτουργικό και αισθητικά άψογο. Τους συστήνω ανεπιφύλακτα!', textEn: 'The guys were extremely professional, polite and willing to help at every stage of creating my site. They worked with incredible speed, listened carefully to what I wanted! The site came out exactly as I had imagined, simple, modern, functional and aesthetically flawless. I recommend them unreservedly!' },
             { image: DEFAULT_AVATAR + 'Μαρία+Φασούλα', name: 'Μαρία Φασούλα', rating: 5, text: 'Άριστοι επαγγελματίες! Πολύ αξιόπιστοι και συνεπείς στα χρονοδιαγράμματα, με εξαιρετική επικοινωνία και επαγγελματική συμπεριφορά. Η ιστοσελίδα παραδόθηκε ακριβώς όπως τη φανταζόμουνα, λειτουργική και καλαίσθητη. Τους συνιστώ ανεπιφύλακτα για όποιον αναζητά ποιοτική και υπεύθυνη δουλειά!!!', textEn: 'Excellent professionals! Very reliable and consistent in timelines, with excellent communication and professional behavior. The website was delivered exactly as I imagined, functional and elegant. I highly recommend them to anyone looking for quality and responsible work!!!' }
         ];
 
         // --- RENDER LOGIC ---
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'el' ? 'en' : 'el';
-            renderApp();
+        function triggerLanguageSwitch() {
+            const mainContent = document.getElementById('main-content');
+            // Fade out
+            mainContent.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentLang = currentLang === 'el' ? 'en' : 'el';
+                document.documentElement.lang = currentLang; // Update HTML Lang Tag
+                document.title = translations[currentLang].title; // Update Page Title
+                
+                renderApp();
+                
+                // Fade back in
+                mainContent.style.opacity = '1';
+            }, 400); // match css transition time
         }
 
         function renderApp() {
@@ -565,182 +585,186 @@
                 ${['services', 'portfolio', 'reviews', 'faq', 'contact'].map(key => 
                     `<a href="#${key}" class="mobile-link" onclick="closeMobileMenu()">${t.nav[key]}</a>`
                 ).join('')}
-                <button onclick="toggleLanguage()" class="flex items-center gap-2 mt-4 text-white font-bold">
-                    <span>${isEn ? '🇬🇷' : '🇬🇧'}</span> ${t.nav.lang}
-                </button>
             `;
 
-            // Language Button (Desktop)
-            // Logic: Show flag of the *other* language to switch to.
+            // Language Buttons (Desktop and Mobile in Header)
             const flag = isEn ? '🇬🇷' : '🇬🇧';
             const label = isEn ? 'EL' : 'EN';
-            document.getElementById('lang-btn').innerHTML = `<span>${flag}</span> ${label}`;
+            const btnHtml = `<span class="text-base">${flag}</span> ${label}`;
+            
+            document.getElementById('lang-btn').innerHTML = btnHtml;
+            document.getElementById('mobile-lang-btn').innerHTML = btnHtml;
 
             // --- 2. Hero Section ---
             document.getElementById('hero-content').innerHTML = `
-                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-8 shadow-[0_0_20px_rgba(71,200,245,0.2)]">
-                    <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_10px_#47c8f5]"></span>
-                    <span class="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">${t.hero.badge}</span>
+                <div class="reveal inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-electric-cyan/50 bg-electric-cyan/10 mb-8 shadow-[0_0_30px_rgba(71,200,245,0.2)] backdrop-blur-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_15px_#47c8f5]"></span>
+                    <span class="text-xs font-black tracking-[0.25em] text-white uppercase">${elUpper(t.hero.badge)}</span>
                 </div>
-                <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[0.95] tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+                <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[1.05] tracking-tight drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)]">
                     ${t.hero.titlePrefix}<br/>
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-none">${t.hero.titleHighlight1}</span> ${t.hero.titleConnector} <span class="text-shimmer drop-shadow-[0_0_35px_rgba(71,200,245,0.6)]">${t.hero.titleHighlight2}</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-300 to-gray-600">${t.hero.titleHighlight1}</span> ${t.hero.titleConnector} <span class="text-shimmer drop-shadow-[0_0_40px_rgba(71,200,245,0.7)]">${t.hero.titleHighlight2}</span>
                 </h1>
-                <p class="reveal text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                <p class="reveal text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_5px_15px_rgba(0,0,0,1)] font-medium">
                     ${t.hero.subtitle}
                 </p>
-                <div class="reveal flex flex-wrap items-center justify-center gap-4">
-                    <a href="#services" class="group px-8 py-4 bg-electric-cyan text-[#050a0e] font-bold text-lg uppercase tracking-wide rounded-xl shadow-[4px_4px_0_#c9ff00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#c9ff00] transition-all flex items-center gap-2">
-                        ${t.hero.ctaPrimary}
-                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                <div class="reveal flex flex-wrap items-center justify-center gap-6">
+                    <a href="#services" class="group px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(71,200,245,0.8)] transition-all flex items-center gap-3">
+                        ${elUpper(t.hero.ctaPrimary)}
+                        <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
                     </a>
-                    <a href="#portfolio" class="group px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-bold text-lg uppercase tracking-wide rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] transition-all flex items-center gap-2 backdrop-blur-sm">
-                        <i data-lucide="play" class="w-5 h-5 fill-current"></i>
-                        ${t.hero.ctaSecondary}
+                    <a href="#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.6)] transition-all flex items-center gap-3 backdrop-blur-md">
+                        <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+                        ${elUpper(t.hero.ctaSecondary)}
                     </a>
                 </div>
             `;
 
             // --- 3. Stats ---
             document.getElementById('stats-grid').innerHTML = t.stats.map((stat, i) => `
-                <div class="reveal text-center" style="transition-delay: ${i * 100}ms">
-                    <div class="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.4)]">${stat.num}</div>
-                    <div class="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">${stat.label}</div>
+                <div class="reveal text-center relative group" style="transition-delay: ${i * 100}ms">
+                    <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="text-5xl md:text-7xl font-black font-display text-transparent bg-clip-text bg-gradient-to-br from-electric-cyan to-white mb-2 drop-shadow-[0_0_25px_rgba(71,200,245,0.5)] relative z-10">${stat.num}</div>
+                    <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors">${elUpper(stat.label)}</div>
                 </div>
             `).join('');
 
             // --- 4. Services ---
             document.getElementById('services-header').innerHTML = `
-                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(71,200,245,0.4)]">${t.sectionTitles.services}</span>
-                <h2 class="text-4xl md:text-5xl font-black font-display mb-4">${t.sectionTitles.servicesMain}</h2>
+                <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.services)}</span>
+                <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl">${t.sectionTitles.servicesMain}</h2>
             `;
             
             const currentServices = services[currentLang];
             document.getElementById('services-grid').innerHTML = currentServices.map((service, i) => `
-                <div class="reveal glass-panel rounded-2xl p-8 group flex flex-col h-full" style="transition-delay: ${i * 100}ms">
-                    <div class="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors shadow-[0_0_20px_rgba(71,200,245,0.1)]">
-                        <i data-lucide="${service.icon}" class="w-7 h-7 text-electric-cyan"></i>
+                <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full tilt-card" style="transition-delay: ${i * 100}ms">
+                    <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-8 group-hover:bg-electric-cyan group-hover:text-[#050a0e] text-electric-cyan transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.15)] group-hover:shadow-[0_0_40px_rgba(71,200,245,0.8)]">
+                        <i data-lucide="${service.icon}" class="w-8 h-8"></i>
                     </div>
-                    <div class="flex items-baseline gap-2 mb-4">
-                        <span class="text-3xl font-bold bg-gradient-to-br from-electric-cyan to-[#c9ff00] text-transparent bg-clip-text">${service.price}</span>
-                        ${service.priceNote ? `<span class="text-sm text-gray-400">${service.priceNote}</span>` : ''}
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">${service.price}</span>
+                        ${service.priceNote ? `<span class="text-sm text-electric-cyan/80 font-medium">${service.priceNote}</span>` : ''}
                     </div>
-                    <h3 class="text-xl font-bold mb-4 font-display">${service.title}</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed flex-grow">${service.shortDesc}</p>
-                    <ul class="space-y-3 mb-8">
-                        ${service.features.map(f => `<li class="service-list-item flex items-center gap-3 text-sm text-gray-300"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i>${f}</li>`).join('')}
+                    <h3 class="text-2xl font-black mb-4 font-display text-white tracking-wide">${service.title}</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed flex-grow text-lg">${service.shortDesc}</p>
+                    <ul class="space-y-4 mb-10">
+                        ${service.features.map(f => `<li class="service-list-item flex items-center gap-4 text-sm font-medium text-gray-300"><div class="p-1 rounded-full bg-electric-cyan/10 group-hover:bg-electric-cyan/20"><i data-lucide="check" class="service-check-icon w-4 h-4 text-electric-cyan"></i></div>${f}</li>`).join('')}
                     </ul>
-                    <div class="mt-auto space-y-3">
-                        <a href="#contact" class="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:shadow-[0_0_20px_rgba(71,200,245,0.4)] transition-all uppercase tracking-wide text-sm">${service.cta} <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-                        <button onclick="openModal('${service.id}')" class="w-full py-2 text-sm text-electric-cyan/80 hover:text-electric-cyan underline underline-offset-4 decoration-electric-cyan/30 hover:decoration-electric-cyan transition-all">${service.more}</button>
+                    <div class="mt-auto space-y-4">
+                        <a href="#contact" class="flex items-center justify-center gap-2 w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl group-hover:bg-electric-cyan group-hover:text-[#050a0e] group-hover:border-electric-cyan transition-all uppercase tracking-widest text-sm shadow-lg">${elUpper(service.cta)} <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+                        <button onclick="openModal('${service.id}')" class="w-full py-2 text-sm text-gray-400 hover:text-electric-cyan transition-colors font-medium">${service.more}</button>
                     </div>
                 </div>
             `).join('');
 
             document.getElementById('services-footer').innerHTML = `
-                <span class="trust-badge-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 text-sm font-medium text-white shadow-lg shadow-electric-cyan/10 hover:bg-electric-cyan/10 transition-colors cursor-default">
-                    <i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i>
+                <span class="trust-badge-shimmer inline-flex items-center gap-3 px-8 py-4 rounded-full border border-electric-cyan/40 bg-[#0a1418]/80 backdrop-blur-md text-sm font-bold text-white shadow-[0_0_30px_rgba(71,200,245,0.15)] cursor-default tracking-wide">
+                    <div class="p-1 rounded-full bg-electric-cyan/20 animate-pulse"><i data-lucide="check" class="w-4 h-4 text-electric-cyan"></i></div>
                     ${t.sectionTitles.noCommitment}
                 </span>
             `;
 
             // --- 5. Portfolio Header ---
             document.getElementById('portfolio-header').innerHTML = `
-                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(71,200,245,0.4)]">${t.sectionTitles.portfolio}</span>
-                <h2 class="text-4xl md:text-5xl font-black font-display mb-4">${t.sectionTitles.portfolioMain}</h2>
+                <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.portfolio)}</span>
+                <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl">${t.sectionTitles.portfolioMain}</h2>
             `;
             renderPortfolioGrid();
 
             // --- 6. Reviews ---
             document.getElementById('reviews-header').innerHTML = `
-                <span class="text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(71,200,245,0.4)]">${t.sectionTitles.reviews}</span>
-                <h2 class="text-4xl md:text-5xl font-black font-display mb-4">${t.sectionTitles.reviewsMain}</h2>
+                <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.reviews)}</span>
+                <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl">${t.sectionTitles.reviewsMain}</h2>
             `;
-            // Filter and Translate Reviews
-            const currentReviews = reviews.map(r => ({
-                ...r,
-                text: (isEn && r.textEn) ? r.textEn : r.text
-            }));
             
+            const currentReviews = reviews.map(r => ({ ...r, text: (isEn && r.textEn) ? r.textEn : r.text }));
             document.getElementById('reviews-grid').innerHTML = currentReviews.slice(0, 9).map((review, i) => `
-                <div class="reveal glass-panel p-8 rounded-2xl" style="transition-delay: ${i * 50}ms">
-                    <div class="flex gap-1 mb-6">
-                        ${Array(5).fill(0).map((_, idx) => `<i data-lucide="star" class="w-4 h-4 ${idx < review.rating ? 'fill-[#FBBC04] text-[#FBBC04]' : 'text-gray-600'}"></i>`).join('')}
+                <div class="reveal glass-panel p-8 rounded-3xl tilt-card" style="transition-delay: ${i * 50}ms">
+                    <div class="flex gap-1 mb-8">
+                        ${Array(5).fill(0).map((_, idx) => `<i data-lucide="star" class="w-5 h-5 ${idx < review.rating ? 'fill-electric-cyan text-electric-cyan drop-shadow-[0_0_8px_rgba(71,200,245,0.8)]' : 'text-gray-700'}"></i>`).join('')}
                     </div>
-                    <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[80px] text-sm">"${review.text}"</p>
+                    <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[100px] text-sm font-medium">"${review.text}"</p>
                     <div class="flex items-center gap-4">
-                        <img src="${review.image}" alt="${review.name}" class="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20">
+                        <div class="relative">
+                           <div class="absolute inset-0 bg-electric-cyan blur-md rounded-full opacity-50"></div>
+                           <img src="${review.image}" alt="${review.name}" class="relative w-14 h-14 rounded-full object-cover border-2 border-[#050a0e]">
+                        </div>
                         <div>
-                            <h4 class="font-bold text-sm text-white">${review.name}</h4>
-                            <span class="text-xs text-gray-500 flex items-center gap-1"><div class="w-3 h-3 bg-white rounded-full flex items-center justify-center"><span class="text-[8px] font-bold text-black">G</span></div>Google Review</span>
+                            <h4 class="font-bold text-md text-white tracking-wide">${review.name}</h4>
+                            <span class="text-xs text-electric-cyan/80 font-bold uppercase tracking-wider flex items-center gap-1 mt-1"><i data-lucide="check-circle" class="w-3 h-3"></i> VERIFIED</span>
                         </div>
                     </div>
                 </div>
             `).join('');
 
             document.getElementById('reviews-footer').innerHTML = `
-                <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 border border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wide shadow-[0_0_20px_rgba(71,200,245,0.1)]">
-                    ${t.sectionTitles.viewAllReviews}
+                <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-10 py-5 border-2 border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-black uppercase tracking-[0.1em] shadow-[0_0_30px_rgba(71,200,245,0.2)] hover:shadow-[0_0_50px_rgba(71,200,245,0.6)]">
+                    ${elUpper(t.sectionTitles.viewAllReviews)}
                     <i data-lucide="external-link" class="w-5 h-5"></i>
                 </a>
             `;
 
             // --- 7. FAQ ---
             document.getElementById('faq-header').innerHTML = `
-                <h2 class="text-3xl md:text-4xl font-black font-display mb-4">${t.sectionTitles.faq}</h2>
+                <h2 class="text-4xl md:text-5xl font-black font-display mb-4 text-white drop-shadow-lg">${t.sectionTitles.faq}</h2>
             `;
             const currentFaqs = faqs[currentLang];
             document.getElementById('faq-container').innerHTML = currentFaqs.map((item, i) => `
-                <div class="reveal glass-panel rounded-xl overflow-hidden group">
-                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-medium hover:text-electric-cyan transition-colors">
+                <div class="reveal glass-panel rounded-2xl overflow-hidden group border border-white/5 hover:border-electric-cyan/40 transition-colors">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left font-bold text-lg text-white hover:text-electric-cyan transition-colors">
                         ${item.question}
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                        <div class="p-2 rounded-full bg-white/5 group-hover:bg-electric-cyan/10 transition-colors">
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-400"></i>
+                        </div>
                     </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-gray-400 leading-relaxed">
-                        <div class="pb-6">${item.answer}</div>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-gray-400 leading-relaxed text-md font-medium">
+                        <div class="pb-8 pt-2">${item.answer}</div>
                     </div>
                 </div>
             `).join('');
 
             // --- 8. Contact ---
             document.getElementById('contact-container').innerHTML = `
-                <span class="reveal text-electric-cyan text-xs font-bold tracking-[0.3em] uppercase mb-4 block drop-shadow-[0_0_10px_rgba(71,200,245,0.4)]">${t.sectionTitles.contact}</span>
-                <h2 class="reveal text-4xl md:text-6xl font-black font-display mb-8">${t.sectionTitles.contactMain}</h2>
-                <p class="reveal text-xl text-gray-400 mb-12">${t.sectionTitles.contactSub}</p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <a href="mailto:advonmd@gmail.com" class="reveal group glass-panel p-8 rounded-2xl transition-all duration-300">
-                        <div class="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(71,200,245,0.1)]">
-                            <i data-lucide="mail" class="w-7 h-7"></i>
+                <span class="reveal text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.contact)}</span>
+                <h2 class="reveal text-5xl md:text-7xl font-black font-display mb-8 text-white drop-shadow-2xl">${t.sectionTitles.contactMain}</h2>
+                <p class="reveal text-xl md:text-2xl text-gray-400 mb-16 font-medium max-w-2xl mx-auto">${t.sectionTitles.contactSub}</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="mailto:advonmd@gmail.com" class="reveal tilt-card group glass-panel p-10 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                        <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.1)] group-hover:shadow-[0_0_50px_rgba(71,200,245,0.6)] group-hover:-translate-y-2">
+                            <i data-lucide="mail" class="w-10 h-10"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Email</h3>
-                        <p class="text-electric-cyan flex items-center justify-center gap-2">advonmd@gmail.com <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
+                        <h3 class="text-2xl font-black mb-3 text-white">Email</h3>
+                        <p class="text-electric-cyan flex items-center justify-center gap-2 font-bold tracking-wide">advonmd@gmail.com <i data-lucide="arrow-up-right" class="w-5 h-5"></i></p>
                     </a>
-                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal group glass-panel p-8 rounded-2xl transition-all duration-300 delay-100">
-                        <div class="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(71,200,245,0.1)]">
-                            <i data-lucide="instagram" class="w-7 h-7"></i>
+                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal tilt-card group glass-panel p-10 rounded-3xl transition-all duration-300 delay-100 hover:bg-electric-cyan/5">
+                        <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.1)] group-hover:shadow-[0_0_50px_rgba(71,200,245,0.6)] group-hover:-translate-y-2">
+                            <i data-lucide="instagram" class="w-10 h-10"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Instagram</h3>
-                        <p class="text-electric-cyan flex items-center justify-center gap-2">@advon_media <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
+                        <h3 class="text-2xl font-black mb-3 text-white">Instagram</h3>
+                        <p class="text-electric-cyan flex items-center justify-center gap-2 font-bold tracking-wide">@advon_media <i data-lucide="arrow-up-right" class="w-5 h-5"></i></p>
                     </a>
                 </div>
             `;
 
             // --- 9. Footer ---
             document.getElementById('footer-content').innerHTML = `
-                <p class="text-sm font-medium">© 2026 Advon Media. ${t.footer.rights}</p>
-                <div class="flex gap-6 text-sm font-medium">
-                    <a href="#services" class="hover:text-electric-cyan transition-colors">${t.nav.services}</a>
-                    <a href="#portfolio" class="hover:text-electric-cyan transition-colors">${t.nav.portfolio}</a>
-                    <a href="#contact" class="hover:text-electric-cyan transition-colors">${t.nav.contact}</a>
+                <div class="flex items-center gap-4">
+                    <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" class="h-8 w-auto opacity-50 hover:opacity-100 transition-opacity">
+                    <p class="text-sm font-semibold tracking-wide">© 2026 Advon Media. ${t.footer.rights}</p>
+                </div>
+                <div class="flex gap-8 text-sm font-bold tracking-wider uppercase">
+                    <a href="#services" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.services)}</a>
+                    <a href="#portfolio" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.portfolio)}</a>
+                    <a href="#contact" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.contact)}</a>
                 </div>
             `;
 
             lucide.createIcons();
             observeElements();
+            init3DTilt(); // Re-initialize tilt elements after rendering
         }
 
         // --- Logic ---
-
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.style.maxHeight = '0px';
@@ -771,18 +795,19 @@
 
             const grid = document.getElementById('portfolio-grid');
             grid.innerHTML = visibleItems.map((item, index) => {
-                // Use English name if available and lang is EN
                 const displayName = (currentLang === 'en' && item.nameEn) ? item.nameEn : item.name;
                 return `
                 <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
-                   class="reveal group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5 block active"
+                   class="reveal tilt-card group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 block active"
                    style="transition-delay: ${index * 50}ms">
-                    <img src="${item.image}" alt="${displayName}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <h3 class="text-lg font-bold text-white mb-2">${displayName}</h3>
-                        <span class="flex items-center gap-2 text-sm font-bold text-electric-cyan">
-                            ${t.sectionTitles.viewSite} <i data-lucide="external-link" class="w-4 h-4"></i>
-                        </span>
+                    <img src="${item.image}" alt="${displayName}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050a0e] via-[#050a0e]/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-xl font-black text-white mb-3 tracking-wide leading-tight">${displayName}</h3>
+                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-electric-cyan/20 border border-electric-cyan/50 rounded-full text-xs font-bold text-electric-cyan uppercase tracking-widest backdrop-blur-md">
+                                ${elUpper(t.sectionTitles.viewSite)} <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </span>
+                        </div>
                     </div>
                 </a>
             `}).join('');
@@ -793,17 +818,17 @@
             prevBtn.disabled = currentPage === 0;
             nextBtn.disabled = currentPage === totalPages - 1;
             
-            // Re-bind click events safely
-            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
-            nextBtn.onclick = () => { if(currentPage < totalPages - 1) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); init3DTilt(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            nextBtn.onclick = () => { if(currentPage < totalPages - 1) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); init3DTilt(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
 
             // Dots
             document.getElementById('pagination-dots').innerHTML = Array.from({ length: totalPages }).map((_, i) => `
-                <div class="h-2 rounded-full transition-all duration-300 ${i === currentPage ? 'w-8 bg-electric-cyan' : 'w-2 bg-electric-cyan/30'}"></div>
+                <div class="h-2 rounded-full transition-all duration-500 ${i === currentPage ? 'w-10 bg-electric-cyan shadow-[0_0_10px_#47c8f5]' : 'w-2 bg-white/20'}"></div>
             `).join('');
             
             lucide.createIcons();
             observeElements();
+            init3DTilt();
         }
 
         // FAQ Toggle
@@ -834,12 +859,12 @@
             document.getElementById('modal-title').innerText = data.modal.title;
             const imgContainer = document.getElementById('modal-image-container');
             if (data.modal.image) {
-                imgContainer.innerHTML = `<img src="${data.modal.image}" class="w-full h-auto rounded-lg border border-electric-cyan/20 shadow-lg" alt="${data.modal.title}">`;
+                imgContainer.innerHTML = `<img src="${data.modal.image}" class="w-full h-auto rounded-xl border border-electric-cyan/30 shadow-[0_0_30px_rgba(71,200,245,0.2)]" alt="${data.modal.title}">`;
                 imgContainer.classList.remove('hidden');
             } else {
                 imgContainer.classList.add('hidden');
             }
-            document.getElementById('modal-body').innerHTML = data.modal.body.map(p => `<p class="${p.startsWith('•') ? 'pl-4' : ''}">${p}</p>`).join('');
+            document.getElementById('modal-body').innerHTML = data.modal.body.map(p => `<p class="${p.startsWith('•') ? 'pl-6 border-l-2 border-electric-cyan/50 text-white' : ''} mb-2">${p}</p>`).join('');
 
             modalOverlay.classList.remove('hidden');
             modalOverlay.classList.add('flex');
@@ -859,7 +884,7 @@
                 modalOverlay.classList.add('hidden');
                 modalOverlay.classList.remove('flex');
                 document.body.classList.remove('modal-open');
-            }, 300);
+            }, 400);
         }
         modalBackdrop.addEventListener('click', closeModal);
 
@@ -869,10 +894,37 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
+                        // Optional: unobserve if you only want it to animate once
+                        // observer.unobserve(entry.target); 
                     }
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // 3D Tilt Effect (Vanilla JS)
+        function init3DTilt() {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const y = e.clientY - rect.top;  // y position within the element
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg rotation
+                    const rotateY = ((x - centerX) / centerX) * 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                });
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'none'; // remove transition for smooth following
+                });
+            });
         }
 
         // --- Star Canvas Animation ---
@@ -886,7 +938,7 @@
             canvas.width = width;
             canvas.height = height;
             stars = [];
-            const starCount = Math.floor(width * height / 1500);
+            const starCount = Math.floor(width * height / 1200); // Increased density slightly
             for (let i = 0; i < starCount; i++) {
                 stars.push({
                     x: Math.random() * width,
@@ -909,18 +961,18 @@
                 star.y -= star.speed;
                 if (star.y < 0) star.y = height;
 
-                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(star.opacity)})`;
+                ctx.fillStyle = `rgba(71, 200, 245, ${Math.abs(star.opacity) * 0.8})`; // tinted cyan
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
                 ctx.fill();
             });
 
-            if (Math.random() < 0.015) {
+            if (Math.random() < 0.02) {
                 shootingStars.push({
                     x: Math.random() * width,
                     y: Math.random() * height / 2,
-                    length: Math.random() * 80 + 20,
-                    speed: Math.random() * 15 + 10,
+                    length: Math.random() * 100 + 50,
+                    speed: Math.random() * 20 + 15,
                     angle: Math.PI / 4,
                     opacity: 1
                 });
@@ -938,8 +990,8 @@
                 }
 
                 const gradient = ctx.createLinearGradient(star.x, star.y, star.x - Math.cos(star.angle) * star.length, star.y - Math.sin(star.angle) * star.length);
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
-                gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+                gradient.addColorStop(0, `rgba(71, 200, 245, ${star.opacity})`);
+                gradient.addColorStop(1, `rgba(71, 200, 245, 0)`);
                 ctx.strokeStyle = gradient;
                 ctx.lineWidth = 2;
                 ctx.beginPath();
@@ -952,21 +1004,49 @@
 
         window.addEventListener('resize', initStars);
         
-        // Mouse Trail
+        // --- Ambient Cursor Logic ---
+        const cursorGlow = document.getElementById('cursor-glow');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let currentX = mouseX;
+        let currentY = mouseY;
+        
         document.addEventListener('mousemove', (e) => {
-            const dot = document.createElement('div');
-            dot.className = 'trail-dot';
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            document.body.appendChild(dot);
-            setTimeout(() => dot.remove(), 600);
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth cursor follow
+        function renderCursor() {
+            currentX += (mouseX - currentX) * 0.1;
+            currentY += (mouseY - currentY) * 0.1;
+            cursorGlow.style.transform = `translate(calc(${currentX}px - 50%), calc(${currentY}px - 50%))`;
+            requestAnimationFrame(renderCursor);
+        }
+
+        // Enhance cursor on clickable elements
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a') || e.target.closest('button')) {
+                cursorGlow.style.width = '200px';
+                cursorGlow.style.height = '200px';
+                cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.3) 0%, transparent 70%)';
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a') || e.target.closest('button')) {
+                cursorGlow.style.width = '400px';
+                cursorGlow.style.height = '400px';
+                cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%)';
+            }
         });
 
         // Initialize
         initStars();
         animateStars();
-        renderApp();
+        renderCursor();
+        renderApp(); // Renders DOM, applies translations, fires logic
 
     </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
