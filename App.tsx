@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Menu, X, Check, ChevronLeft, ChevronRight, ExternalLink, Mail, 
-  ArrowRight, ArrowUpRight, Play, ChevronDown, Globe, Star, Instagram 
+  ArrowRight, ArrowUpRight, Play, ChevronDown, Globe, Star, Share2 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioItems, reviews, faqItems, servicesData } from './data';
@@ -292,6 +292,29 @@ const Background = () => {
         0% { background-position: -200% 0; }
         100% { background-position: 200% 0; }
       }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      @keyframes btn-shine {
+        0% { transform: translateX(-150%) skewX(-20deg); }
+        100% { transform: translateX(150%) skewX(-20deg); }
+      }
+      .btn-shine-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+        transform: translateX(-150%) skewX(-20deg);
+        animation: btn-shine 3s infinite;
+      }
       `}</style>
       <div className="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
       
@@ -406,7 +429,7 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
       {/* GIF for NFC Service */}
       {service.id === ServiceType.NFC && (
          <div className="mb-6 rounded-lg overflow-hidden border border-electric-cyan/20">
-           <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" alt="NFC Tech" className="w-full h-auto object-cover opacity-80" />
+           <img src="https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif" alt="NFC Tech" referrerPolicy="no-referrer" className="w-full h-auto object-cover opacity-80" />
          </div>
       )}
 
@@ -483,7 +506,7 @@ export default function App() {
         <header className="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/80 backdrop-blur-md border-b border-electric-cyan/10">
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" className="flex items-center gap-3">
-              <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" className="h-10 w-auto" />
+              <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" referrerPolicy="no-referrer" className="h-10 w-auto" />
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-electric-cyan">
@@ -534,33 +557,33 @@ export default function App() {
         </header>
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center pt-20 pb-20">
-          <div className="container max-w-7xl mx-auto px-6 text-center z-10">
+        <section className="relative min-h-screen flex items-center justify-center pt-20 pb-20 overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 text-center z-10 animate-float">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-8"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-electric-cyan/50 bg-electric-cyan/10 mb-8 shadow-[0_0_30px_rgba(71,200,245,0.2)] backdrop-blur-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-              <span className="text-xs font-bold tracking-[0.2em] text-electric-cyan uppercase">ADVON MEDIA</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-electric-cyan animate-pulse shadow-[0_0_15px_#47c8f5]"></span>
+              <span className="text-xs font-black tracking-[0.25em] text-white uppercase">ADVON MEDIA</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[0.95] tracking-tight"
+              className="text-5xl md:text-7xl lg:text-8xl font-black font-display mb-8 leading-[1.05] tracking-tight drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)]"
             >
               Μετατρέπουμε<br/>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">Επισκέπτες</span> σε <span className="text-shimmer drop-shadow-[0_0_30px_rgba(71,200,245,0.3)]">Πελάτες</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-300 to-gray-600">Επισκέπτες</span> σε <span className="text-shimmer drop-shadow-[0_0_40px_rgba(71,200,245,0.7)]">Πελάτες</span>
             </motion.h1>
 
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-[0_5px_15px_rgba(0,0,0,1)] font-medium"
             >
               Οι πιο αποτελεσματικές λύσεις marketing για τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες.
               Ανεβείτε στην κορυφή των αποτελεσμάτων χωρίς ρίσκο.
@@ -570,20 +593,23 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="flex flex-wrap items-center justify-center gap-6"
             >
               <a 
                 href="#services" 
-                className="px-8 py-4 bg-electric-cyan text-[#050a0e] font-bold text-lg uppercase tracking-wide rounded-xl shadow-[4px_4px_0_#c9ff00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#c9ff00] transition-all flex items-center gap-2"
+                className="group relative overflow-hidden px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl shadow-[0_0_30px_rgba(71,200,245,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(71,200,245,0.8)] transition-all flex items-center gap-3"
               >
-                ΥΠΗΡΕΣΙΕΣ
-                <ArrowRight className="w-5 h-5" />
+                <div className="btn-shine-effect"></div>
+                <span className="relative z-10 flex items-center gap-3">
+                  ΥΠΗΡΕΣΙΕΣ
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </span>
               </a>
               <a 
                 href="#portfolio" 
-                className="px-8 py-4 bg-transparent border-2 border-electric-cyan text-electric-cyan font-bold text-lg uppercase tracking-wide rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] transition-all flex items-center gap-2"
+                className="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.6)] transition-all flex items-center gap-3 backdrop-blur-md"
               >
-                <Play className="w-5 h-5 fill-current" />
+                <Play className="w-6 h-6 fill-current" />
                 ΠΟΡΤΦΟΛΙΟ
               </a>
             </motion.div>
@@ -665,7 +691,7 @@ export default function App() {
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                     className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5"
                   >
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={item.image} alt={item.name} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                       <h3 className="text-lg font-bold text-white mb-2">{item.name}</h3>
                       <span className="flex items-center gap-2 text-sm font-bold text-electric-cyan">
@@ -724,7 +750,7 @@ export default function App() {
                   </div>
                   <p className="text-gray-300 mb-8 italic leading-relaxed min-h-[80px]">"{review.text}"</p>
                   <div className="flex items-center gap-4">
-                    <img src={review.image} alt={review.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20" />
+                    <img src={review.image} alt={review.name} referrerPolicy="no-referrer" className="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20" />
                     <div>
                       <h4 className="font-bold text-sm text-white">{review.name}</h4>
                       <span className="text-xs text-gray-500 flex items-center gap-1">
@@ -801,7 +827,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <a 
-                href="mailto:advonmd@gmail.com" 
+                href="mailto:angelos@advonmedia.com" 
                 className="group bg-[#081219] border border-electric-cyan/20 p-8 rounded-2xl hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform">
@@ -809,7 +835,7 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Email</h3>
                 <p className="text-electric-cyan flex items-center justify-center gap-2">
-                  advonmd@gmail.com
+                  angelos@advonmedia.com
                   <ArrowUpRight className="w-4 h-4" />
                 </p>
               </a>
@@ -821,7 +847,7 @@ export default function App() {
                 className="group bg-[#081219] border border-electric-cyan/20 p-8 rounded-2xl hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform">
-                  <Instagram className="w-7 h-7" />
+                  <Share2 className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Instagram</h3>
                 <p className="text-electric-cyan flex items-center justify-center gap-2">

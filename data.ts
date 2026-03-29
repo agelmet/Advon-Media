@@ -1,10 +1,29 @@
 import { PortfolioItem, Review, FaqItem, ServiceType, ServiceData } from './types';
-import { Globe, Star, Instagram } from 'lucide-react';
+import { Globe, Star, Share2 } from 'lucide-react';
 
 const DEFAULT_AVATAR = 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=';
 
 export const portfolioItems: PortfolioItem[] = [
   // First Page Items (Requested Order)
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/gerou.jpg', url: 'https://mairagerou-psychologist.gr', name: 'Μάιρα Γέρου, Ψυχολόγος', nameEn: 'Maira Gerou, Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/polymerop.jpg', url: 'https://polymeropoulou-psychologos.gr', name: 'Λαμπρινή Πολυμεροπούλου (MSc), Ψυχολόγος', nameEn: 'Lamprini Polymeropoulou (MSc), Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/sorokina.jpg', url: 'https://sorokina-psychologist.gr', name: 'ΜΑΡΙΝΑ ΣΟΡΟΚΙΝΑ Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Marina Sorokina Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/papazog.jpg', url: 'https://papazoglou-psychologist.gr', name: 'Σάκης Παπάζογλου, Ψυχολόγος - Ψυχοθεραπευτής', nameEn: 'Sakis Papazoglou, Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/demeroutis.jpg', url: 'http://demeroutis-psychverse.gr', name: 'Θοδωρής Δεμερούτης Ψυχολόγος και Ειδικευόμενος Συστημικός Ψυχοθεραπευτής', nameEn: 'Thodoris Demeroutis Psychologist and Trainee Systemic Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/dilana.jpg', url: 'https://dilana-psychologos.gr', name: 'Ελένη Δηλανά Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Eleni Dilana Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/keletseki.jpg', url: 'https://keletseki-psychotherapy.gr', name: 'Κατερίνα Κελετσέκη Ψυχολόγος- Ψυχοθεραπεύτρια', nameEn: 'Katerina Keletseki Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/mixalop.jpg', url: 'https://michalopoulou-ioulia-psychotherapy.gr', name: 'Ιουλία Μιχαλοπούλου (MSc) Ψυχολόγος – Ψυχοθεραπεύτρια', nameEn: 'Ioulia Michalopoulou (MSc) Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/alatsi.jpg', url: 'https://christinaalatsi.gr', name: 'Χριστίνα Αλάτση Σύμβουλος ψυχικής υγείας, ψυχοθεραπεύτρια συνθετικής προσέγγισης, υπνοθεραπεύτρια και εναλλακτική θεραπεύτρια.', nameEn: 'Christina Alatsi Mental Health Counselor, Integrative Psychotherapist, Hypnotherapist and Alternative Therapist.' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/mixa.jpg', url: 'https://elenimicha-psychologist.gr', name: 'Ελένη Μίχα Ψυχολόγος - CBT Ψυχοθεραπεύτρια, MSc Κλινική Νευροψυχολογία', nameEn: 'Eleni Micha Psychologist - CBT Psychotherapist, MSc Clinical Neuropsychology' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/sarlaki.jpg', url: 'https://mairasarlaki.gr', name: 'Μάιρα Σαρλάκη Ψυχολόγος- ΜΑ Ψυχοθεραπεύτρια', nameEn: 'Maira Sarlaki Psychologist - MA Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/vetta.jpg', url: 'https://marietavetta-psychotherapy.gr', name: 'Μαριέτα Βέττα Προσωποκεντρική Ψυχοθεραπεύτρια-Σύμβουλος ψυχικής υγείας και Τραυματοθεραπεύτρια DBR', nameEn: 'Marieta Vetta Person-Centered Psychotherapist-Mental Health Counselor and DBR Trauma Therapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/roumelioti.jpg', url: 'https://mariannaroumelioti.gr', name: 'Μαριάννα Ρουμελιώτη Ψυχολόγος και Συνθετική Ψυχοθεραπεύτρια', nameEn: 'Marianna Roumelioti Psychologist and Integrative Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/ntinop.jpg', url: 'https://healyouwell.gr', name: 'ΑΡΙΑΔΝΗ Α. ΝΤΙΝΟΠΟΥΛΟΥ Ψυχολόγος & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Ariadni A. Ntinopoulou Psychologist & Systemic Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/simitsi.jpg', url: 'https://drsimitsi-psychologist.gr', name: 'Χριστίνα Σιμιτσή Διδάκτωρ Κλινικής Δικαστικής Ψυχολογίας & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Christina Simitsi Doctor of Clinical Forensic Psychology & Systemic Psychotherapist' },
+  { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d47854e96f553.jpg', url: 'https://parthenis-psychotherapy.gr', name: 'Αλέξανδρος Παρθένης Ψυχολόγος', nameEn: 'Alexandros Parthenis Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/labrinou.jpg', url: 'https://evalamprinou-psychologist.gr', name: 'Mind Your Emotion - Εύα Λαμπρινού, Ψυχολόγος και Κλινική Σεξολόγος', nameEn: 'Mind Your Emotion - Eva Lamprinou, Psychologist and Clinical Sexologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/boubaliki.jpg', url: 'https://boubaliki-psychologos.gr', name: 'Ηλιάνα Μπουμπαλίκη Ψυχολόγος', nameEn: 'Iliana Boubaliki Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/emirza.jpg', url: 'https://skepsyxi.gr', name: 'Σαββίνα Εμιρζά (MSc) Ψυχολόγος και Οικογενειακή Ψυχοθεραπεύτρια', nameEn: 'Savvina Emirza (MSc) Psychologist and Family Psychotherapist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f853873a9c68.jpg', url: 'https://angelikivrettou.gr', name: 'Αγγελική Βρεττού ΣΥΣΤΗΜΙΚΗ ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ MSC', nameEn: 'Angeliki Vrettou Systemic Psychotherapist MSC' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f8cc953a9c69.jpg', url: 'https://mitsi-psychologist.gr', name: 'ERIOLA MITSI Ψυχολόγος & Γνωσιακή Συμπεριφορική Ψυχοθεραπεύτρια', nameEn: 'Eriola Mitsi Psychologist & CBT Therapist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d4711e496f556.jpg', url: 'https://mantzioroupsychologist.gr', name: 'Χριστίνα Μαντζιώρου ΨΥΧΟΛΟΓΟΣ - ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ', nameEn: 'Christina Mantziorou Psychologist - Psychotherapist' },
@@ -19,10 +38,10 @@ export const portfolioItems: PortfolioItem[] = [
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d918c33576a4352530.jpg', url: 'https://menetian-psychologist.gr', name: 'Μενετιάν Λοράνς - Ψυχολόγος', nameEn: 'Menetian Lorans - Psychologist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d913fe2b4ebda2afef.jpg', url: 'https://giotakarampetsou.gr', name: 'Καραμπέτσου Παναγιώτα - Ψυχολόγος', nameEn: 'Karampetsou Panagiota - Psychologist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d926ea6442a7a91af5.jpg', url: 'https://fatourou-ioulia-psychologos.gr', name: 'Φατούρου Ιουλία - Ψυχολόγος', nameEn: 'Fatourou Ioulia - Psychologist' },
-  { image: 'https://github.com/agelmet/Image-hosting-/blob/main/11.jpg?raw=true', url: 'https://talamagka-psychologos.gr/home', name: 'Ταλαμάγκα Ελπίδα - Ψυχολόγος', nameEn: 'Talamagka Elpida - Psychologist' },
-  { image: 'https://github.com/agelmet/Image-hosting-/blob/main/22.jpg?raw=true', url: 'https://roza-psychologist.gr', name: 'Χαρουτιουνιάν Ρόζα - Ψυχολόγος', nameEn: 'Haroutiounian Roza - Psychologist' },
-  { image: 'https://github.com/agelmet/Image-hosting-/blob/main/33.jpg?raw=true', url: 'https://zampelis-psychology.gr', name: 'Ζαμπέλης Στέφανος - Ψυχολόγος', nameEn: 'Zampelis Stefanos - Psychologist' },
-  { image: 'https://github.com/agelmet/Image-hosting-/blob/main/44.jpg?raw=true', url: 'https://nakou-psychologos.gr', name: 'Νάκου Δήμητρα - Ψυχολόγος', nameEn: 'Nakou Dimitra - Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/11.jpg', url: 'https://talamagka-psychologos.gr/home', name: 'Ταλαμάγκα Ελπίδα - Ψυχολόγος', nameEn: 'Talamagka Elpida - Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/22.jpg', url: 'https://roza-psychologist.gr', name: 'Χαρουτιουνιάν Ρόζα - Ψυχολόγος', nameEn: 'Haroutiounian Roza - Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/33.jpg', url: 'https://zampelis-psychology.gr', name: 'Ζαμπέλης Στέφανος - Ψυχολόγος', nameEn: 'Zampelis Stefanos - Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/44.jpg', url: 'https://nakou-psychologos.gr', name: 'Νάκου Δήμητρα - Ψυχολόγος', nameEn: 'Nakou Dimitra - Psychologist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff573cc5fde7d814b0c.png', url: 'https://rhodesdentist.gr', name: 'Γλυνός Γεώργιος - Οδοντίατρος', nameEn: 'Glynos Georgios - Dentist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff57002eeb8d74c581c.png', url: 'https://apartmentsin-greece.gr', name: 'Αθήνα + Κρήτη - Διαμερίσματα', nameEn: 'Athens + Crete - Apartments' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6720fff5be2f992fd50c4409.png', url: 'https://pediatrician-ioannisloukas.gr/en', name: 'Λουκάς Ιωάννης - Παιδίατρος', nameEn: 'Loukas Ioannis - Pediatrician' },
@@ -56,6 +75,12 @@ export const portfolioItems: PortfolioItem[] = [
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/684c297251e5e5089ade7e7e.jpeg', url: 'https://zormpa-dentist.gr', name: 'Ζορμπά Θωμαής - Οδοντίατρος', nameEn: 'Zormpa Thomais - Dentist' },
   
   // Randomly Placed New Items (Appended)
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/marketi.jpg', url: 'https://konstantinamarketi-psychotherapist.gr', name: 'Κωνσταντίνα Μαρκέτη (MSc), Κλινική Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Konstantina Marketi (MSc), Clinical Psychologist - Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/dalla.jpg', url: 'https://dalla-psychologist.gr', name: 'Δανάη Δάλλα Ψυχολόγος', nameEn: 'Danai Dalla Psychologist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/andrikou.jpg', url: 'https://andrikou-systherapy.gr', name: 'Αναστάσιος Ανδρίκου Συστημικός Οικογενειακός Ψυχοθεραπευτής και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Anastasios Andrikou Systemic Family Psychotherapist and Mental Health Counselor' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/toulgaridou.jpg', url: 'https://toulgaridou-psychologos.gr', name: 'Κατερίνα Τουλγαρίδου, Ψυχολόγος και Συστημική Ψυχοθεραπεύτρια', nameEn: 'Katerina Toulgaridou, Psychologist and Systemic Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/matoula.jpg', url: 'https://matoula-psychotherapy.gr', name: 'Μαρία Ματούλα Κλινική Ψυχολόγος και Ψυχοθεραπεύτρια', nameEn: 'Maria Matoula Clinical Psychologist and Psychotherapist' },
+  { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/skandali.jpg', url: 'https://skandali-therapist.gr', name: 'Μαίρη Σκανδάλη Προσωποκεντρική Ψυχοθεραπεύτρια και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Mary Skandali Person-Centered Psychotherapist and Mental Health Counselor' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45fa6b7b92a418f1cd.jpg', url: 'https://yiota-kalliontzaki.gr', name: 'Γιώτα Καλλιοντζάκη - Ψυχολόγος', nameEn: 'Yiota Kalliontzaki - Psychologist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f870383a9c67.jpg', url: 'https://karouzioanna-psychologist.gr', name: 'ΙΩΑΝΝΑ ΚΑΡΟΥΖΗ ΨΥΧΟΛΟΓΟΣ - ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ', nameEn: 'Ioanna Karouzi Psychologist - Psychotherapist' },
   { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45ee19cf418bb2e495.jpg', url: 'https://asimakopoulou-psychologos.gr', name: 'Ιωάννα Ασημακοπούλου Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Ioanna Asimakopoulou Psychologist - Psychotherapist' },
@@ -87,7 +112,7 @@ export const faqItems: FaqItem[] = [
   { question: 'Τι είναι η Advon Media;', answer: 'Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο.' },
   { question: 'Ποιες υπηρεσίες προσφέρετε;', answer: 'Κατασκευή ιστοσελίδων, δημιουργία περιεχομένου + διαχείριση social media και ανέπαφες (NFC) βάσεις αξιολογήσεων.' },
   { question: 'Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;', answer: 'Από τη στιγμή που έχουμε λάβει όλο το υλικό, μπορούμε να ολοκληρώσουμε την κατασκευή σε 5-10 ημέρες.' },
-  { question: 'Πώς μπορώ να επικοινωνήσω;', answer: 'Στείλτε μας email στο advonmd@gmail.com και θα επικοινωνήσουμε άμεσα μαζί σας.' },
+  { question: 'Πώς μπορώ να επικοινωνήσω;', answer: 'Στείλτε μας email στο angelos@advonmedia.com και θα επικοινωνήσουμε άμεσα μαζί σας.' },
 ];
 
 export const servicesData: ServiceData[] = [
@@ -150,7 +175,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: ServiceType.SOCIAL,
-    icon: Instagram,
+    icon: Share2,
     price: '87€/μήνα',
     title: 'Διαχείριση Social Media',
     shortDesc: 'Επαγγελματικά posts, hashtag research, copywriting. 7 ημέρες δωρεάν δοκιμή.',
@@ -176,7 +201,7 @@ export const servicesData: ServiceData[] = [
         'Αποτέλεσμα: Περισσότεροι Πελάτες & Επαγγελματική Παρουσία',
         'Με τη σωστή διαχείριση του Instagram, θα δείτε αυξημένη αλληλεπίδραση, μεγαλύτερη βάση πελατών, και ένα προφίλ που προσελκύει την προσοχή και δημιουργεί εμπιστοσύνη.',
         'Εγγραφείτε σήμερα και εξασφαλίστε την ειδική τιμή των 87€ μήνα.',
-        'Στείλτε μας email στο advonmd@gmail.com για περαιτέρω επικοινωνία. (το ελέγχουμε καθημερινά)'
+        'Στείλτε μας email στο angelos@advonmedia.com για περαιτέρω επικοινωνία. (το ελέγχουμε καθημερινά)'
       ]
     }
   }
