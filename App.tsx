@@ -401,12 +401,8 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
   const Icon = service.icon;
   
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 hover:border-electric-cyan/30 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(71,200,245,0.15)] group flex flex-col h-full hover:translate-y-[-5px]"
+    <div 
+      className="bg-[#081219]/80 backdrop-blur-xl border border-electric-cyan/10 rounded-2xl p-8 transition-colors duration-300 flex flex-col h-full"
     >
       <div className="w-14 h-14 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:bg-electric-cyan/20 transition-colors">
         <Icon className="w-7 h-7 text-electric-cyan" />
@@ -449,19 +445,19 @@ const ServiceCard: React.FC<{ service: ServiceData; onReadMore: (s: ServiceData)
       <div className="mt-auto space-y-3">
         <a 
           href="#contact" 
-          className="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:translate-y-[-2px] hover:shadow-[0_0_20px_rgba(71,200,245,0.4)] transition-all uppercase tracking-wide text-sm"
+          className="flex items-center justify-center gap-2 w-full py-3 bg-electric-cyan text-[#050a0e] font-bold rounded-xl hover:bg-electric-cyan/90 transition-colors uppercase tracking-wide text-sm"
         >
           {service.ctaText}
           <ArrowUpRight className="w-4 h-4" />
         </a>
         <button 
           onClick={() => onReadMore(service)}
-          className="w-full py-2 text-sm text-electric-cyan/80 hover:text-electric-cyan underline underline-offset-4 decoration-electric-cyan/30 hover:decoration-electric-cyan transition-all"
+          className="w-full py-2 text-sm text-electric-cyan/80 hover:text-electric-cyan underline underline-offset-4 decoration-electric-cyan/30 hover:decoration-electric-cyan transition-colors"
         >
           Περισσότερες πληροφορίες
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -620,24 +616,20 @@ export default function App() {
         <section className="py-20 border-y border-electric-cyan/10 bg-[#0a1418]/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { num: "2+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
-              { num: "50+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
+              { num: "3+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
+              { num: "80+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
               { num: "100%", label: "ΕΠΙΤΥΧΙΑ" },
-              { num: "30+", label: "5-STAR REVIEWS" }
+              { num: "65+", label: "5-STAR REVIEWS" }
             ].map((stat, i) => (
-              <motion.div 
+              <div 
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
                 <div className="text-4xl md:text-6xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)]">
                   {stat.num}
                 </div>
                 <div className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
@@ -680,15 +672,11 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               <AnimatePresence mode='wait'>
                 {visiblePortfolio.map((item, index) => (
-                  <motion.a 
+                  <a 
                     key={item.url}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
                     className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5"
                   >
                     <img src={item.image} alt={item.name} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -698,7 +686,7 @@ export default function App() {
                         Προβολή Ιστοσελίδας <ExternalLink className="w-4 h-4" />
                       </span>
                     </div>
-                  </motion.a>
+                  </a>
                 ))}
               </AnimatePresence>
             </div>
@@ -735,12 +723,8 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {reviews.map((review, i) => (
-                <motion.div 
+                <div 
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className="bg-[#081219]/90 backdrop-blur-md border border-electric-cyan/10 p-8 rounded-2xl"
                 >
                   <div className="flex gap-1 mb-6">
@@ -753,15 +737,18 @@ export default function App() {
                     <img src={review.image} alt={review.name} referrerPolicy="no-referrer" className="w-12 h-12 rounded-full object-cover ring-2 ring-electric-cyan/20" />
                     <div>
                       <h4 className="font-bold text-sm text-white">{review.name}</h4>
-                      <span className="text-xs text-gray-500 flex items-center gap-1">
-                        <div className="w-3 h-3 bg-white rounded-full flex items-center justify-center">
-                          <span className="text-[8px] font-bold text-black">G</span>
-                        </div>
-                        Google Review
+                      <span className="text-xs text-gray-500 flex items-center gap-1 mt-1">
+                        <svg className="w-4 h-4" viewBox="0 0 24 24">
+                          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        Verified
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
             
@@ -847,7 +834,7 @@ export default function App() {
                 className="group bg-[#081219] border border-electric-cyan/20 p-8 rounded-2xl hover:border-electric-cyan/50 hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="w-14 h-14 bg-electric-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6 text-electric-cyan group-hover:scale-110 transition-transform">
-                  <Share2 className="w-7 h-7" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Instagram</h3>
                 <p className="text-electric-cyan flex items-center justify-center gap-2">

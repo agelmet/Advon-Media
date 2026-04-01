@@ -270,16 +270,14 @@
         border: 1px solid rgba(71, 200, 245, 0.15); 
         box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
         transition: border-color 0.4s ease, box-shadow 0.4s ease; 
-        transform-style: preserve-3d;
       }
       .glass-panel:hover { 
         border-color: rgba(71, 200, 245, 0.5); 
         box-shadow: inset 0 0 20px rgba(71,200,245,0.1), 0 15px 40px rgba(71, 200, 245, 0.2); 
       }
-      .glass-panel > * { transform: translateZ(30px); }
 
       .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
-      .glass-panel:hover .service-list-item:hover { transform: translateX(8px) translateZ(30px); color: white; }
+      .glass-panel:hover .service-list-item:hover { transform: translateX(8px); color: white; }
       .service-check-icon { transition: all 0.3s ease; }
       .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 8px #47c8f5); transform: scale(1.2); }
       
@@ -507,13 +505,14 @@
                     titleHighlight2: 'Πελάτες',
                     subtitle: 'Οι πιο αποτελεσματικές λύσεις marketing για τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες. Ανεβείτε στην κορυφή των αποτελεσμάτων χωρίς ρίσκο.',
                     ctaPrimary: 'ΥΠΗΡΕΣΙΕΣ',
-                    ctaSecondary: 'ΠΟΡΤΦΟΛΙΟ'
+                    ctaSecondary: 'ΠΟΡΤΦΟΛΙΟ',
+                    ctaTertiary: 'ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ'
                 },
                 stats: [
-                    { num: "2+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
-                    { num: "50+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
+                    { num: "3+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
+                    { num: "80+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
                     { num: "100%", label: "ΕΠΙΤΥΧΙΑ" },
-                    { num: "30+", label: "5-STAR REVIEWS" }
+                    { num: "65+", label: "5-STAR REVIEWS" }
                 ],
                 sectionTitles: {
                     services: 'Υπηρεσίες',
@@ -528,7 +527,15 @@
                     contact: 'Επικοινωνία',
                     contactMain: 'Ας Συνεργαστούμε',
                     contactSub: 'Στείλτε μας email με το τηλέφωνό σας για να συζητήσουμε τι ακριβώς χρειάζεστε.',
-                    viewSite: 'Προβολή Ιστοσελίδας'
+                    viewSite: 'Προβολή Ιστοσελίδας',
+                    formTitle: 'Εκδήλωση Ενδιαφέροντος',
+                    formSub: 'Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.',
+                    formName: 'Όνομα / Επωνυμία',
+                    formEmail: 'Email',
+                    formMessage: 'Μήνυμα / Υπηρεσία που σας ενδιαφέρει',
+                    formSubmit: 'Αποστολή',
+                    bookTitle: 'Κλείστε Ραντεβού',
+                    bookSub: 'Επιλέξτε την ημέρα και ώρα που σας εξυπηρετεί για μια δωρεάν συμβουλευτική κλήση.'
                 },
                 footer: { rights: 'Με επιφύλαξη παντός δικαιώματος.' }
             },
@@ -543,13 +550,14 @@
                     titleHighlight2: 'Customers',
                     subtitle: 'The most effective marketing solutions for local businesses and freelancers. Rise to the top of the results without risk.',
                     ctaPrimary: 'SERVICES',
-                    ctaSecondary: 'PORTFOLIO'
+                    ctaSecondary: 'PORTFOLIO',
+                    ctaTertiary: 'BOOK APPOINTMENT'
                 },
                 stats: [
-                    { num: "2+", label: "YEARS OF EXPERIENCE" },
-                    { num: "50+", label: "SATISFIED CLIENTS" },
+                    { num: "3+", label: "YEARS OF EXPERIENCE" },
+                    { num: "80+", label: "SATISFIED CLIENTS" },
                     { num: "100%", label: "SUCCESS" },
-                    { num: "30+", label: "5-STAR REVIEWS" }
+                    { num: "65+", label: "5-STAR REVIEWS" }
                 ],
                 sectionTitles: {
                     services: 'Services',
@@ -564,7 +572,15 @@
                     contact: 'Contact',
                     contactMain: "Let's Collaborate",
                     contactSub: 'Send us an email with your phone number to discuss exactly what you need.',
-                    viewSite: 'Visit Website'
+                    viewSite: 'Visit Website',
+                    formTitle: 'Express Interest',
+                    formSub: 'Fill out the form and we will contact you as soon as possible.',
+                    formName: 'Name / Company',
+                    formEmail: 'Email',
+                    formMessage: 'Message / Service you are interested in',
+                    formSubmit: 'Send',
+                    bookTitle: 'Book Appointment',
+                    bookSub: 'Choose the day and time that suits you for a free consultation call.'
                 },
                 footer: { rights: 'All rights reserved.' }
             }
@@ -600,25 +616,25 @@
 
         const portfolioItems = [
             // New First Page Items
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/gerou.jpg', url: 'https://mairagerou-psychologist.gr', name: 'Μάιρα Γέρου, Ψυχολόγος', nameEn: 'Maira Gerou, Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/polymerop.jpg', url: 'https://polymeropoulou-psychologos.gr', name: 'Λαμπρινή Πολυμεροπούλου (MSc), Ψυχολόγος', nameEn: 'Lamprini Polymeropoulou (MSc), Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/sorokina.jpg', url: 'https://sorokina-psychologist.gr', name: 'ΜΑΡΙΝΑ ΣΟΡΟΚΙΝΑ Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Marina Sorokina Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/papazog.jpg', url: 'https://papazoglou-psychologist.gr', name: 'Σάκης Παπάζογλου, Ψυχολόγος - Ψυχοθεραπευτής', nameEn: 'Sakis Papazoglou, Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/demeroutis.jpg', url: 'http://demeroutis-psychverse.gr', name: 'Θοδωρής Δεμερούτης Ψυχολόγος και Ειδικευόμενος Συστημικός Ψυχοθεραπευτής', nameEn: 'Thodoris Demeroutis Psychologist and Trainee Systemic Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/dilana.jpg', url: 'https://dilana-psychologos.gr', name: 'Ελένη Δηλανά Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Eleni Dilana Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/keletseki.jpg', url: 'https://keletseki-psychotherapy.gr', name: 'Κατερίνα Κελετσέκη Ψυχολόγος- Ψυχοθεραπεύτρια', nameEn: 'Katerina Keletseki Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/mixalop.jpg', url: 'https://michalopoulou-ioulia-psychotherapy.gr', name: 'Ιουλία Μιχαλοπούλου (MSc) Ψυχολόγος – Ψυχοθεραπεύτρια', nameEn: 'Ioulia Michalopoulou (MSc) Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/alatsi.jpg', url: 'https://christinaalatsi.gr', name: 'Χριστίνα Αλάτση Σύμβουλος ψυχικής υγείας, ψυχοθεραπεύτρια συνθετικής προσέγγισης, υπνοθεραπεύτρια και εναλλακτική θεραπεύτρια.', nameEn: 'Christina Alatsi Mental Health Counselor, Integrative Psychotherapist, Hypnotherapist and Alternative Therapist.' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/mixa.jpg', url: 'https://elenimicha-psychologist.gr', name: 'Ελένη Μίχα Ψυχολόγος - CBT Ψυχοθεραπεύτρια, MSc Κλινική Νευροψυχολογία', nameEn: 'Eleni Micha Psychologist - CBT Psychotherapist, MSc Clinical Neuropsychology' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/sarlaki.jpg', url: 'https://mairasarlaki.gr', name: 'Μάιρα Σαρλάκη Ψυχολόγος- ΜΑ Ψυχοθεραπεύτρια', nameEn: 'Maira Sarlaki Psychologist - MA Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/vetta.jpg', url: 'https://marietavetta-psychotherapy.gr', name: 'Μαριέτα Βέττα Προσωποκεντρική Ψυχοθεραπεύτρια-Σύμβουλος ψυχικής υγείας και Τραυματοθεραπεύτρια DBR', nameEn: 'Marieta Vetta Person-Centered Psychotherapist-Mental Health Counselor and DBR Trauma Therapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/roumelioti.jpg', url: 'https://mariannaroumelioti.gr', name: 'Μαριάννα Ρουμελιώτη Ψυχολόγος και Συνθετική Ψυχοθεραπεύτρια', nameEn: 'Marianna Roumelioti Psychologist and Integrative Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/ntinop.jpg', url: 'https://healyouwell.gr', name: 'ΑΡΙΑΔΝΗ Α. ΝΤΙΝΟΠΟΥΛΟΥ Ψυχολόγος & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Ariadni A. Ntinopoulou Psychologist & Systemic Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/simitsi.jpg', url: 'https://drsimitsi-psychologist.gr', name: 'Χριστίνα Σιμιτσή Διδάκτωρ Κλινικής Δικαστικής Ψυχολογίας & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Christina Simitsi Doctor of Clinical Forensic Psychology & Systemic Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/gerou.jpg', url: 'https://mairagerou-psychologist.gr', name: 'Μάιρα Γέρου, Ψυχολόγος', nameEn: 'Maira Gerou, Psychologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/polymerop.jpg', url: 'https://polymeropoulou-psychologos.gr', name: 'Λαμπρινή Πολυμεροπούλου (MSc), Ψυχολόγος', nameEn: 'Lamprini Polymeropoulou (MSc), Psychologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/sorokina.jpg', url: 'https://sorokina-psychologist.gr', name: 'ΜΑΡΙΝΑ ΣΟΡΟΚΙΝΑ Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Marina Sorokina Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/papazog.jpg', url: 'https://papazoglou-psychologist.gr', name: 'Σάκης Παπάζογλου, Ψυχολόγος - Ψυχοθεραπευτής', nameEn: 'Sakis Papazoglou, Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/demeroutis.jpg', url: 'http://demeroutis-psychverse.gr', name: 'Θοδωρής Δεμερούτης Ψυχολόγος και Ειδικευόμενος Συστημικός Ψυχοθεραπευτής', nameEn: 'Thodoris Demeroutis Psychologist and Trainee Systemic Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/dilana.jpg', url: 'https://dilana-psychologos.gr', name: 'Ελένη Δηλανά Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Eleni Dilana Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/keletseki.jpg', url: 'https://keletseki-psychotherapy.gr', name: 'Κατερίνα Κελετσέκη Ψυχολόγος- Ψυχοθεραπεύτρια', nameEn: 'Katerina Keletseki Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/mixalop.jpg', url: 'https://michalopoulou-ioulia-psychotherapy.gr', name: 'Ιουλία Μιχαλοπούλου (MSc) Ψυχολόγος – Ψυχοθεραπεύτρια', nameEn: 'Ioulia Michalopoulou (MSc) Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/alatsi.jpg', url: 'https://christinaalatsi.gr', name: 'Χριστίνα Αλάτση Σύμβουλος ψυχικής υγείας, ψυχοθεραπεύτρια συνθετικής προσέγγισης, υπνοθεραπεύτρια και εναλλακτική θεραπεύτρια.', nameEn: 'Christina Alatsi Mental Health Counselor, Integrative Psychotherapist, Hypnotherapist and Alternative Therapist.' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/mixa.jpg', url: 'https://elenimicha-psychologist.gr', name: 'Ελένη Μίχα Ψυχολόγος - CBT Ψυχοθεραπεύτρια, MSc Κλινική Νευροψυχολογία', nameEn: 'Eleni Micha Psychologist - CBT Psychotherapist, MSc Clinical Neuropsychology' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/sarlaki.jpg', url: 'https://mairasarlaki.gr', name: 'Μάιρα Σαρλάκη Ψυχολόγος- ΜΑ Ψυχοθεραπεύτρια', nameEn: 'Maira Sarlaki Psychologist - MA Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/vetta.jpg', url: 'https://marietavetta-psychotherapy.gr', name: 'Μαριέτα Βέττα Προσωποκεντρική Ψυχοθεραπεύτρια-Σύμβουλος ψυχικής υγείας και Τραυματοθεραπεύτρια DBR', nameEn: 'Marieta Vetta Person-Centered Psychotherapist-Mental Health Counselor and DBR Trauma Therapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/roumelioti.jpg', url: 'https://mariannaroumelioti.gr', name: 'Μαριάννα Ρουμελιώτη Ψυχολόγος και Συνθετική Ψυχοθεραπεύτρια', nameEn: 'Marianna Roumelioti Psychologist and Integrative Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/ntinop.jpg', url: 'https://healyouwell.gr', name: 'ΑΡΙΑΔΝΗ Α. ΝΤΙΝΟΠΟΥΛΟΥ Ψυχολόγος & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Ariadni A. Ntinopoulou Psychologist & Systemic Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/simitsi.jpg', url: 'https://drsimitsi-psychologist.gr', name: 'Χριστίνα Σιμιτσή Διδάκτωρ Κλινικής Δικαστικής Ψυχολογίας & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Christina Simitsi Doctor of Clinical Forensic Psychology & Systemic Psychotherapist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d47854e96f553.jpg', url: 'https://parthenis-psychotherapy.gr', name: 'Αλέξανδρος Παρθένης Ψυχολόγος', nameEn: 'Alexandros Parthenis Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/labrinou.jpg', url: 'https://evalamprinou-psychologist.gr', name: 'Mind Your Emotion - Εύα Λαμπρινού, Ψυχολόγος και Κλινική Σεξολόγος', nameEn: 'Mind Your Emotion - Eva Lamprinou, Psychologist and Clinical Sexologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/boubaliki.jpg', url: 'https://boubaliki-psychologos.gr', name: 'Ηλιάνα Μπουμπαλίκη Ψυχολόγος', nameEn: 'Iliana Boubaliki Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/emirza.jpg', url: 'https://skepsyxi.gr', name: 'Σαββίνα Εμιρζά (MSc) Ψυχολόγος και Οικογενειακή Ψυχοθεραπεύτρια', nameEn: 'Savvina Emirza (MSc) Psychologist and Family Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/labrinou.jpg', url: 'https://evalamprinou-psychologist.gr', name: 'Mind Your Emotion - Εύα Λαμπρινού, Ψυχολόγος και Κλινική Σεξολόγος', nameEn: 'Mind Your Emotion - Eva Lamprinou, Psychologist and Clinical Sexologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/boubaliki.jpg', url: 'https://boubaliki-psychologos.gr', name: 'Ηλιάνα Μπουμπαλίκη Ψυχολόγος', nameEn: 'Iliana Boubaliki Psychologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/emirza.jpg', url: 'https://skepsyxi.gr', name: 'Σαββίνα Εμιρζά (MSc) Ψυχολόγος και Οικογενειακή Ψυχοθεραπεύτρια', nameEn: 'Savvina Emirza (MSc) Psychologist and Family Psychotherapist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f853873a9c68.jpg', url: 'https://angelikivrettou.gr', name: 'Αγγελική Βρεττού ΣΥΣΤΗΜΙΚΗ ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ MSC', nameEn: 'Angeliki Vrettou Systemic Psychotherapist MSC' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f8cc953a9c69.jpg', url: 'https://mitsi-psychologist.gr', name: 'ERIOLA MITSI Ψυχολόγος & Γνωσιακή Συμπεριφορική Ψυχοθεραπεύτρια', nameEn: 'Eriola Mitsi Psychologist & CBT Therapist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d4711e496f556.jpg', url: 'https://mantzioroupsychologist.gr', name: 'Χριστίνα Μαντζιώρου ΨΥΧΟΛΟΓΟΣ - ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ', nameEn: 'Christina Mantziorou Psychologist - Psychotherapist' },
@@ -670,12 +686,12 @@
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/684c297251e5e5089ade7e7e.jpeg', url: 'https://zormpa-dentist.gr', name: 'Ζορμπά Θωμαής - Οδοντίατρος', nameEn: 'Zormpa Thomais - Dentist' },
 
             // New Random Items
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/marketi.jpg', url: 'https://konstantinamarketi-psychotherapist.gr', name: 'Κωνσταντίνα Μαρκέτη (MSc), Κλινική Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Konstantina Marketi (MSc), Clinical Psychologist - Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/dalla.jpg', url: 'https://dalla-psychologist.gr', name: 'Δανάη Δάλλα Ψυχολόγος', nameEn: 'Danai Dalla Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/andrikou.jpg', url: 'https://andrikou-systherapy.gr', name: 'Αναστάσιος Ανδρίκου Συστημικός Οικογενειακός Ψυχοθεραπευτής και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Anastasios Andrikou Systemic Family Psychotherapist and Mental Health Counselor' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/toulgaridou.jpg', url: 'https://toulgaridou-psychologos.gr', name: 'Κατερίνα Τουλγαρίδου, Ψυχολόγος και Συστημική Ψυχοθεραπεύτρια', nameEn: 'Katerina Toulgaridou, Psychologist and Systemic Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/matoula.jpg', url: 'https://matoula-psychotherapy.gr', name: 'Μαρία Ματούλα Κλινική Ψυχολόγος και Ψυχοθεραπεύτρια', nameEn: 'Maria Matoula Clinical Psychologist and Psychotherapist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Advon-Media@main/skandali.jpg', url: 'https://skandali-therapist.gr', name: 'Μαίρη Σκανδάλη Προσωποκεντρική Ψυχοθεραπεύτρια και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Mary Skandali Person-Centered Psychotherapist and Mental Health Counselor' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/marketi.jpg', url: 'https://konstantinamarketi-psychotherapist.gr', name: 'Κωνσταντίνα Μαρκέτη (MSc), Κλινική Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Konstantina Marketi (MSc), Clinical Psychologist - Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/dalla.jpg', url: 'https://dalla-psychologist.gr', name: 'Δανάη Δάλλα Ψυχολόγος', nameEn: 'Danai Dalla Psychologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/andrikou.jpg', url: 'https://andrikou-systherapy.gr', name: 'Αναστάσιος Ανδρίκου Συστημικός Οικογενειακός Ψυχοθεραπευτής και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Anastasios Andrikou Systemic Family Psychotherapist and Mental Health Counselor' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/toulgaridou.jpg', url: 'https://toulgaridou-psychologos.gr', name: 'Κατερίνα Τουλγαρίδου, Ψυχολόγος και Συστημική Ψυχοθεραπεύτρια', nameEn: 'Katerina Toulgaridou, Psychologist and Systemic Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/matoula.jpg', url: 'https://matoula-psychotherapy.gr', name: 'Μαρία Ματούλα Κλινική Ψυχολόγος και Ψυχοθεραπεύτρια', nameEn: 'Maria Matoula Clinical Psychologist and Psychotherapist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/skandali.jpg', url: 'https://skandali-therapist.gr', name: 'Μαίρη Σκανδάλη Προσωποκεντρική Ψυχοθεραπεύτρια και Σύμβουλος Ψυχικής Υγείας', nameEn: 'Mary Skandali Person-Centered Psychotherapist and Mental Health Counselor' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45fa6b7b92a418f1cd.jpg', url: 'https://yiota-kalliontzaki.gr', name: 'Γιώτα Καλλιοντζάκη - Ψυχολόγος', nameEn: 'Yiota Kalliontzaki - Psychologist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45b3d5f870383a9c67.jpg', url: 'https://karouzioanna-psychologist.gr', name: 'ΙΩΑΝΝΑ ΚΑΡΟΥΖΗ ΨΥΧΟΛΟΓΟΣ - ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ', nameEn: 'Ioanna Karouzi Psychologist - Psychotherapist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45ee19cf418bb2e495.jpg', url: 'https://asimakopoulou-psychologos.gr', name: 'Ιωάννα Ασημακοπούλου Ψυχολόγος - Ψυχοθεραπεύτρια', nameEn: 'Ioanna Asimakopoulou Psychologist - Psychotherapist' },
@@ -683,7 +699,45 @@
         ];
 
         const reviews = [
+            { image: DEFAULT_AVATAR + 'Χριστόφορος+Παπ', name: 'Χριστόφορος Παπ', rating: 5, text: 'Άμεση ανταπόκριση σε αυτά που ήθελα να γίνουν για την ιστοσελίδα μου, είμαι πολύ ευχαριστημένος με τη δουλειά τους' },
+            { image: DEFAULT_AVATAR + 'maria+baloti', name: 'maria baloti', rating: 5, text: 'Υπέροχη συνεργασία! Μεγάλη συνέπεια! Ευχαριστώ' },
+            { image: DEFAULT_AVATAR + 'Constantina+Skourla', name: 'Constantina Skourla', rating: 5, text: 'Εξαιρετική συνεργασία.<br>Κωνσταντίνα Σκουρλά,<br>Ψυχολόγος- Ψυχοθεραπεύτρια' },
+            { image: DEFAULT_AVATAR + 'Marina', name: 'Marina', rating: 5, text: 'Είχαμε μια πολύ καλή συνεργασία! Ευχαριστώ πολύ παιδιά!' },
+            { image: DEFAULT_AVATAR + 'Ariadne+Ntinopoulou', name: 'Ariadne Ntinopoulou', rating: 5, text: 'Εξαιρετική συνεργασία από την αρχή μέχρι το τέλος! Η ομάδα έδειξε πραγματικό επαγγελματισμό, συνέπεια και δημιουργικότητα σε κάθε στάδιο της κατασκευής του site μου. Άκουσαν προσεκτικά τις ανάγκες μου, πρότειναν λύσεις και το τελικό αποτέλεσμα ξεπέρασε τις προσδοκίες μου.<br><br>Είμαι απόλυτα ικανοποιημένη τόσο από την ποιότητα της δουλειάς τους όσο και από την άψογη επικοινωνία και υποστήριξη που είχα καθ’ όλη τη διάρκεια της συνεργασίας μας. Τους ευχαριστώ θερμά για τον χρόνο, το μεράκι και την αφοσίωση που έδειξαν. Τους συστήνω ανεπιφύλακτα!' },
+            { image: DEFAULT_AVATAR + 'Ελένη+Μίχα', name: 'Ελένη Μίχα', rating: 5, text: 'Πολύ ευχάριστη συνεργασία. Προθυμία και όρεξη για customized δουλειά.<br>Ελένη Μίχα, Ψυχολόγος - Ψυχοθεραπεύτρια' },
+            { image: DEFAULT_AVATAR + 'Σαββινα+Εμιρζα', name: 'Σαββινα Εμιρζα', rating: 5, text: 'Η συνεργασία μας ήταν εξαιρετική !<br>Ο Άγγελος πάντα παρών σε ο,τιδηποτε χρειάστηκε , άμεσος και εξυπηρετικότατος!<br>Πολύ καλή και γρήγορη δουλειά !<br>Τους προτείνω ανεπιφύλακτα !' },
+            { image: DEFAULT_AVATAR + 'Maria+G.', name: 'Maria G.', rating: 5, text: 'Εξαιρετική συνεργασία!! Έμεινα απόλυτα ικανοποιημένη! Γρήγορη εξυπηρέτηση και πολύ καλή επικοινωνία! Το τελικό αποτέλεσμα υπέροχο!' },
+            { image: DEFAULT_AVATAR + 'Katerina+Keletseki', name: 'Katerina Keletseki', rating: 5, text: 'Η συνεργασία με την ομάδα ήταν εξαιρετική από την αρχή μέχρι το τέλος. Ανταποκρίθηκαν άμεσα σε κάθε μου ανάγκη, με ταχύτητα και επαγγελματισμό, ενώ η επικοινωνία μας ήταν πάντα ξεκάθαρη και αποτελεσματική. Ξεχώρισαν για την ευγένεια και τη διάθεσή τους να βοηθήσουν, κάνοντας όλη τη διαδικασία ευχάριστη και χωρίς άγχος. Το τελικό αποτέλεσμα ανταποκρίνεται πλήρως σε αυτό που είχα φανταστεί. Τους συστήνω ανεπιφύλακτα!' },
+            { image: DEFAULT_AVATAR + 'Thodoris+Demeroutis', name: 'Thodoris Demeroutis', rating: 5, text: 'Η εμπειρία μου με την ομάδα της Advon Media ήταν εξαιρετική! Επαγγελματίες, άμεσοι, ευγενικοί και το αποτέλεσμα ήταν υπέροχο και τεχνικά και αισθητικά! Σας ευχαριστώ πολύ!<br><br>Θοδωρής Δεμερούτης<br>Ψυχολόγος - Ψυχοθεραπευτής' },
+            { image: DEFAULT_AVATAR + 'Μαρια+Ματουλα', name: 'Μαρια Ματουλα', rating: 5, text: 'Έμεινα πάρα πολύ ευχαριστημένη από την συνεργασία μας!' },
+            { image: DEFAULT_AVATAR + 'Cristina+Alatsi', name: 'Cristina Alatsi', rating: 5, text: 'Θέλω να εκφράσω την ευχαρίστηση μου στην ομάδα advon για την δημιουργία του web site μου. Με επαγγελματισμό και συνέπεια ανταποκρίθηκαν στις ανάγκες μου δίνοντας μου τη δυνατότητα να έχω ό,τι χρειάζομαι σε ένα web site.' },
+            { image: DEFAULT_AVATAR + 'Ilianaki+b96', name: 'Ilianaki b96', rating: 5, text: 'Εξαιρετική συνεργασία και τρομεροί επαγγελματίες!<br>Μπουμπαλίκη Ηλιάνα - Ψυχολόγος' },
+            { image: DEFAULT_AVATAR + 'Εύα+Λα', name: 'Εύα Λα', rating: 5, text: 'Εξαιρετική εμπειρία συνεργασίας. Η ομάδα που ανέλαβε την κατασκευή της ιστοσελίδας μου έκανε πραγματικά άψογη δουλειά, δίνοντας προσοχή σε κάθε λεπτομέρεια. Από την αρχή μέχρι το τέλος, η επικοινωνία μας ήταν άμεση, ξεκάθαρη και επαγγελματική.<br><br>Αυτό που ξεχώρισα περισσότερο ήταν η διάθεσή τους να ακούσουν κάθε μου σχόλιο και να προσαρμόσουν το αποτέλεσμα με βάση την ανατροφοδότησή μου. Ήταν πάντα πρόθυμοι να βοηθήσουν, να προτείνουν λύσεις και να βελτιώσουν ακόμη και τις πιο μικρές λεπτομέρειες.<br><br>Επιπλέον, από όλους τους οικείους μου άκουσα τις καλύτερες εντυπώσεις για τη δημιουργικότητα της δουλειάς τους.<br><br>Τους συνιστώ ανεπιφύλακτα σε όποιον αναζητά ποιότητα, συνέπεια και άψογη συνεργασία.' },
+            { image: DEFAULT_AVATAR + 'ioanna+sakalidi', name: 'ioanna sakalidi', rating: 5, text: 'Άψογη συνεργασία για την κατασκευή του site. Όλα κύλησαν ομαλά και το αποτέλεσμα ήταν ακριβώς αυτό που ήθελα.<br>Ειδικά ο κος Μετρίδης ήταν πολύ συνεργάσιμος, επαγγελματίας και πάντα άμεσος σε κάθε επικοινωνία. Η ταχύτητα στην υλοποίηση ήταν πραγματικά εντυπωσιακή. Τους προτείνω ανεπιφύλακτα.' },
+            { image: DEFAULT_AVATAR + 'Alex+Parthenis', name: 'Alex Parthenis', rating: 5, text: 'Πολύ εξυπηρετικοί! Άψογη συνεργασία για την ιστοσελίδα μου ως Ψυχολόγος και είμαι πολύ ικανοποιημένος με το αποτέλεσμα!' },
+            { image: DEFAULT_AVATAR + 'Anestis+Andrikou', name: 'Anestis Andrikou', rating: 5, text: 'Άψογη συνεργασία σε όλα τα στάδια της δημιουργίας της ιστοσελίδας μου. Η επικοινωνία ήταν εξαιρετική σε όλη τη διάρκεια της διαδικασίας, με συνέπεια, άμεση ανταπόκριση και πραγματικό ενδιαφέρον για το αποτέλεσμα. Τηρήθηκαν στο μέγιστο όσα συμφωνήθηκαν, με επαγγελματισμό, αισθητική και προσοχή στη λεπτομέρεια. Είμαι απόλυτα ικανοποιημένος από το τελικό αποτέλεσμα και θα το πρότεινα ανεπιφύλακτα.' },
+            { image: DEFAULT_AVATAR + 'Maira+Gerou', name: 'Maira Gerou', rating: 5, text: 'Έμεινα πολύ ευχαριστημένη απο τη συνεργασία μας. Η Advon Media χαρακτηρίζεται απο ευγένεια και συνέπεια!' },
+            { image: DEFAULT_AVATAR + 'Maria+LOUKOU', name: 'Maria LOUKOU', rating: 5, text: '\'Αψογη συνεργασία και αποτέλεσμα που με ικανοποίησε απίστευτα! Η ομάδα της Advon Media είναι εξαιρετική, ταχύτατη, συνεπέστατη, ευγενέστατη και πολύ δημιουργική. Σας ευχαριστώ πολύ για το υπέροχο αποτέλεσμα της ιστοσελίδας μου!<br><br>Μαριέτα Βέττα<br>Ψυχοθεραπεύτρια' },
+            { image: DEFAULT_AVATAR + 'Marianna+Roumelioti', name: 'Marianna Roumelioti', rating: 5, text: 'Εξαιρετική συνεργασία με την Advon Media. Από την αρχή υπήρξε επαγγελματισμός, άμεση επικοινωνία και πραγματικό ενδιαφέρον να δημιουργηθεί μια ιστοσελίδα που να ανταποκρίνεται ακριβώς σε αυτό που χρειαζόμουν. Η διαδικασία ήταν ξεκάθαρη και η υποστήριξη άμεση σε κάθε βήμα. Τους προτείνω ανεπιφύλακτα σε όποιον χρειάζεται κατασκευή ιστοσελίδας και αξιόπιστη τεχνική υποστήριξη.<br>Μαριάννα Ρουμελιώτη – Ψυχολόγος' },
+            { image: DEFAULT_AVATAR + 'Konstantina+M.', name: 'Konstantina M.', rating: 5, text: 'Εξαιρετική δουλειά, αξιόπιστοι επαγγελματίες! Συστήνω ανεπιφύλακτα!<br><br>Κωνσταντίνα Μαρκέτη, Κλινική Ψυχολόγος MSc, Γνωσιακή-Συμπεριφορική Ψυχοθεραπεύτρια.' },
+            { image: DEFAULT_AVATAR + 'Ioulia+Michalopoulou', name: 'Ioulia Michalopoulou', rating: 5, text: 'Συνεργάστηκα μαζί τους για τη δημιουργία του site μου ως ψυχολόγος και η εμπειρία ήταν εξαιρετική. Ξεχώρισα ιδιαίτερα τον επαγγελματισμό τους, την αισθητική προσέγγιση στη σχεδίαση, αλλά και τον τρόπο που οργάνωσαν και διαχειρίστηκαν τις πληροφορίες ώστε το αποτέλεσμα να είναι σαφές, λειτουργικό και ουσιαστικό. Η συνεργασία μας ήταν άψογη σε όλα τα στάδια και το τελικό αποτέλεσμα με ικανοποίησε απόλυτα. Τους συστήνω ανεπιφύλακτα!' },
+            { image: DEFAULT_AVATAR + 'Plan+For+A+Miracle', name: 'Plan For A Miracle', rating: 5, text: 'Θέλω να ευχαριστήσω θερμά την ομάδα που ανέλαβε την κατασκευή του website μου.<br>Το αποτέλεσμα ήταν δημιουργικό, καλαίσθητο και απόλυτα εναρμονισμένο με αυτό που είχα οραματιστεί — ίσως και καλύτερο. Από την πρώτη στιγμή υπήρξε υψηλή διαθεσιμότητα, άμεση επικοινωνία με κάθε πρόσφορο μέσο και πραγματικά ταχύτατη εξυπηρέτηση.<br>Επαγγελματισμός, αισθητική και ανθρώπινη προσέγγιση σε άψογο συνδυασμό. Τους συστήνω ανεπιφύλακτα.' },
+            { image: DEFAULT_AVATAR + 'Maro+Manthou+(Plan+For+A+Miracle)', name: 'Maro Manthou (Plan For A Miracle)', rating: 5, text: 'Η συνεργασία με τον Άγγελο απο την Advon Media υπήρξε εξαιρετικη. Η ομάδα του Άγγελου μας έφτιαξε ένα site όπως το είχαμε φανταστει. Κατάλαβαν τις ανάγκες μας και πολυ συντομα είχαμε ένα άψογο αποτελεσμα. Η ανταπόκριση, η ταχύτητα και η δημιουργικότητα μας εξέπληξε ευχάριστα. Τους συνιστώ ανεπιφύλακτα!' },
+            { image: DEFAULT_AVATAR + 'lamprini+polumeropoulou', name: 'lamprini polumeropoulou', rating: 5, text: 'Η συνεργασία μας ήταν εξαιρετική. Με επαγγελματισμό, συνέπεια και πραγματικό ενδιαφέρον, κατάφεραν να αποτυπώσουν με ακρίβεια τη φιλοσοφία και την ταυτότητα του γραφείου μου. Ήταν πάντα διαθέσιμοι, υποστηρικτικοί και πρόθυμοι να εξηγήσουν κάθε λεπτομέρεια. Το αποτέλεσμα είναι αισθητικά άρτιο και λειτουργικό, και με εκφράζει απόλυτα. Τους συστήνω ανεπιφύλακτα.' },
+            { image: DEFAULT_AVATAR + 'Παναγιώτα+Καραμπέτσου', name: 'Παναγιώτα Καραμπέτσου', rating: 5, text: 'Άψογη συνεργασία, πολύ γρήγορη εξυπηρέτηση και εξαιρετικό αποτέλεσμα! Επαγγελματίες με πραγματική διάθεση να ικανοποιήσουν τον πελάτη. Παρότι ζήτησα κάποιες προσαρμογές στην πορεία, ανταποκρίνονταν άμεσα και με υπομονή. Το site βγήκε ακριβώς όπως το ήθελα. Τους προτείνω ανεπιφύλακτα. Απόλυτα ικανοποιημένη!' },
+            { image: DEFAULT_AVATAR + 'Angeliki+Vrettou', name: 'Angeliki Vrettou', rating: 5, text: 'Η συνεργασία μου με την Advon Media ήταν εξαιρετική!! Επαγγελματισμός, ταχύτητα, αποτελεσματικότητα! Η δουλειά τους ιδιαίτερα καλαίσθητη και άρτια! Φιλικοί, ευγενικοί και πάντα πρόθυμοι να απαντήσουν σε κάθε απορία μου!!' },
+            { image: DEFAULT_AVATAR + 'Jo+Asimak', name: 'Jo Asimak', rating: 5, text: 'Πολύ καλή συνεργασία. Ευγένεια και άμεση ανταπόκριση.<br>Ιωάννα Ασημακοπουλου- Ψυχολογος' },
+            { image: DEFAULT_AVATAR + 'Laurance+Menetian', name: 'Laurance Menetian', rating: 5, text: 'Όλη η συνεργασία από την αρχή ήταν επαγγελματική και άψογη. Με κατανόηση, υπομονή, άριστη επικοινωνία, όλη η ομάδα έκανε καταπληκτική δουλειά, προσαρμόζοντας τα θέλω μας με την εμπειρία τους, το οποίο κατέληξε σε ένα υπέροχο αποτέλεσμα. Ευχαριστούμε από καρδιάς!' },
+            { image: DEFAULT_AVATAR + 'Avra+Logotheti', name: 'Avra Logotheti', rating: 5, text: 'Η συνεργασία μου με την ομάδα του Advon Media κύλισε εξαιρετικά από την αρχή μέχρι το τέλος. Η ομάδα και ιδιαίτερα ο κ. Αγγελος ήταν ευγενικός και ανταποκρινόταν ταχύτατα σε ό,τι χρειαζόταν να γίνει μέχρι το τελικό αποτέλεσμα. Το αποτέλεσμα ανταποκρίθηκε πλήρως σε αυτό που είχα εξαρχής στο μυαλό μου αφήνοντάς με πλήρως ικανοποιημένη. Τους συστήνω ανεπιφύλακτα!<br><br>Αύρα Λογοθέτη<br>Ψυχολόγος- Ψυχοθεραπεύτρια' },
+            { image: DEFAULT_AVATAR + 'maria+laiou', name: 'maria laiou', rating: 5, text: 'Εξαιρετική ομάδα!<br>Παρέλαβα το site ακριβώς όπως το χρειαζόμουν, εύχρηστο, αισθητικά άρτιο και με έμφαση στη λεπτομέρεια. Η συνεργασια μας ήταν άψογη και η ομάδα πάντα διαθέσιμη με συνέπεια για οποιαδήποτε προσθήκη/διευκρινηση.' },
+            { image: DEFAULT_AVATAR + 'Eri+M', name: 'Eri M', rating: 5, text: 'Η συνεργασία μας ήταν εξαιρετική από την αρχή μέχρι το τέλος! Επαγγελματισμός, δημιουργικότητα και άμεση επικοινωνία. Το αποτέλεσμα ξεπέρασε κάθε προσδοκία κ το website μου ειναι ακριβως οπως το είχα σκεφτεί! Συστήνω την ομάδα Advon Media ανεπιφύλακτα, πολλά μπραβο σας!<br><br>Εριολα Μιτσι - Ψυχολόγος' },
+            { image: DEFAULT_AVATAR + 'Elena+Kovaiou', name: 'Elena Kovaiou', rating: 5, text: 'Σας ευχαριστω πολυ για τον χρονο σας! Ειμαι πολυ ευχαριστημενη! Ειναι μια ομαδα που ακουει ολα τα αιτηματα και προσπαθει για το καλυτερο! Μια ομαδα νεων επαγγελματιων που δουλευει πολυ και απανταει αμεσα! Τους συνιστω ανεπιφυλακτα!' },
+            { image: DEFAULT_AVATAR + 'Σπύρος+Αναγνώστου', name: 'Σπύρος Αναγνώστου', rating: 5, text: 'Excellent communication. They met my needs. High standards professionals' },
+            { image: DEFAULT_AVATAR + 'Ioanna+K', name: 'Ioanna K', rating: 5, text: 'Είμαι πολυ ευχαριστημένη με τ αποτέλεσμα! Υπήρξε άμεση ανταπόκριση σε ότι χρειαζόμουν για την ιστοσελίδα μου. Ο Άγγελος πολυ ευγενικός και διατεθειμένος να συζητήσει την όποια αλλαγή. Ευχαριστώ πολύ! Ιωάννα Καρούζη Ψυχολόγος-Ψυχοθεραπεύτρια' },
+            { image: DEFAULT_AVATAR + 'Giouli+Skondra', name: 'Giouli Skondra', rating: 5, text: 'Η συνεργασία μας ήταν πραγματικά εξαιρετική από την αρχή μέχρι το τέλος.<br>Κατάφερε να αποτυπώσει με ακρίβεια όχι μόνο την επαγγελματική μου ταυτότητα, αλλά και το ύφος, τη ζεστασιά και τη φιλοσοφία του χώρου μου. Η ιστοσελίδα είναι καλαίσθητη, σύγχρονη, λειτουργική και εμπνέει εμπιστοσύνη — ακριβώς αυτό που χρειάζεται ένας θεραπευτικός χώρος.<br><br>Άκουσε προσεκτικά τις ανάγκες μου, είχε άμεση ανταπόκριση, δημιουργικές προτάσεις και πραγματικό ενδιαφέρον για το αποτέλεσμα. Το τελικό αποτέλεσμα ξεπέρασε τις προσδοκίες μου.<br>Τον/την προτείνω ανεπιφύλακτα σε όποιον θέλει μια ιστοσελίδα με επαγγελματισμό, αισθητική και ουσία.' },
+            { image: DEFAULT_AVATAR + 'FANI+PAKOU', name: 'FANI PAKOU', rating: 5, text: 'Ο Άγγελος και η ομάδα του της Advon media είναι εξαιρετικοί επαγγελματίες. Ανέλαβαν τα φτιάξουν την ιστοσελίδα μου. Προσεγμένη δουλειά, με έμφαση στην λεπτομέρεια. Άμεσοι στην επικοινωνία, κατατοπιστικοί σε ό,τι απορία είχα, ευέλικτοι σε ό,τι αλλαγή ήθελα να κάνουμε. Τους συνιστώ ανεπιφύλακτα. Σας ευχαριστώ πολύ για όλα! 🙏' },
             { image: DEFAULT_AVATAR + 'Ιουλία+Φατούρου', name: 'Ιουλία Φατούρου', rating: 5, text: 'Εξαιρετικοί επαγγελματίες! Υπήρξε άμεση ανταπόκριση σε ότι χρειαζόμουν για την ιστοσελίδα μου. Τα παιδιά έκαναν φανταστική δουλειά και δημιούργησαν ένα αποτέλεσμα πολύ κοντά στην αισθητική μου. Συνεχίζω τη συνεργασία μου μαζί τους και τους συνιστώ ανεπιφύλακτα σε νέους επαγγελματίες, καθώς έμεινα και παραμένω, άκρως ικανοποιημένη!', textEn: 'Excellent professionals! Immediate response to whatever I needed for my website. The guys did a fantastic job and created a result very close to my aesthetic. I continue my cooperation with them and highly recommend them to new professionals, as I was and remain extremely satisfied!' },
+
             { image: DEFAULT_AVATAR + 'Δήμητρα+Νάκου', name: 'Δήμητρα Νάκου', rating: 5, text: 'Η εμπειρία μου από την κατασκευή του site μου ήταν εξαιρετική!Από την πρώτη στιγμή υπήρξε άψογη επικοινωνία, επαγγελματισμός ,άμεση ανταπόκριση σε καθε ανάγκη και ακριβής τήρηση της χρονικής δέσμευσης. Το αποτέλεσμα ήταν παραπάνω από καθε προσδοκία. Πρόσεξαν κάθε λεπτομέρεια για ένα σύγχρονο, λειτουργικό, καλαίσθητα σχεδιασμένο και προσβάσιμο σε όλους site.Συστήνω την advon media ανεπιφύλακτα και ευχαριστώ πολύ τα παιδιά για την ευγένεια, τη μεθοδικότητα, τη δημιουργικότητα και την αξιοπιστία τους!', textEn: 'My experience from the construction of my site was excellent! From the first moment there was impeccable communication, professionalism, immediate response to every need and strict adherence to the time commitment. The result was beyond every expectation. They paid attention to every detail for a modern, functional, beautifully designed and accessible to all site. I highly recommend advon media and thank the guys very much for their politeness, methodology, creativity and reliability!' },
             { image: 'https://lh3.googleusercontent.com/a-/ALV-UjXyvVDSorQzQz3Z-zsqvl68SOOgYiq4C3UBH8punVUaFZrC7wDkug=w144-h144-p-rp-mo-br100', name: 'Ελπίδα Ταλαμάγκα', rating: 5, text: 'Ειμαι ψυχολόγος και συνεργάστηκα με την Advon Media για τη δημιουργία του επαγγελματικού μου site. Τα παιδιά είναι εξαιρετικά!!! Άψογη δουλειά, 100% επαγγελματίες & πολύ συνεπείς. Πολύ ευγενικοί & διατεθειμένοι να συζητήσουν την όποια αλλαγή, ώστε το site μου να είναι ακριβώς όπως το είχα φανταστει!! Άγγελε σε ευχαριστώ!!', textEn: 'I am a psychologist and collaborated with Advon Media for the creation of my professional site. The guys are excellent!!! Flawless work, 100% professionals & very consistent. Very polite & willing to discuss any change, so that my site is exactly as I imagined!! Angelos thank you!!' },
             { image: DEFAULT_AVATAR + 'Ρόζα+Χαρουτιουνιάν', name: 'Ρόζα Χαρουτιουνιάν', rating: 5, text: 'Η συνεργασία μου με την ομάδα της Advon Media και ιδιαίτερα με τον κύριο Άγγελο για τη δημιουργία του επαγγελματικού μου προφίλ ήταν εξαιρετική. Από την πρώτη στιγμή ήταν ευγενικός, προσιτός και πραγματικά πρόθυμος να ακούσει τις επιθυμίες μου. Έδειξε επαγγελματισμό, συνέπεια και ενδιαφέρον για το καλύτερο δυνατό αποτέλεσμα, δίνοντας προσοχή στη λεπτομέρεια και προτείνοντας πολύ καλές ιδέες. Τους συστήνω σε όποιον αναζητά ποιοτική δουλειά και άριστη συνεργασία. Ευχαριστώ πολύ! Ρόζα Χαρουτιουνιάν, Ψυχολόγος - Ψυχοθεραπεύτρια.', textEn: 'My collaboration with the Advon Media team and especially with Mr. Angelos for the creation of my professional profile was excellent. From the first moment he was polite, accessible and really willing to listen to my wishes. He showed professionalism, consistency and interest in the best possible result, paying attention to detail and proposing very good ideas. I recommend them to anyone looking for quality work and excellent cooperation. Thank you very much! Roza Haroutiounian, Psychologist - Psychotherapist.' },
@@ -762,6 +816,10 @@
                         <i data-lucide="play" class="w-6 h-6 fill-current"></i>
                         ${elUpper(t.hero.ctaSecondary)}
                     </a>
+                    <a href="#contact" class="group px-10 py-5 bg-white text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-gray-200 hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        <i data-lucide="calendar" class="w-6 h-6"></i>
+                        ${elUpper(t.hero.ctaTertiary)}
+                    </a>
                 </div>
             `;
 
@@ -782,9 +840,9 @@
             
             const currentServices = services[currentLang];
             document.getElementById('services-grid').innerHTML = currentServices.map((service, i) => `
-                <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full tilt-card" style="transition-delay: ${i * 100}ms">
+                <div class="reveal glass-panel rounded-3xl p-8 group flex flex-col h-full" style="transition-delay: ${i * 100}ms">
                     <div class="w-16 h-16 rounded-2xl bg-electric-cyan/10 flex items-center justify-center mb-8 group-hover:bg-electric-cyan group-hover:text-[#050a0e] text-electric-cyan transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.15)] group-hover:shadow-[0_0_40px_rgba(71,200,245,0.8)]">
-                        <i data-lucide="${service.icon}" class="w-8 h-8"></i>
+                        ${service.icon === 'instagram' ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>` : `<i data-lucide="${service.icon}" class="w-8 h-8"></i>`}
                     </div>
                     <div class="flex items-baseline gap-2 mb-6">
                         <span class="text-4xl font-black text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">${service.price}</span>
@@ -824,7 +882,7 @@
             
             const currentReviews = reviews.map(r => ({ ...r, text: (isEn && r.textEn) ? r.textEn : r.text }));
             document.getElementById('reviews-grid').innerHTML = currentReviews.slice(0, 9).map((review, i) => `
-                <div class="reveal glass-panel p-8 rounded-3xl tilt-card" style="transition-delay: ${i * 50}ms">
+                <div class="reveal glass-panel p-8 rounded-3xl" style="transition-delay: ${i * 50}ms">
                     <div class="flex gap-1 mb-8">
                         ${Array(5).fill(0).map((_, idx) => `<i data-lucide="star" class="w-5 h-5 ${idx < review.rating ? 'fill-electric-cyan text-electric-cyan drop-shadow-[0_0_8px_rgba(71,200,245,0.8)]' : 'text-gray-700'}"></i>`).join('')}
                     </div>
@@ -873,15 +931,46 @@
                 <span class="reveal text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.contact)}</span>
                 <h2 class="reveal text-5xl md:text-7xl font-black font-display mb-8 text-white drop-shadow-2xl">${t.sectionTitles.contactMain}</h2>
                 <p class="reveal text-xl md:text-2xl text-gray-400 mb-16 font-medium max-w-2xl mx-auto">${t.sectionTitles.contactSub}</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="reveal glass-panel p-10 rounded-3xl text-left">
+                        <h3 class="text-3xl font-black mb-6 text-white">${t.sectionTitles.formTitle}</h3>
+                        <p class="text-gray-400 mb-8">${t.sectionTitles.formSub}</p>
+                        <form action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formName}</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formEmail}</label>
+                                <input type="email" id="email" name="email" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formMessage}</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white hover:text-[#050a0e] transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                                ${t.sectionTitles.formSubmit}
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="reveal glass-panel p-10 rounded-3xl text-left flex flex-col justify-center">
+                         <h3 class="text-3xl font-black mb-6 text-white">${t.sectionTitles.bookTitle}</h3>
+                         <p class="text-gray-400 mb-8">${t.sectionTitles.bookSub}</p>
+                         <div class="embedded-booking" data-url="https://advonmedia.trafft.com" data-query="&t=s&uuid=1003c403-d56e-439b-876a-c563b3127470" data-employee="aggelos-metrides" data-lang="${currentLang}" data-autoresize="0" data-showsidebar="1" data-showservices="0" style="min-width: 320px; height: 768px; border-radius: 1rem; overflow: hidden; background: #fff;"></div>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-8">
-                    <a href="mailto:angelos@advonmedia.com" class="reveal tilt-card group glass-panel p-10 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
+                    <a href="mailto:angelos@advonmedia.com" class="reveal group glass-panel p-10 rounded-3xl transition-all duration-300 hover:bg-electric-cyan/5">
                         <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.1)] group-hover:shadow-[0_0_50px_rgba(71,200,245,0.6)] group-hover:-translate-y-2">
                             <i data-lucide="mail" class="w-10 h-10"></i>
                         </div>
                         <h3 class="text-2xl font-black mb-3 text-white">Email</h3>
                         <p class="text-electric-cyan flex items-center justify-center gap-2 font-bold tracking-wide">angelos@advonmedia.com <i data-lucide="arrow-up-right" class="w-5 h-5"></i></p>
                     </a>
-                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal tilt-card group glass-panel p-10 rounded-3xl transition-all duration-300 delay-100 hover:bg-electric-cyan/5">
+                    <a href="https://www.instagram.com/advon_media" target="_blank" rel="noopener noreferrer" class="reveal group glass-panel p-10 rounded-3xl transition-all duration-300 delay-100 hover:bg-electric-cyan/5">
                         <div class="w-20 h-20 bg-electric-cyan/10 rounded-2xl flex items-center justify-center mx-auto mb-8 text-electric-cyan group-hover:bg-electric-cyan group-hover:text-[#050a0e] transition-all duration-300 shadow-[0_0_30px_rgba(71,200,245,0.1)] group-hover:shadow-[0_0_50px_rgba(71,200,245,0.6)] group-hover:-translate-y-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                         </div>
@@ -890,6 +979,14 @@
                     </a>
                 </div>
             `;
+
+            if (!document.getElementById('trafft-script')) {
+                const script = document.createElement('script');
+                script.id = 'trafft-script';
+                script.src = 'https://advonmedia.trafft.com/embed.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }
 
             // --- 9. Footer ---
             document.getElementById('footer-content').innerHTML = `
@@ -906,7 +1003,6 @@
 
             lucide.createIcons();
             observeElements();
-            init3DTilt(); // Re-initialize tilt elements after rendering
         }
 
         // --- Logic ---
@@ -943,7 +1039,7 @@
                 const displayName = (currentLang === 'en' && item.nameEn) ? item.nameEn : item.name;
                 return `
                 <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
-                   class="reveal tilt-card group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 block active"
+                   class="reveal group relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 block active"
                    style="transition-delay: ${index * 50}ms">
                     <img src="${item.image}" alt="${displayName}" referrerPolicy="no-referrer" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#050a0e] via-[#050a0e]/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
@@ -963,8 +1059,8 @@
             prevBtn.disabled = currentPage === 0;
             nextBtn.disabled = currentPage === totalPages - 1;
             
-            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); init3DTilt(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
-            nextBtn.onclick = () => { if(currentPage < totalPages - 1) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); init3DTilt(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            nextBtn.onclick = () => { if(totalPages - 1 > currentPage) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
 
             // Dots
             document.getElementById('pagination-dots').innerHTML = Array.from({ length: totalPages }).map((_, i) => `
@@ -973,7 +1069,6 @@
             
             lucide.createIcons();
             observeElements();
-            init3DTilt();
         }
 
         // FAQ Toggle
@@ -1047,31 +1142,6 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
-        // 3D Tilt Effect (Vanilla JS)
-        function init3DTilt() {
-            const cards = document.querySelectorAll('.tilt-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left; // x position within the element
-                    const y = e.clientY - rect.top;  // y position within the element
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg rotation
-                    const rotateY = ((x - centerX) / centerX) * 10;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-                });
-                card.addEventListener('mouseenter', () => {
-                    card.style.transition = 'none'; // remove transition for smooth following
-                });
-            });
-        }
-
         // --- Star Canvas Animation ---
         const canvas = document.getElementById('star-canvas');
         const ctx = canvas.getContext('2d');
@@ -1084,7 +1154,7 @@
             canvas.height = height;
             stars = [];
             const starCount = Math.floor(width * height / 1200); // Increased density slightly
-            for (let i = 0; i < starCount; i++) {
+            for (let i = 0; starCount > i; i++) {
                 stars.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
@@ -1102,9 +1172,9 @@
             
             stars.forEach(star => {
                 star.opacity += star.twinkleSpeed * star.twinkleDir;
-                if (star.opacity > 1 || star.opacity < 0.2) star.twinkleDir *= -1;
+                if (star.opacity > 1 || 0.2 > star.opacity) star.twinkleDir *= -1;
                 star.y -= star.speed;
-                if (star.y < 0) star.y = height;
+                if (0 > star.y) star.y = height;
 
                 ctx.fillStyle = `rgba(71, 200, 245, ${Math.abs(star.opacity) * 0.8})`; // tinted cyan
                 ctx.beginPath();
@@ -1112,7 +1182,7 @@
                 ctx.fill();
             });
 
-            if (Math.random() < 0.02) {
+            if (0.02 > Math.random()) {
                 shootingStars.push({
                     x: Math.random() * width,
                     y: Math.random() * height / 2,
@@ -1129,7 +1199,7 @@
                 star.y += Math.sin(star.angle) * star.speed;
                 star.opacity -= 0.02;
 
-                if (star.opacity <= 0 || star.x > width || star.y > height) {
+                if (0 >= star.opacity || star.x > width || star.y > height) {
                     shootingStars.splice(i, 1);
                     continue;
                 }
