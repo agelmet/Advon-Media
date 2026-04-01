@@ -936,7 +936,7 @@
                     <div class="reveal glass-panel p-10 rounded-3xl text-left">
                         <h3 class="text-3xl font-black mb-6 text-white">${t.sectionTitles.formTitle}</h3>
                         <p class="text-gray-400 mb-8">${t.sectionTitles.formSub}</p>
-                        <form action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6">
+                        <form id="my-form" action="https://formspree.io/f/xkopgoaj" method="POST" class="space-y-6">
                             <div>
                                 <label for="name" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formName}</label>
                                 <input type="text" id="name" name="name" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors">
@@ -949,9 +949,10 @@
                                 <label for="message" class="block text-sm font-bold text-electric-cyan mb-2 uppercase tracking-wider">${t.sectionTitles.formMessage}</label>
                                 <textarea id="message" name="message" rows="4" required class="w-full bg-[#050a0e]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric-cyan transition-colors resize-none"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white hover:text-[#050a0e] transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                            <button type="submit" class="w-full py-4 bg-electric-cyan text-[#050a0e] font-black uppercase tracking-widest rounded-xl hover:bg-white hover:text-[#050a0e] transition-all shadow-[0_0_20px_rgba(71,200,245,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] disabled:opacity-50 disabled:cursor-not-allowed">
                                 ${t.sectionTitles.formSubmit}
                             </button>
+                            <p id="my-form-status" class="mt-4 text-center"></p>
                         </form>
                     </div>
                     
@@ -1260,6 +1261,51 @@
         animateStars();
         renderCursor();
         renderApp(); // Renders DOM, applies translations, fires logic
+
+        // --- Formspree Integration ---
+        document.addEventListener('submit', async function(event) {
+            if (event.target && event.target.id === 'my-form') {
+                event.preventDefault();
+                var form = event.target;
+                var status = document.getElementById("my-form-status");
+                var data = new FormData(form);
+                
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = currentLang === 'el' ? 'Αποστολή...' : 'Sending...';
+
+                fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    if (response.ok) {
+                        status.innerHTML = currentLang === 'el' ? "Ευχαριστούμε για το μήνυμά σας! Θα επικοινωνήσουμε σύντομα μαζί σας." : "Thanks for your submission! We will contact you soon.";
+                        status.className = "mt-4 text-green-400 font-bold text-center";
+                        form.reset();
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα κατά την αποστολή της φόρμας." : "Oops! There was a problem submitting your form.";
+                            }
+                            status.className = "mt-4 text-red-400 font-bold text-center";
+                        });
+                    }
+                }).catch(error => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    status.innerHTML = currentLang === 'el' ? "Ωχ! Υπήρξε ένα πρόβλημα κατά την αποστολή της φόρμας." : "Oops! There was a problem submitting your form.";
+                    status.className = "mt-4 text-red-400 font-bold text-center";
+                });
+            }
+        });
 
     </script>
 <script type="module" src="/index.tsx"></script>
