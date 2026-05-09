@@ -1,16 +1,9 @@
-const fs = require('fs');
-const cheerio = require('cheerio');
-
-const indexHtml = fs.readFileSync('index.html', 'utf8');
-const $ = cheerio.load(indexHtml);
-
-let scriptsContent = '';
-$('script').each((i, el) => {
-    let type = $(el).attr('type');
-    if (!type || type === 'text/javascript' || type === 'module') {
-        scriptsContent += $(el).html() + '\n';
-    }
-});
-
-fs.writeFileSync('test_scripts_new.js', scriptsContent, 'utf8');
-console.log('Test logic generated');
+const puppeteer = require('puppeteer');
+(async () => {
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+  const page = await browser.newPage();
+  await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' });
+  const iframes = await page.$$eval('iframe', frames => frames.map(f => f.src));
+  console.log('IFRAMES:', iframes);
+  await browser.close();
+})();
