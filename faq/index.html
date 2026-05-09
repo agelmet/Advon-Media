@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="el" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατασκευή Ιστοσελίδων στην Ελλάδα | Web Design &amp; SEO - Advon Media</title>
+    <title>Συχνές Ερωτήσεις (FAQ) | Advon Media</title>
     <meta name="description" content="Κορυφαία κατασκευή ιστοσελίδων στην Ελλάδα. Επαγγελματικό Web Design, ταχύτατη φόρτωση, Mobile Responsive και πλήρης SEO βελτιστοποίηση. Ανεβείτε στην 1η σελίδα της Google.">
     <meta name="keywords" content="κατασκευή ιστοσελίδων Ελλάδα, web design Ελλάδα, κατασκευή eshop, δημιουργία ιστοσελίδας, SEO ιστοσελίδων">
     <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png">
@@ -423,58 +423,27 @@
     </header>
 
     <main class="relative z-10" id="main-content">
-        <section class="relative min-h-screen flex items-center justify-center pt-20 pb-20 overflow-hidden">
-            <!-- Glowing Orbs -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric-cyan/20 rounded-full blur-[150px] pointer-events-none animate-pulse"></div>
-            <div class="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
-            
-            <div class="container max-w-7xl mx-auto px-6 text-center z-10 animate-float" id="hero-content">
-                </div>
-        </section>
+    <div id="page-content">
+        <section class="min-h-[50vh] pt-40 pb-20 relative px-6">
+            <div class="max-w-4xl mx-auto text-white">
+                
+    <section id="faq" class="py-10 relative">
+        <div class="max-w-3xl mx-auto px-6 relative z-10 w-[calc(100vw-3rem)] md:w-full">
+            <div class="reveal text-center mb-16" id="faq-header">
+            </div>
 
-        <section class="py-20 border-y border-electric-cyan/20 bg-[#0a1418]/60 backdrop-blur-md shadow-[inset_0_0_80px_rgba(0,0,0,0.8)] relative">
-            <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(71,200,245,0.03)_50%,transparent_100%)] pointer-events-none"></div>
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10" id="stats-grid">
-                </div>
-        </section>
+            <div class="space-y-4" id="faq-container">
+            </div>
+        </div>
+    </section>
 
-        <section id="services" class="py-32 relative">
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="reveal text-center mb-20" id="services-header">
-                    </div>
-
-                <div class="grid md:grid-cols-3 gap-8" id="services-grid">
-                    </div>
-
-                <div class="reveal mt-16 text-center" id="services-footer">
-                    </div>
             </div>
         </section>
-
-        
-
-        <section id="reviews" class="py-32 relative overflow-hidden bg-[#050a0e]">
-             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[80%] bg-electric-cyan/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
-
-            <div class="max-w-7xl mx-auto px-6 relative z-10" id="reviews-container">
-            </div>
-        </section>
-
-        <section id="faq" class="py-24 relative">
-            <div class="max-w-3xl mx-auto px-6 relative z-10">
-                <div class="reveal text-center mb-16" id="faq-header">
-                    </div>
-
-                <div class="space-y-4" id="faq-container">
-                    </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
-            <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container">
-                </div>
-        </section>
-    </main>
+    </div>
+    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container"></div>
+    </section>
+</main>
 
     <footer class="py-10 bg-[#050a0e] border-t border-electric-cyan/30 text-gray-400 relative z-20 shadow-[0_-10px_40px_rgba(71,200,245,0.1)]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6" id="footer-content">
@@ -1146,7 +1115,6 @@
             const visibleItems = portfolioItems.slice(start, end);
 
             const grid = document.getElementById('portfolio-grid');
-            if (!grid) return;
             grid.innerHTML = visibleItems.map((item, index) => {
                 const displayName = (currentLang === 'en' && item.nameEn) ? item.nameEn : item.name;
                 return `
