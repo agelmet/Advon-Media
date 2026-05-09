@@ -1,10 +1,16 @@
-const puppeteer = require('puppeteer');
-(async () => {
-  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-  const page = await browser.newPage();
-  page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-  page.on('pageerror', error => console.log('PAGE ERROR:', error.message));
-  page.on('requestfailed', request => console.log('REQUEST FAILED:', request.url(), request.failure().errorText));
-  await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' });
-  await browser.close();
-})();
+const fs = require('fs');
+const cheerio = require('cheerio');
+
+const indexHtml = fs.readFileSync('index.html', 'utf8');
+const $ = cheerio.load(indexHtml);
+
+let scriptsContent = '';
+$('script').each((i, el) => {
+    let type = $(el).attr('type');
+    if (!type || type === 'text/javascript' || type === 'module') {
+        scriptsContent += $(el).html() + '\n';
+    }
+});
+
+fs.writeFileSync('test_scripts.js', scriptsContent, 'utf8');
+console.log('Test logic generated');

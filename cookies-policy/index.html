@@ -1087,7 +1087,7 @@
                 </div>
             `;
 
-            lucide.createIcons();
+            if (window.lucide) window.lucide.createIcons();
             observeElements();
         }
 
@@ -1146,8 +1146,8 @@
             prevBtn.disabled = currentPage === 0;
             nextBtn.disabled = currentPage === totalPages - 1;
             
-            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
-            nextBtn.onclick = () => { if(totalPages - 1 > currentPage) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); if (window.lucide) window.lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            nextBtn.onclick = () => { if(totalPages - 1 > currentPage) { currentPage++; renderPortfolioGrid(); if (window.lucide) window.lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
 
             // Dots
             const el_pagination_dots = document.getElementById('pagination-dots');
@@ -1155,7 +1155,7 @@
                 <div class="h-2 rounded-full transition-all duration-500 ${i === currentPage ? 'w-10 bg-electric-cyan shadow-[0_0_10px_#47c8f5]' : 'w-2 bg-white/20'}"></div>
             `).join('');
             
-            lucide.createIcons();
+            if (window.lucide) window.lucide.createIcons();
             observeElements();
         }
 
@@ -1232,10 +1232,11 @@
 
         // --- Star Canvas Animation ---
         const canvas = document.getElementById('star-canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas ? canvas.getContext('2d') : null;
         let width, height, stars = [], shootingStars = [];
 
         function initStars() {
+            if (!canvas || !ctx) return;
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width;
@@ -1256,6 +1257,7 @@
         }
 
         function animateStars() {
+            if (!canvas || !ctx) return;
             ctx.clearRect(0, 0, width, height);
             
             stars.forEach(star => {

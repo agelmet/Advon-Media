@@ -1,20 +1,11 @@
-<!DOCTYPE html><html lang="el" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Πολιτική Απορρήτου | Advon Media</title>
-    <meta name="description" content="Κορυφαία κατασκευή ιστοσελίδων στην Ελλάδα. Επαγγελματικό Web Design, ταχύτατη φόρτωση, Mobile Responsive και πλήρης SEO βελτιστοποίηση. Ανεβείτε στην 1η σελίδα της Google.">
-    <meta name="keywords" content="κατασκευή ιστοσελίδων Ελλάδα, web design Ελλάδα, κατασκευή eshop, δημιουργία ιστοσελίδας, SEO ιστοσελίδων">
-    <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+
+
       tailwind.config = {
         theme: {
           extend: {
+            maxWidth: {
+              '7xl': '92vw',
+            },
             fontFamily: {
               display: ['Playfair Display', 'serif'],
               body: ['Inter', 'sans-serif'],
@@ -47,446 +38,1310 @@
           }
         }
       }
-    </script>
-
-    <script src="https://unpkg.com/lucide@latest" defer=""></script>
-
-    <style>
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #050a0e; }
-      ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.4); border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #47c8f5; box-shadow: 0 0 10px #47c8f5; }
-      
-      body { background-color: #050a0e; color: white; overflow-x: hidden; cursor: default; }
-      
-      main { transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-      /* --- Animated Cyber Grid --- */
-      .cyber-grid {
-        position: absolute;
-        bottom: 0;
-        left: -50%;
-        width: 200%;
-        height: 100vh;
-        background-image: 
-          linear-gradient(to right, rgba(71, 200, 245, 0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(71, 200, 245, 0.05) 1px, transparent 1px);
-        background-size: 60px 60px;
-        transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px);
-        animation: grid-scroll 20s linear infinite;
-        mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        z-index: 1;
-        pointer-events: none;
-      }
-      @keyframes grid-scroll {
-        0% { transform: perspective(600px) rotateX(70deg) translateY(0) translateZ(-200px); }
-        100% { transform: perspective(600px) rotateX(70deg) translateY(60px) translateZ(-200px); }
-      }
-
-      /* --- Updated Laser Beam Animation --- */
-      .laser-beam-main {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px; /* Wider beam */
-        height: 100%;
-        background: linear-gradient(180deg,
-          rgba(71, 200, 245, 0.1) 0%,
-          rgba(71, 200, 245, 0.4) 10%,
-          rgba(71, 200, 245, 0.9) 30%,
-          rgba(71, 200, 245, 1) 50%,
-          rgba(71, 200, 245, 0.9) 70%,
-          rgba(71, 200, 245, 0.4) 90%,
-          rgba(71, 200, 245, 0.1) 100%
-        );
-        box-shadow: 
-          0 0 30px rgba(71, 200, 245, 0.9),
-          0 0 60px rgba(71, 200, 245, 0.7);
-        animation: laser-pour 1.5s ease-in-out infinite, laser-glow 2s ease-in-out infinite;
-        border-radius: 10px;
-        will-change: transform, opacity;
-        z-index: 2;
-      }
-      
-      .laser-beam-main::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 200px; /* Wider glow */
-        height: 100%;
-        background: linear-gradient(180deg,
-          transparent 0%,
-          rgba(71, 200, 245, 0.05) 20%,
-          rgba(71, 200, 245, 0.15) 50%,
-          rgba(71, 200, 245, 0.05) 80%,
-          transparent 100%
-        );
-        filter: blur(20px);
-      }
-      
-      /* Splash Effect at Bottom */
-      .laser-splash {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 300px;
-        height: 150px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.6) 0%,
-          rgba(71, 200, 245, 0.3) 30%,
-          rgba(71, 200, 245, 0.1) 60%,
-          transparent 100%
-        );
-        filter: blur(30px);
-        animation: splash-pulse 1.5s ease-in-out infinite;
-        will-change: transform, opacity;
-        z-index: 3;
-      }
-      
-      .laser-splash::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 80px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.8) 0%,
-          rgba(71, 200, 245, 0.4) 40%,
-          transparent 100%
-        );
-        filter: blur(15px);
-        animation: splash-inner 1s ease-in-out infinite;
-      }
-      
-      /* Particle drops falling */
-      .laser-particles {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px; /* Adjusted for wider beam */
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      
-      .mask-vertical {
-          -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-      }
-      @keyframes verticalScroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-      }
-      .animate-vertical-scroll {
-          animation: verticalScroll 50s linear infinite;
-      }
-      .animate-vertical-scroll:hover {
-          animation-play-state: paused;
-      }
-      
-      .glass-panel {
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      
-      .laser-particle {
-        position: absolute;
-        width: 4px;
-        height: 30px;
-        background: linear-gradient(180deg, transparent, rgba(71, 200, 245, 0.8), transparent);
-        border-radius: 2px;
-        animation: particle-fall 0.8s linear infinite;
-      }
-      
-      .laser-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-      .laser-particle:nth-child(2) { left: 30%; animation-delay: 0.2s; }
-      .laser-particle:nth-child(3) { left: 50%; animation-delay: 0.4s; }
-      .laser-particle:nth-child(4) { left: 70%; animation-delay: 0.6s; }
-      .laser-particle:nth-child(5) { left: 90%; animation-delay: 0.3s; }
-      
-      @keyframes particle-fall {
-        0% { top: -30px; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { top: 100%; opacity: 0; }
-      }
-      
-      @keyframes laser-pour {
-        0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
-        25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); }
-        50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); }
-        75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); }
-      }
-      
-      @keyframes laser-glow {
-        0%, 100% {
-          box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
-        }
-        50% {
-          box-shadow: 0 0 50px rgba(71, 200, 245, 1), 0 0 100px rgba(71, 200, 245, 0.8);
-        }
-      }
-      
-      @keyframes splash-pulse {
-        0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-        50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
-      }
-      
-      @keyframes splash-inner {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      
-      /* Secondary beams */
-      .laser-beam-secondary {
-        position: absolute;
-        top: 0;
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.1) 15%, rgba(71, 200, 245, 0.4) 40%, rgba(71, 200, 245, 0.5) 50%, rgba(71, 200, 245, 0.4) 60%, rgba(71, 200, 245, 0.1) 85%, transparent 100%);
-        box-shadow: 0 0 10px rgba(71, 200, 245, 0.5);
-        animation: laser-pour-secondary 2s ease-in-out infinite;
-        border-radius: 2px;
-        z-index: 1;
-      }
-      
-      @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-
-      #star-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-      
-      /* --- Custom Ambient Cursor --- */
-      #cursor-glow {
-        position: fixed;
-        top: 0; left: 0;
-        width: 400px; height: 400px;
-        background: radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 9998;
-        transition: width 0.3s, height 0.3s;
-        will-change: transform;
-      }
-
-      .logo-glow { filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5)); transition: filter 0.3s ease; }
-      .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(71, 200, 245, 1)); }
-      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
-      
-      /* --- Enhanced Glass Panel & 3D Tilt --- */
-      .glass-panel { 
-        background: rgba(8, 18, 25, 0.5); 
-        backdrop-filter: blur(16px); 
-        -webkit-backdrop-filter: blur(16px); 
-        border: 1px solid rgba(71, 200, 245, 0.15); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
-        transition: border-color 0.4s ease, box-shadow 0.4s ease; 
-      }
-      .glass-panel:hover { 
-        border-color: rgba(71, 200, 245, 0.5); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.1), 0 15px 40px rgba(71, 200, 245, 0.2); 
-      }
-
-      .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
-      .glass-panel:hover .service-list-item:hover { transform: translateX(8px); color: white; }
-      .service-check-icon { transition: all 0.3s ease; }
-      .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 8px #47c8f5); transform: scale(1.2); }
-      
-      .trust-badge-shimmer { position: relative; overflow: hidden; }
-      .trust-badge-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: badge-shimmer 3s infinite; }
-      @keyframes badge-shimmer { 0%, 80% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(150%); } }
-      
-      .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-      .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
-      .modal-open { overflow: hidden; }
-      
-      /* Glowing Text Selection */
-      ::selection { background: rgba(71, 200, 245, 0.4); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      
-      @keyframes btn-shine {
-        0% { transform: translateX(-150%) skewX(-20deg); }
-        100% { transform: translateX(150%) skewX(-20deg); }
-      }
-      .btn-shine-effect {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-        transform: translateX(-150%) skewX(-20deg);
-        animation: btn-shine 3s infinite;
-      }
-    </style>
-<link rel="stylesheet" href="/index.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Advon Media",
-  "url": "https://advonmedia.com/",
-  "logo": "https://advonmedia.com/logo-url-here.jpg",
-  "description": "Εταιρεία Digital Marketing και Κατασκευής Ιστοσελίδων στην Ελλάδα.",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Greece"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Υπηρεσίες Κατασκευής Ιστοσελίδων",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Κατασκευή Ιστοσελίδας"
-        }
-      }
-    ]
-  }
-}
-</script>
-
-    <style>html, body { max-width: 100vw; overflow-x: hidden; }</style>
-
-    <style>html, body { max-width: 100vw; overflow-x: hidden; }</style>
-</head>
-<body class="font-body antialiased">
-
-    <div id="cursor-glow"></div>
-
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
-      <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
-      <canvas id="star-canvas"></canvas>
-      <div class="cyber-grid"></div>
-      
-      <div class="laser-beam-main">
-        <div class="laser-particles">
-          <div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div>
-        </div>
-      </div>
-      <div class="laser-splash"></div>
-      
-      <!-- Secondary beams for extra effect -->
-      <div class="laser-beam-secondary" style="left: 45%;"></div>
-      <div class="laser-beam-secondary" style="left: 55%;"></div>
-
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
-      <div class="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.04)] blur-[150px] rounded-full"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.85)_100%)]"></div>
-    </div>
-
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/70 backdrop-blur-xl border-b border-electric-cyan/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" id="main-header">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" referrerpolicy="no-referrer" fetchpriority="high" width="40" height="40" class="h-10 w-auto logo-glow">
-            </a>
-
-            <nav id="desktop-nav" class="hidden md:flex items-center gap-10 text-sm font-semibold text-electric-cyan tracking-wide">
-                </nav>
-
-            <div class="flex items-center gap-2 md:gap-4">
-                <button onclick="triggerLanguageSwitch()" id="mobile-lang-btn" class="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all duration-300 cursor-pointer">
-                    </button>
-                
-                <button onclick="triggerLanguageSwitch()" id="lang-btn" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/40 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_25px_rgba(71,200,245,0.6)] transition-all duration-300 cursor-pointer">
-                    </button>
-                
-                <button class="md:hidden text-electric-cyan p-2 hover:bg-electric-cyan/10 rounded-lg transition-colors" id="mobile-menu-btn">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0 relative z-0" id="mobile-menu">
-            <nav id="mobile-nav-content" class="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
-                </nav>
-        </div>
-    </header>
-
-    <main class="relative z-10" id="main-content">
-    <div id="page-content">
-        <section class="min-h-[50vh] pt-40 pb-20 relative px-6">
-            <div class="max-w-4xl mx-auto text-white">
-                
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black font-display text-white drop-shadow-xl">Πολιτική Απορρήτου &amp; Προστασίας Προσωπικών Δεδομένων</h1>
-        </div>
-        <div class="glass-panel p-8 md:p-14 rounded-3xl shadow-2xl text-lg text-gray-300 leading-relaxed space-y-8">
-            
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">1. Εισαγωγή</h2>
-<p>Η Advon Media (εφεξής η "Εταιρεία", "εμείς", "μας") σέβεται απόλυτα το απόρρητό σας και δεσμεύεται να προστατεύει τα προσωπικά σας δεδομένα. Η παρούσα Πολιτική Απορρήτου σας ενημερώνει για το πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα δεδομένα σας όταν επισκέπτεστε την ιστοσελίδα μας ή χρησιμοποιείτε τις υπηρεσίες μας, σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (GDPR).</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">2. Ποια δεδομένα συλλέγουμε</h2>
-<p>Συλλέγουμε μόνο τα απαραίτητα δεδομένα για την παροχή των υπηρεσιών μας: Στοιχεία Επικοινωνίας: Όνομα/Επωνυμία, Email, Τηλέφωνο, καθώς και οποιαδήποτε πληροφορία μοιράζεστε μαζί μας μέσω της φόρμας επικοινωνίας. Τεχνικά Δεδομένα: Διεύθυνση IP, τύπος περιηγητή (browser), συσκευή, και δεδομένα πλοήγησης (βλ. Πολιτική Cookies).</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">3. Πώς χρησιμοποιούμε τα δεδομένα σας</h2>
-<p>Τα δεδομένα σας χρησιμοποιούνται αποκλειστικά για: Την επικοινωνία μαζί σας και την απάντηση στα αιτήματά σας (π.χ. ραντεβού, εκδήλωση ενδιαφέροντος). Την παροχή των υπηρεσιών Web Design, SEO, και διαχείρισης Social Media που έχετε ζητήσει. Τη βελτίωση της εμπειρίας χρήστη στην ιστοσελίδα μας. Την αποστολή ενημερώσεων ή προσφορών, μόνο εφόσον έχετε δώσει τη ρητή συγκατάθεσή σας.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">4. Πώς προστατεύουμε τα δεδομένα σας</h2>
-<p>Λαμβάνουμε όλα τα απαραίτητα τεχνικά και οργανωτικά μέτρα (π.χ. κρυπτογράφηση SSL, ασφαλείς servers) για να διασφαλίσουμε ότι τα προσωπικά σας δεδομένα είναι ασφαλή έναντι μη εξουσιοδοτημένης πρόσβασης, αλλοίωσης ή απώλειας.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">5. Τα δικαιώματά σας</h2>
-<p>Βάσει του GDPR, έχετε τα εξής δικαιώματα: Δικαίωμα πρόσβασης: Να ζητήσετε αντίγραφο των δεδομένων που διατηρούμε για εσάς. Δικαίωμα διόρθωσης: Να ζητήσετε τη διόρθωση ανακριβών στοιχείων. Δικαίωμα διαγραφής (δικαίωμα στη λήθη): Να ζητήσετε τη διαγραφή των δεδομένων σας, εφόσον δεν υπάρχει νομική υποχρέωση διατήρησής τους. Δικαίωμα ανάκλησης συγκατάθεσης: Να ανακαλέσετε οποιαδήποτε στιγμή τη συγκατάθεσή σας. Για να ασκήσετε οποιοδήποτε από τα παραπάνω δικαιώματα, επικοινωνήστε μαζί μας στο: angelos@advonmedia.com</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">6. Χρόνος διατήρησης</h2>
-<p>Διατηρούμε τα δεδομένα σας μόνο για όσο χρονικό διάστημα είναι απαραίτητο για την εκπλήρωση των σκοπών για τους οποίους συλλέχθηκαν ή μέχρι να μας ζητήσετε τη διαγραφή τους.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">7. Αλλαγές στην Πολιτική</h2>
-<p>Ενδέχεται να ανανεώνουμε την παρούσα πολιτική περιστασιακά. Σας προτείνουμε να την ελέγχετε τακτικά.</p>
-
-        </div>
     
-            </div>
-        </section>
-    </div>
-    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container"></div>
-    </section>
-</main>
 
-    <footer class="py-10 bg-[#050a0e] border-t border-electric-cyan/30 text-gray-400 relative z-20 shadow-[0_-10px_40px_rgba(71,200,245,0.1)]">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6" id="footer-content">
-            </div>
-    </footer>
 
-    <div id="modal-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-[#050a0e]/90 backdrop-blur-md transition-opacity opacity-0" id="modal-backdrop"></div>
-        <div id="modal-content" class="relative bg-[#0a1418]/95 backdrop-blur-xl border border-electric-cyan/50 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl shadow-[0_0_60px_rgba(71,200,245,0.2)] transform scale-95 opacity-0 transition-all duration-400 cubic-bezier(0.16, 1, 0.3, 1)">
-            <div class="sticky top-0 right-0 p-4 flex justify-end bg-gradient-to-b from-[#0a1418] to-transparent z-10">
-                <button onclick="closeModal()" class="p-2 rounded-full bg-electric-cyan/10 hover:bg-electric-cyan hover:text-[#050a0e] text-electric-cyan transition-all">
-                    <i data-lucide="x" class="w-6 h-6"></i>
+
+        // --- TRANSLATION & DATA ---
+
+const portfolioHtmlStatic = `<section id="portfolio" class="py-10 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a1418] to-transparent z-0 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-[calc(100vw-3rem)] md:w-full">
+            <div class="reveal text-center mb-20" id="portfolio-header">
+            </div>
+
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 min-h-[400px]">
+            </div>
+
+            <div class="reveal flex justify-center items-center gap-6">
+                <button id="prev-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <div id="pagination-dots" class="flex gap-2">
+                </div>
+                <button id="next-btn" class="p-3 rounded-full border border-electric-cyan/40 bg-[#050a0e] hover:bg-electric-cyan hover:text-[#050a0e] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#050a0e] disabled:hover:text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.1)]">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
                 </button>
             </div>
-            <div class="px-8 pb-10 pt-2">
-                <h3 id="modal-title" class="text-3xl font-display font-black text-white mb-8 text-center leading-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"></h3>
-                <div id="modal-image-container" class="mb-8 hidden"></div>
-                <div id="modal-body" class="space-y-5 text-gray-300 leading-relaxed font-body text-lg"></div>
+        </div>
+    </section>`;
+
+const pagesData = {
+    '/kataskevi-istoselidas': {
+        el: {
+            title: 'Δωρεάν Κατασκευή Ιστοσελίδας',
+            price: 'ΔΩΡΕΑΝ',
+            priceNote: '(μόνο 10.83€/μήνα hosting και δώρο το domain name)',
+            cta: 'Ξεκινήστε Τώρα',
+            cards: [
+                { icon: 'gift', title: 'Δεν είναι μάρκετινγκ τρικ', desc: 'Όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι <strong class="text-white">εντελώς δωρεάν</strong>.' },
+                { icon: 'server', title: 'Μικρό Κόστος Hosting', desc: 'Το μόνο κόστος που δεν μπορούμε να καλύψουμε είναι η φιλοξενία και το domain name (περίπου 10.83€/μήνα). Εμείς αναλαμβάνουμε όλες τις διαδικασίες!' },
+                { icon: 'briefcase', title: 'Χτίζουμε το Πορτφόλιο μας', desc: 'Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται, ώστε στο μέλλον να έχουμε ανταγωνιστικές τιμές.' },
+                { icon: 'trending-up', title: 'Αυξήστε τις Πωλήσεις', desc: 'Αναβαθμίστε την επαγγελματική σας παρουσία και μετατρέψτε τους επισκέπτες σε αφοσιωμένους πελάτες.' },
+                { icon: 'search', title: 'SEO & Κατάταξη', desc: 'Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας που κατακτά υψηλότερες θέσεις στη Google είναι αναγκαιότητα.' },
+                { icon: 'layout-template', title: 'Ψηφιακή Βιτρίνα', desc: 'Λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα 24/7 στους επισκέπτες.' }
+            ]
+        },
+        en: {
+            title: 'Free Website Creation',
+            price: 'FREE',
+            priceNote: '(only 10.83€/month hosting + free domain)',
+            cta: 'Start Now',
+            cards: [
+                { icon: 'gift', title: 'Not a marketing trick', desc: 'The creation that normally costs 700-2000€+ is <strong class="text-white">completely free</strong>.' },
+                { icon: 'server', title: 'Low Hosting Cost', desc: 'The only cost we cannot cover is the hosting and domain name (about 10.83€/month). We handle the process for you!' },
+                { icon: 'briefcase', title: 'Building our Portfolio', desc: 'We do this to add as many websites as possible to our portfolio, so we can charge higher rates in the future.' },
+                { icon: 'trending-up', title: 'Increase Sales', desc: 'Upgrade your professional presence online and turn visitors into loyal clients.' },
+                { icon: 'search', title: 'SEO & Rankings', desc: 'A well-designed website helps you achieve higher positions in search engines.' },
+                { icon: 'layout-template', title: 'Digital Storefront', desc: 'It acts as your digital storefront, offering easy access to information 24/7.' }
+            ]
+        }
+    },
+    '/google-reviews-nfc': {
+        el: {
+            title: 'Ανέπαφη Βάση Αξιολογήσεων',
+            price: '25€',
+            priceNote: 'εφάπαξ (Χωρίς μηνιαία συνδρομή)',
+            cta: 'Αγορά Τώρα',
+            descTop: 'Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Χάνετε πελάτες;</strong> Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της. Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.',
+                '<strong class="text-white">Κυριαρχήστε στα Google Results.</strong> Η Google θέλει να παρέχει τα πιο στοχευμένα και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.',
+                '<strong class="text-white">Η λύση στην ξεχασιά.</strong> Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε. Με την ανέπαφη βάση μας αποκτάτε τουλάχιστον 50 νέες κριτικές κάθε μήνα εύκολα!',
+                '<strong class="text-white">Μαθηματικά:</strong> 8 πελάτες/ημέρα x 20 μέρες = 160. Ακόμα και 50 να αφήσουν κριτική, έχετε 150 νέες σε 3 μήνες.'
+            ]
+        },
+        en: {
+            title: 'Contactless Review Stand',
+            price: '25€',
+            priceNote: 'one-time fee (No monthly subscription)',
+            cta: 'Buy Now',
+            descTop: 'Reach the top of Google and get 150 new reviews in less than 3 months.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Losing clients?</strong> The first thing people do when searching for a business is check its reviews. With few reviews, you likely lose to competitors.',
+                '<strong class="text-white">Dominate Google Results.</strong> Google prioritizes businesses with higher and more valid reviews in local search results.',
+                '<strong class="text-white">The solution to forgetfulness.</strong> Customers forget to leave a review when asked. Our contactless stand makes it instantaneous and frictionless!',
+                '<strong class="text-white">The Math:</strong> 8 customers/day x 20 days = 160. Even if only 50 leave a review, you get 150 new reviews in 3 months.'
+            ]
+        }
+    },
+    '/diaxeirisi-social-media': {
+        el: {
+            title: 'Διαχείριση Social Media',
+            price: '87€/μήνα',
+            priceNote: '7 Ημέρες δωρεάν δοκιμή. No contracts.',
+            cta: 'Δωρεάν Δοκιμή',
+            featuresTitle: 'Τι περιλαμβάνει:',
+            whyTitle: 'Γιατί να Μας Επιλέξετε:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Επαγγελματικά Posts:</strong><br/>Χρησιμοποιούμε εργαλεία αξίας 300+€ (Photoshop, Canvas Pro, Photoroom κ.ά).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Έρευνα Hashtags:</strong><br/>Στοχευμένα hashtags για να βρεθείτε μπροστά σε νέο κοινό.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Κειμενογραφία:</strong><br/>Copywriting που οδηγεί σε πωλήσεις και ραντεβού.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Επαγγελματικό Bio:</strong><br/>Στήσιμο ενός βιογραφικού προφίλ.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Αναφορές Προόδου:</strong><br/>Μηνιαία ανάλυση ανάπτυξης & αλληλεπίδρασης.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Απόλυτη Άνεση:</strong><br/>Μας στέλνετε φώτο, κάνουμε τα πάντα (ή δημιουργούμε δικά μας).' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Χωρίς Ρίσκο', text: 'Μόνο 87€ το μήνα με εγγύηση επιστροφής χρημάτων. Αν δεν ικανοποιηθείτε, επιστρέφουμε τα χρήματα χωρίς ερωτήσεις.' },
+                { icon: 'palette', title: 'Προσωποποιημένα', text: 'Προσαρμόζουμε το περιεχόμενο σύμφωνα με την ταυτότητα της επιχείρησής σας.' },
+                { icon: 'unlock', title: 'Καμία Δέσμευση', text: 'Διακόψτε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια και μικρά γράμματα.' }
+            ]
+        },
+        en: {
+            title: 'Social Media Management',
+            price: '87€/month',
+            priceNote: '7-Days free trial. No contracts.',
+            cta: 'Free Trial',
+            featuresTitle: 'What is included:',
+            whyTitle: 'Why Choose Us:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Professionally Edited Posts:</strong><br/>We use top-tier tools worth 300+€ (Photoshop, Canva Pro, Photoroom, etc).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Hashtag Research:</strong><br/>Targeted hashtags to bring you in front of new audiences.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Professional Copywriting:</strong><br/>Copy designed to convert readers into clients.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Profile Setup:</strong><br/>Crafting a professional and converting profile bio.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Analytics Reports:</strong><br/>Monthly analysis of your growth and interactions.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Ultimate Comfort:</strong><br/>Just send us your photos or we create original engaging designs.' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Risk Free', text: 'Only 87€/month with money-back guarantee. Not happy? Get a refund no questions asked.' },
+                { icon: 'palette', title: 'Personalized Service', text: 'Content strictly tailored to your business identity and style.' },
+                { icon: 'unlock', title: 'No Commitment', text: "Cancel anytime. We don't lock you in long term contracts." }
+            ]
+        }
+    },
+    '/contact': {
+        el: {
+            title: 'Επικοινωνία',
+            desc: 'Είμαστε εδώ για να απαντήσουμε στις ερωτήσεις σας και να απογειώσουμε την επιχείρησή σας.',
+        },
+        en: {
+            title: 'Contact Us',
+            desc: 'We are here to answer all your questions and skyrocket your business.',
+        }
+    }
+};
+
+function generatePageHtml(path, lang, pt) {
+    let html = '';
+    const data = pagesData[path][lang];
+    if (path === '/kataskevi-istoselidas') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
             </div>
         </div>
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20 px-6">
+            ${data.cards.map((c, i) => `
+                <div class="glass-panel p-10 rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 ${(i === 0 || i === 1) ? 'md:col-span-1 lg:col-span-1' : ''} shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-electric-cyan/20">
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 rounded-full bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${c.icon}" class="w-8 h-8 text-electric-cyan"></i>
+                    </div>
+                    <h3 class="text-2xl font-black font-display text-white mb-4 tracking-wide">${c.title}</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">${c.desc}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="text-center max-w-7xl mx-auto px-6 mb-20">
+            <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+        ${portfolioHtmlStatic}
+        `;
+    } else if (path === '/google-reviews-nfc') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 space-y-8">
+                <p class="text-2xl font-bold font-display text-white mb-8 leading-tight">${data.descTop}</p>
+                <div class="space-y-4">
+                    ${data.list.map((item) => `
+                        <div class="flex items-start gap-4 glass-panel p-6 rounded-3xl group hover:border-electric-cyan/40 transition-colors shadow-xl">
+                            <div class="p-3 rounded-full bg-electric-cyan/10 shrink-0 group-hover:bg-electric-cyan/20 transition-colors">
+                                <i data-lucide="check" class="w-6 h-6 text-electric-cyan"></i>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed text-lg">${item}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="pt-8">
+                    <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                        ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center perspective-1000">
+                <div class="relative group transform hover:rotate-y-12 transition-transform duration-700">
+                    <div class="absolute -inset-4 bg-electric-cyan/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="${data.image}" class="relative w-full max-w-md rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10" alt="NFC Stand">
+                </div>
+            </div>
+        </div>
+        `;
+    } else if (path === '/diaxeirisi-social-media') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 space-y-16">
+            
+            <div class="bg-[#050a0e]/40 p-10 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-sm">
+                <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.featuresTitle}</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${data.features.map(f => `
+                        <div class="glass-panel p-8 rounded-3xl flex flex-col gap-4 group hover:-translate-y-2 transition-all shadow-lg hover:shadow-electric-cyan/10">
+                            <i data-lucide="${f.icon}" class="w-12 h-12 text-electric-cyan drop-shadow-md"></i>
+                            <p class="text-gray-400 text-sm leading-relaxed">${f.text}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <div class="relative rounded-[3rem] p-1 overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-electric-cyan/40 via-purple-500/40 to-electric-cyan/40 animate-shimmer bg-[length:200%_auto]"></div>
+                <div class="relative bg-[#050a0e] rounded-[calc(3rem-4px)] p-10 md:p-16 backdrop-blur-xl">
+                    <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.whyTitle}</h3>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        ${data.why.map(w => `
+                            <div class="text-center group border border-white/5 bg-white/[0.02] p-8 rounded-3xl hover:bg-white/[0.05] transition-colors">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-electric-cyan to-blue-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(71,200,245,0.4)]">
+                                    <i data-lucide="${w.icon}" class="w-10 h-10 text-[#050a0e]"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-4">${w.title}</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">${w.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8">
+                <a href="#contact" class="inline-flex items-center gap-3 px-12 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_40px_rgba(71,200,245,0.5)] hover:scale-105">
+                    ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+        `;
+    } else if (path === '/contact') {
+        html = `
+        <div class="text-center mb-16 px-6 max-w-7xl mx-auto">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.contact : 'CONTACT'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">${data.desc}</p>
+        </div>
+        `;
+    } else {
+        // Keeps it identical for blog/faq/legal, since they don't break translation flows necessarily.
+        return '';
+    }
+    
+    return `<section class="min-h-[50vh] pt-40 pb-20 relative">${html}</section>`;
+}
+`;
 
-    <script>
+// Insert the js definitions globally. We do it right before `const translations = {`
+const trIndex = jsContent.indexOf('const translations = {');
+if (trIndex === -1) {
+    console.error('Cannot find translations object?');
+} else {
+    jsContent = jsContent.slice(0, trIndex) + pagesDataJs + '\n\n        ' + jsContent.slice(trIndex);
+}
+
+// Ensure `main` updates `#page-content` in JS too dynamically:
+const renderEnd = jsContent.lastIndexOf('observeElements();');
+const injectDynamic = `
+            const pathname = window.location.pathname.replace(/\\/$/, '') || '/';
+            const dynamicPaths = ['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'];
+            
+            const pc = document.getElementById('page-content');
+            if (pc && dynamicPaths.includes(pathname)) {
+                pc.innerHTML = generatePageHtml(pathname, currentLang, t);
+                if (window.lucide) window.lucide.createIcons(); // Reactivate icons
+            }
+`;
+if (renderEnd !== -1) {
+    jsContent = jsContent.slice(0, renderEnd) + injectDynamic + '\n            ' + jsContent.slice(renderEnd);
+}
+
+$('script').filter((i, el) => $(el).html().includes('function renderApp()')).html(jsContent);
+
+// Add global fix for translation missing in logo
+// Actually we leave logo as is, it has <img ...>
+// We DO NOT write index.html here anymore.
+
+// Now, we generate the static files by interpreting pagesDataJs and calling generatePageHtml
+eval(pagesDataJs);
+
+// Helper
+function generateStaticPage(p) {
+    const virtualDOM = cheerio.load(fs.readFileSync('index.html', 'utf-8'));
+    // Build html text with default 'el'
+    const mockT = { nav: { services: 'Υπηρεσίες', contact: 'Επικοινωνία' } };
+    const htmlOutput = generatePageHtml(p, 'el', mockT);
+    
+    // Inject #reviews after main-content if not present
+    if (virtualDOM('#reviews').length === 0 && reviewsHtml) {
+        virtualDOM('main#main-content').after('<section id="reviews">' + reviewsHtml + '</section>');
+    }
+    
+    if (htmlOutput) {
+        // Strip the existing <div id="page-content">...</div> in the generic index.html
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>`);
+    }
+
+    if (p !== '/') {
+        // If not home, ensure home's own hero and portfolio don't bleed.
+        // Actually our base template is index.html. So we MUST wipe out the specific home stuff inside `main#main-content`.
+        // The above replace already wipes `main-content`.
+        // What about `#hero`, `#stats`, `#services`, etc? They are directly inside the body.
+        virtualDOM('main#main-content').siblings('section, div:not(#reviews):not(#contact):not(footer):not(header):not(#mobile-menu):not(#toast-container)').remove();
+    }
+    
+    // We also need to fix contact section inside `/contact` to NOT display the generic contact block at the bottom again!
+    // Or we just let the generic footer contact exist on all pages. The user said:
+    // "footer menu, the reviews and the contact section are in ALL pages exactly the same"
+    // "and that there is a completely seperate page of contact with just the contact options and menus"
+    // Wait, if /contact has the contact section twice, that's weird. We'll hide it for /contact.
+    if (p === '/contact') {
+        const contactOuter = virtualDOM('#contact-container').prop('outerHTML') || '<div id="contact-container" class="max-w-7xl mx-auto px-6 text-center relative z-10"></div>';
+        virtualDOM('#contact').remove();
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>
+            <section id="contact" class="py-10 relative bg-gradient-to-b from-transparent to-[#0a1418]">
+               ${contactOuter}
+            </section>`);
+    }
+
+    const tp = path.join(__dirname, p);
+    if (!fs.existsSync(tp)) fs.mkdirSync(tp, { recursive: true });
+    fs.writeFileSync(path.join(tp, 'index.html'), virtualDOM.html(), 'utf-8');
+}
+
+['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'].forEach(generateStaticPage);
+
+// Important fallback, we modify the original homepage to ensure it keeps its sections inside main.
+// Actually, earlier I made it single `<main id="main-content"> <div id="page-content"></div> <footer> </main>`. That's already the case for the base `index.html` if I had changed it...? No! My index.html still has `#hero`, `#services` etc dynamically created logic.
+// wait, `index.html` has all its sections hard-coded. So `generateStaticPage` above wiping sections `siblings` works beautifully.
+
+console.log("Pages regenerated globally and completely translated");
+
+)}`;
+
+const pagesData = {
+    '/kataskevi-istoselidas': {
+        el: {
+            title: 'Δωρεάν Κατασκευή Ιστοσελίδας',
+            price: 'ΔΩΡΕΑΝ',
+            priceNote: '(μόνο 10.83€/μήνα hosting και δώρο το domain name)',
+            cta: 'Ξεκινήστε Τώρα',
+            cards: [
+                { icon: 'gift', title: 'Δεν είναι μάρκετινγκ τρικ', desc: 'Όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι <strong class="text-white">εντελώς δωρεάν</strong>.' },
+                { icon: 'server', title: 'Μικρό Κόστος Hosting', desc: 'Το μόνο κόστος που δεν μπορούμε να καλύψουμε είναι η φιλοξενία και το domain name (περίπου 10.83€/μήνα). Εμείς αναλαμβάνουμε όλες τις διαδικασίες!' },
+                { icon: 'briefcase', title: 'Χτίζουμε το Πορτφόλιο μας', desc: 'Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται, ώστε στο μέλλον να έχουμε ανταγωνιστικές τιμές.' },
+                { icon: 'trending-up', title: 'Αυξήστε τις Πωλήσεις', desc: 'Αναβαθμίστε την επαγγελματική σας παρουσία και μετατρέψτε τους επισκέπτες σε αφοσιωμένους πελάτες.' },
+                { icon: 'search', title: 'SEO & Κατάταξη', desc: 'Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας που κατακτά υψηλότερες θέσεις στη Google είναι αναγκαιότητα.' },
+                { icon: 'layout-template', title: 'Ψηφιακή Βιτρίνα', desc: 'Λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα 24/7 στους επισκέπτες.' }
+            ]
+        },
+        en: {
+            title: 'Free Website Creation',
+            price: 'FREE',
+            priceNote: '(only 10.83€/month hosting + free domain)',
+            cta: 'Start Now',
+            cards: [
+                { icon: 'gift', title: 'Not a marketing trick', desc: 'The creation that normally costs 700-2000€+ is <strong class="text-white">completely free</strong>.' },
+                { icon: 'server', title: 'Low Hosting Cost', desc: 'The only cost we cannot cover is the hosting and domain name (about 10.83€/month). We handle the process for you!' },
+                { icon: 'briefcase', title: 'Building our Portfolio', desc: 'We do this to add as many websites as possible to our portfolio, so we can charge higher rates in the future.' },
+                { icon: 'trending-up', title: 'Increase Sales', desc: 'Upgrade your professional presence online and turn visitors into loyal clients.' },
+                { icon: 'search', title: 'SEO & Rankings', desc: 'A well-designed website helps you achieve higher positions in search engines.' },
+                { icon: 'layout-template', title: 'Digital Storefront', desc: 'It acts as your digital storefront, offering easy access to information 24/7.' }
+            ]
+        }
+    },
+    '/google-reviews-nfc': {
+        el: {
+            title: 'Ανέπαφη Βάση Αξιολογήσεων',
+            price: '25€',
+            priceNote: 'εφάπαξ (Χωρίς μηνιαία συνδρομή)',
+            cta: 'Αγορά Τώρα',
+            descTop: 'Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Χάνετε πελάτες;</strong> Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της. Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.',
+                '<strong class="text-white">Κυριαρχήστε στα Google Results.</strong> Η Google θέλει να παρέχει τα πιο στοχευμένα και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.',
+                '<strong class="text-white">Η λύση στην ξεχασιά.</strong> Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε. Με την ανέπαφη βάση μας αποκτάτε τουλάχιστον 50 νέες κριτικές κάθε μήνα εύκολα!',
+                '<strong class="text-white">Μαθηματικά:</strong> 8 πελάτες/ημέρα x 20 μέρες = 160. Ακόμα και 50 να αφήσουν κριτική, έχετε 150 νέες σε 3 μήνες.'
+            ]
+        },
+        en: {
+            title: 'Contactless Review Stand',
+            price: '25€',
+            priceNote: 'one-time fee (No monthly subscription)',
+            cta: 'Buy Now',
+            descTop: 'Reach the top of Google and get 150 new reviews in less than 3 months.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Losing clients?</strong> The first thing people do when searching for a business is check its reviews. With few reviews, you likely lose to competitors.',
+                '<strong class="text-white">Dominate Google Results.</strong> Google prioritizes businesses with higher and more valid reviews in local search results.',
+                '<strong class="text-white">The solution to forgetfulness.</strong> Customers forget to leave a review when asked. Our contactless stand makes it instantaneous and frictionless!',
+                '<strong class="text-white">The Math:</strong> 8 customers/day x 20 days = 160. Even if only 50 leave a review, you get 150 new reviews in 3 months.'
+            ]
+        }
+    },
+    '/diaxeirisi-social-media': {
+        el: {
+            title: 'Διαχείριση Social Media',
+            price: '87€/μήνα',
+            priceNote: '7 Ημέρες δωρεάν δοκιμή. No contracts.',
+            cta: 'Δωρεάν Δοκιμή',
+            featuresTitle: 'Τι περιλαμβάνει:',
+            whyTitle: 'Γιατί να Μας Επιλέξετε:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Επαγγελματικά Posts:</strong><br/>Χρησιμοποιούμε εργαλεία αξίας 300+€ (Photoshop, Canvas Pro, Photoroom κ.ά).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Έρευνα Hashtags:</strong><br/>Στοχευμένα hashtags για να βρεθείτε μπροστά σε νέο κοινό.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Κειμενογραφία:</strong><br/>Copywriting που οδηγεί σε πωλήσεις και ραντεβού.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Επαγγελματικό Bio:</strong><br/>Στήσιμο ενός βιογραφικού προφίλ.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Αναφορές Προόδου:</strong><br/>Μηνιαία ανάλυση ανάπτυξης & αλληλεπίδρασης.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Απόλυτη Άνεση:</strong><br/>Μας στέλνετε φώτο, κάνουμε τα πάντα (ή δημιουργούμε δικά μας).' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Χωρίς Ρίσκο', text: 'Μόνο 87€ το μήνα με εγγύηση επιστροφής χρημάτων. Αν δεν ικανοποιηθείτε, επιστρέφουμε τα χρήματα χωρίς ερωτήσεις.' },
+                { icon: 'palette', title: 'Προσωποποιημένα', text: 'Προσαρμόζουμε το περιεχόμενο σύμφωνα με την ταυτότητα της επιχείρησής σας.' },
+                { icon: 'unlock', title: 'Καμία Δέσμευση', text: 'Διακόψτε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια και μικρά γράμματα.' }
+            ]
+        },
+        en: {
+            title: 'Social Media Management',
+            price: '87€/month',
+            priceNote: '7-Days free trial. No contracts.',
+            cta: 'Free Trial',
+            featuresTitle: 'What is included:',
+            whyTitle: 'Why Choose Us:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Professionally Edited Posts:</strong><br/>We use top-tier tools worth 300+€ (Photoshop, Canva Pro, Photoroom, etc).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Hashtag Research:</strong><br/>Targeted hashtags to bring you in front of new audiences.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Professional Copywriting:</strong><br/>Copy designed to convert readers into clients.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Profile Setup:</strong><br/>Crafting a professional and converting profile bio.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Analytics Reports:</strong><br/>Monthly analysis of your growth and interactions.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Ultimate Comfort:</strong><br/>Just send us your photos or we create original engaging designs.' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Risk Free', text: 'Only 87€/month with money-back guarantee. Not happy? Get a refund no questions asked.' },
+                { icon: 'palette', title: 'Personalized Service', text: 'Content strictly tailored to your business identity and style.' },
+                { icon: 'unlock', title: 'No Commitment', text: "Cancel anytime. We don't lock you in long term contracts." }
+            ]
+        }
+    },
+    '/contact': {
+        el: {
+            title: 'Επικοινωνία',
+            desc: 'Είμαστε εδώ για να απαντήσουμε στις ερωτήσεις σας και να απογειώσουμε την επιχείρησή σας.',
+        },
+        en: {
+            title: 'Contact Us',
+            desc: 'We are here to answer all your questions and skyrocket your business.',
+        }
+    }
+};
+
+function generatePageHtml(path, lang, pt) {
+    let html = '';
+    const data = pagesData[path][lang];
+    if (path === '/kataskevi-istoselidas') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20 px-6">
+            ${data.cards.map((c, i) => `
+                <div class="glass-panel p-10 rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 ${(i === 0 || i === 1) ? 'md:col-span-1 lg:col-span-1' : ''} shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-electric-cyan/20">
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 rounded-full bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${c.icon}" class="w-8 h-8 text-electric-cyan"></i>
+                    </div>
+                    <h3 class="text-2xl font-black font-display text-white mb-4 tracking-wide">${c.title}</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">${c.desc}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="text-center max-w-7xl mx-auto px-6 mb-20">
+            <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+        ${portfolioHtmlStatic}
+        `;
+    } else if (path === '/google-reviews-nfc') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 space-y-8">
+                <p class="text-2xl font-bold font-display text-white mb-8 leading-tight">${data.descTop}</p>
+                <div class="space-y-4">
+                    ${data.list.map((item) => `
+                        <div class="flex items-start gap-4 glass-panel p-6 rounded-3xl group hover:border-electric-cyan/40 transition-colors shadow-xl">
+                            <div class="p-3 rounded-full bg-electric-cyan/10 shrink-0 group-hover:bg-electric-cyan/20 transition-colors">
+                                <i data-lucide="check" class="w-6 h-6 text-electric-cyan"></i>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed text-lg">${item}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="pt-8">
+                    <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                        ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center perspective-1000">
+                <div class="relative group transform hover:rotate-y-12 transition-transform duration-700">
+                    <div class="absolute -inset-4 bg-electric-cyan/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="${data.image}" class="relative w-full max-w-md rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10" alt="NFC Stand">
+                </div>
+            </div>
+        </div>
+        `;
+    } else if (path === '/diaxeirisi-social-media') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 space-y-16">
+            
+            <div class="bg-[#050a0e]/40 p-10 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-sm">
+                <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.featuresTitle}</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${data.features.map(f => `
+                        <div class="glass-panel p-8 rounded-3xl flex flex-col gap-4 group hover:-translate-y-2 transition-all shadow-lg hover:shadow-electric-cyan/10">
+                            <i data-lucide="${f.icon}" class="w-12 h-12 text-electric-cyan drop-shadow-md"></i>
+                            <p class="text-gray-400 text-sm leading-relaxed">${f.text}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <div class="relative rounded-[3rem] p-1 overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-electric-cyan/40 via-purple-500/40 to-electric-cyan/40 animate-shimmer bg-[length:200%_auto]"></div>
+                <div class="relative bg-[#050a0e] rounded-[calc(3rem-4px)] p-10 md:p-16 backdrop-blur-xl">
+                    <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.whyTitle}</h3>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        ${data.why.map(w => `
+                            <div class="text-center group border border-white/5 bg-white/[0.02] p-8 rounded-3xl hover:bg-white/[0.05] transition-colors">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-electric-cyan to-blue-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(71,200,245,0.4)]">
+                                    <i data-lucide="${w.icon}" class="w-10 h-10 text-[#050a0e]"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-4">${w.title}</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">${w.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8">
+                <a href="#contact" class="inline-flex items-center gap-3 px-12 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_40px_rgba(71,200,245,0.5)] hover:scale-105">
+                    ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+        `;
+    } else if (path === '/contact') {
+        html = `
+        <div class="text-center mb-16 px-6 max-w-7xl mx-auto">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.contact : 'CONTACT'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">${data.desc}</p>
+        </div>
+        `;
+    } else {
+        // Keeps it identical for blog/faq/legal, since they don't break translation flows necessarily.
+        return '';
+    }
+    
+    return `<section class="min-h-[50vh] pt-40 pb-20 relative">${html}</section>`;
+}
+`;
+
+// Insert the js definitions globally. We do it right before `const translations = {`
+const trIndex = jsContent.indexOf('const translations = {');
+if (trIndex === -1) {
+    console.error('Cannot find translations object?');
+} else {
+    jsContent = jsContent.slice(0, trIndex) + pagesDataJs + '\n\n        ' + jsContent.slice(trIndex);
+}
+
+// Ensure `main` updates `#page-content` in JS too dynamically:
+const renderEnd = jsContent.lastIndexOf('observeElements();');
+const injectDynamic = `
+            const pathname = window.location.pathname.replace(/\\/$/, '') || '/';
+            const dynamicPaths = ['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'];
+            
+            const pc = document.getElementById('page-content');
+            if (pc && dynamicPaths.includes(pathname)) {
+                pc.innerHTML = generatePageHtml(pathname, currentLang, t);
+                if (window.lucide) window.lucide.createIcons(); // Reactivate icons
+            }
+`;
+if (renderEnd !== -1) {
+    jsContent = jsContent.slice(0, renderEnd) + injectDynamic + '\n            ' + jsContent.slice(renderEnd);
+}
+
+$('script').filter((i, el) => $(el).html().includes('function renderApp()')).html(jsContent);
+
+// Add global fix for translation missing in logo
+// Actually we leave logo as is, it has <img ...>
+// We DO NOT write index.html here anymore.
+
+// Now, we generate the static files by interpreting pagesDataJs and calling generatePageHtml
+eval(pagesDataJs);
+
+// Helper
+function generateStaticPage(p) {
+    const virtualDOM = cheerio.load(fs.readFileSync('index.html', 'utf-8'));
+    // Build html text with default 'el'
+    const mockT = { nav: { services: 'Υπηρεσίες', contact: 'Επικοινωνία' } };
+    const htmlOutput = generatePageHtml(p, 'el', mockT);
+    
+    // Inject #reviews after main-content if not present
+    if (virtualDOM('#reviews').length === 0 && reviewsHtml) {
+        virtualDOM('main#main-content').after('<section id="reviews">' + reviewsHtml + '</section>');
+    }
+    
+    if (htmlOutput) {
+        // Strip the existing <div id="page-content">...</div> in the generic index.html
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>`);
+    }
+
+    if (p !== '/') {
+        // If not home, ensure home's own hero and portfolio don't bleed.
+        // Actually our base template is index.html. So we MUST wipe out the specific home stuff inside `main#main-content`.
+        // The above replace already wipes `main-content`.
+        // What about `#hero`, `#stats`, `#services`, etc? They are directly inside the body.
+        virtualDOM('main#main-content').siblings('section, div:not(#reviews):not(#contact):not(footer):not(header):not(#mobile-menu):not(#toast-container)').remove();
+    }
+    
+    // We also need to fix contact section inside `/contact` to NOT display the generic contact block at the bottom again!
+    // Or we just let the generic footer contact exist on all pages. The user said:
+    // "footer menu, the reviews and the contact section are in ALL pages exactly the same"
+    // "and that there is a completely seperate page of contact with just the contact options and menus"
+    // Wait, if /contact has the contact section twice, that's weird. We'll hide it for /contact.
+    if (p === '/contact') {
+        const contactOuter = virtualDOM('#contact-container').prop('outerHTML') || '<div id="contact-container" class="max-w-7xl mx-auto px-6 text-center relative z-10"></div>';
+        virtualDOM('#contact').remove();
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>
+            <section id="contact" class="py-10 relative bg-gradient-to-b from-transparent to-[#0a1418]">
+               ${contactOuter}
+            </section>`);
+    }
+
+    const tp = path.join(__dirname, p);
+    if (!fs.existsSync(tp)) fs.mkdirSync(tp, { recursive: true });
+    fs.writeFileSync(path.join(tp, 'index.html'), virtualDOM.html(), 'utf-8');
+}
+
+['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'].forEach(generateStaticPage);
+
+// Important fallback, we modify the original homepage to ensure it keeps its sections inside main.
+// Actually, earlier I made it single `<main id="main-content"> <div id="page-content"></div> <footer> </main>`. That's already the case for the base `index.html` if I had changed it...? No! My index.html still has `#hero`, `#services` etc dynamically created logic.
+// wait, `index.html` has all its sections hard-coded. So `generateStaticPage` above wiping sections `siblings` works beautifully.
+
+console.log("Pages regenerated globally and completely translated");
+
+)}`;
+
+const pagesData = {
+    '/kataskevi-istoselidas': {
+        el: {
+            title: 'Δωρεάν Κατασκευή Ιστοσελίδας',
+            price: 'ΔΩΡΕΑΝ',
+            priceNote: '(μόνο 10.83€/μήνα hosting και δώρο το domain name)',
+            cta: 'Ξεκινήστε Τώρα',
+            cards: [
+                { icon: 'gift', title: 'Δεν είναι μάρκετινγκ τρικ', desc: 'Όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι <strong class="text-white">εντελώς δωρεάν</strong>.' },
+                { icon: 'server', title: 'Μικρό Κόστος Hosting', desc: 'Το μόνο κόστος που δεν μπορούμε να καλύψουμε είναι η φιλοξενία και το domain name (περίπου 10.83€/μήνα). Εμείς αναλαμβάνουμε όλες τις διαδικασίες!' },
+                { icon: 'briefcase', title: 'Χτίζουμε το Πορτφόλιο μας', desc: 'Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται, ώστε στο μέλλον να έχουμε ανταγωνιστικές τιμές.' },
+                { icon: 'trending-up', title: 'Αυξήστε τις Πωλήσεις', desc: 'Αναβαθμίστε την επαγγελματική σας παρουσία και μετατρέψτε τους επισκέπτες σε αφοσιωμένους πελάτες.' },
+                { icon: 'search', title: 'SEO & Κατάταξη', desc: 'Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας που κατακτά υψηλότερες θέσεις στη Google είναι αναγκαιότητα.' },
+                { icon: 'layout-template', title: 'Ψηφιακή Βιτρίνα', desc: 'Λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα 24/7 στους επισκέπτες.' }
+            ]
+        },
+        en: {
+            title: 'Free Website Creation',
+            price: 'FREE',
+            priceNote: '(only 10.83€/month hosting + free domain)',
+            cta: 'Start Now',
+            cards: [
+                { icon: 'gift', title: 'Not a marketing trick', desc: 'The creation that normally costs 700-2000€+ is <strong class="text-white">completely free</strong>.' },
+                { icon: 'server', title: 'Low Hosting Cost', desc: 'The only cost we cannot cover is the hosting and domain name (about 10.83€/month). We handle the process for you!' },
+                { icon: 'briefcase', title: 'Building our Portfolio', desc: 'We do this to add as many websites as possible to our portfolio, so we can charge higher rates in the future.' },
+                { icon: 'trending-up', title: 'Increase Sales', desc: 'Upgrade your professional presence online and turn visitors into loyal clients.' },
+                { icon: 'search', title: 'SEO & Rankings', desc: 'A well-designed website helps you achieve higher positions in search engines.' },
+                { icon: 'layout-template', title: 'Digital Storefront', desc: 'It acts as your digital storefront, offering easy access to information 24/7.' }
+            ]
+        }
+    },
+    '/google-reviews-nfc': {
+        el: {
+            title: 'Ανέπαφη Βάση Αξιολογήσεων',
+            price: '25€',
+            priceNote: 'εφάπαξ (Χωρίς μηνιαία συνδρομή)',
+            cta: 'Αγορά Τώρα',
+            descTop: 'Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Χάνετε πελάτες;</strong> Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της. Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.',
+                '<strong class="text-white">Κυριαρχήστε στα Google Results.</strong> Η Google θέλει να παρέχει τα πιο στοχευμένα και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.',
+                '<strong class="text-white">Η λύση στην ξεχασιά.</strong> Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε. Με την ανέπαφη βάση μας αποκτάτε τουλάχιστον 50 νέες κριτικές κάθε μήνα εύκολα!',
+                '<strong class="text-white">Μαθηματικά:</strong> 8 πελάτες/ημέρα x 20 μέρες = 160. Ακόμα και 50 να αφήσουν κριτική, έχετε 150 νέες σε 3 μήνες.'
+            ]
+        },
+        en: {
+            title: 'Contactless Review Stand',
+            price: '25€',
+            priceNote: 'one-time fee (No monthly subscription)',
+            cta: 'Buy Now',
+            descTop: 'Reach the top of Google and get 150 new reviews in less than 3 months.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Losing clients?</strong> The first thing people do when searching for a business is check its reviews. With few reviews, you likely lose to competitors.',
+                '<strong class="text-white">Dominate Google Results.</strong> Google prioritizes businesses with higher and more valid reviews in local search results.',
+                '<strong class="text-white">The solution to forgetfulness.</strong> Customers forget to leave a review when asked. Our contactless stand makes it instantaneous and frictionless!',
+                '<strong class="text-white">The Math:</strong> 8 customers/day x 20 days = 160. Even if only 50 leave a review, you get 150 new reviews in 3 months.'
+            ]
+        }
+    },
+    '/diaxeirisi-social-media': {
+        el: {
+            title: 'Διαχείριση Social Media',
+            price: '87€/μήνα',
+            priceNote: '7 Ημέρες δωρεάν δοκιμή. No contracts.',
+            cta: 'Δωρεάν Δοκιμή',
+            featuresTitle: 'Τι περιλαμβάνει:',
+            whyTitle: 'Γιατί να Μας Επιλέξετε:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Επαγγελματικά Posts:</strong><br/>Χρησιμοποιούμε εργαλεία αξίας 300+€ (Photoshop, Canvas Pro, Photoroom κ.ά).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Έρευνα Hashtags:</strong><br/>Στοχευμένα hashtags για να βρεθείτε μπροστά σε νέο κοινό.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Κειμενογραφία:</strong><br/>Copywriting που οδηγεί σε πωλήσεις και ραντεβού.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Επαγγελματικό Bio:</strong><br/>Στήσιμο ενός βιογραφικού προφίλ.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Αναφορές Προόδου:</strong><br/>Μηνιαία ανάλυση ανάπτυξης & αλληλεπίδρασης.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Απόλυτη Άνεση:</strong><br/>Μας στέλνετε φώτο, κάνουμε τα πάντα (ή δημιουργούμε δικά μας).' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Χωρίς Ρίσκο', text: 'Μόνο 87€ το μήνα με εγγύηση επιστροφής χρημάτων. Αν δεν ικανοποιηθείτε, επιστρέφουμε τα χρήματα χωρίς ερωτήσεις.' },
+                { icon: 'palette', title: 'Προσωποποιημένα', text: 'Προσαρμόζουμε το περιεχόμενο σύμφωνα με την ταυτότητα της επιχείρησής σας.' },
+                { icon: 'unlock', title: 'Καμία Δέσμευση', text: 'Διακόψτε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια και μικρά γράμματα.' }
+            ]
+        },
+        en: {
+            title: 'Social Media Management',
+            price: '87€/month',
+            priceNote: '7-Days free trial. No contracts.',
+            cta: 'Free Trial',
+            featuresTitle: 'What is included:',
+            whyTitle: 'Why Choose Us:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Professionally Edited Posts:</strong><br/>We use top-tier tools worth 300+€ (Photoshop, Canva Pro, Photoroom, etc).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Hashtag Research:</strong><br/>Targeted hashtags to bring you in front of new audiences.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Professional Copywriting:</strong><br/>Copy designed to convert readers into clients.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Profile Setup:</strong><br/>Crafting a professional and converting profile bio.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Analytics Reports:</strong><br/>Monthly analysis of your growth and interactions.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Ultimate Comfort:</strong><br/>Just send us your photos or we create original engaging designs.' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Risk Free', text: 'Only 87€/month with money-back guarantee. Not happy? Get a refund no questions asked.' },
+                { icon: 'palette', title: 'Personalized Service', text: 'Content strictly tailored to your business identity and style.' },
+                { icon: 'unlock', title: 'No Commitment', text: "Cancel anytime. We don't lock you in long term contracts." }
+            ]
+        }
+    },
+    '/contact': {
+        el: {
+            title: 'Επικοινωνία',
+            desc: 'Είμαστε εδώ για να απαντήσουμε στις ερωτήσεις σας και να απογειώσουμε την επιχείρησή σας.',
+        },
+        en: {
+            title: 'Contact Us',
+            desc: 'We are here to answer all your questions and skyrocket your business.',
+        }
+    }
+};
+
+function generatePageHtml(path, lang, pt) {
+    let html = '';
+    const data = pagesData[path][lang];
+    if (path === '/kataskevi-istoselidas') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20 px-6">
+            ${data.cards.map((c, i) => `
+                <div class="glass-panel p-10 rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 ${(i === 0 || i === 1) ? 'md:col-span-1 lg:col-span-1' : ''} shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-electric-cyan/20">
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 rounded-full bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${c.icon}" class="w-8 h-8 text-electric-cyan"></i>
+                    </div>
+                    <h3 class="text-2xl font-black font-display text-white mb-4 tracking-wide">${c.title}</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">${c.desc}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="text-center max-w-7xl mx-auto px-6 mb-20">
+            <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+        ${portfolioHtmlStatic}
+        `;
+    } else if (path === '/google-reviews-nfc') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 space-y-8">
+                <p class="text-2xl font-bold font-display text-white mb-8 leading-tight">${data.descTop}</p>
+                <div class="space-y-4">
+                    ${data.list.map((item) => `
+                        <div class="flex items-start gap-4 glass-panel p-6 rounded-3xl group hover:border-electric-cyan/40 transition-colors shadow-xl">
+                            <div class="p-3 rounded-full bg-electric-cyan/10 shrink-0 group-hover:bg-electric-cyan/20 transition-colors">
+                                <i data-lucide="check" class="w-6 h-6 text-electric-cyan"></i>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed text-lg">${item}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="pt-8">
+                    <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                        ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center perspective-1000">
+                <div class="relative group transform hover:rotate-y-12 transition-transform duration-700">
+                    <div class="absolute -inset-4 bg-electric-cyan/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="${data.image}" class="relative w-full max-w-md rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10" alt="NFC Stand">
+                </div>
+            </div>
+        </div>
+        `;
+    } else if (path === '/diaxeirisi-social-media') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 space-y-16">
+            
+            <div class="bg-[#050a0e]/40 p-10 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-sm">
+                <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.featuresTitle}</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${data.features.map(f => `
+                        <div class="glass-panel p-8 rounded-3xl flex flex-col gap-4 group hover:-translate-y-2 transition-all shadow-lg hover:shadow-electric-cyan/10">
+                            <i data-lucide="${f.icon}" class="w-12 h-12 text-electric-cyan drop-shadow-md"></i>
+                            <p class="text-gray-400 text-sm leading-relaxed">${f.text}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <div class="relative rounded-[3rem] p-1 overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-electric-cyan/40 via-purple-500/40 to-electric-cyan/40 animate-shimmer bg-[length:200%_auto]"></div>
+                <div class="relative bg-[#050a0e] rounded-[calc(3rem-4px)] p-10 md:p-16 backdrop-blur-xl">
+                    <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.whyTitle}</h3>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        ${data.why.map(w => `
+                            <div class="text-center group border border-white/5 bg-white/[0.02] p-8 rounded-3xl hover:bg-white/[0.05] transition-colors">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-electric-cyan to-blue-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(71,200,245,0.4)]">
+                                    <i data-lucide="${w.icon}" class="w-10 h-10 text-[#050a0e]"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-4">${w.title}</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">${w.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8">
+                <a href="#contact" class="inline-flex items-center gap-3 px-12 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_40px_rgba(71,200,245,0.5)] hover:scale-105">
+                    ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+        `;
+    } else if (path === '/contact') {
+        html = `
+        <div class="text-center mb-16 px-6 max-w-7xl mx-auto">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.contact : 'CONTACT'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">${data.desc}</p>
+        </div>
+        `;
+    } else {
+        // Keeps it identical for blog/faq/legal, since they don't break translation flows necessarily.
+        return '';
+    }
+    
+    return `<section class="min-h-[50vh] pt-40 pb-20 relative">${html}</section>`;
+}
+`;
+
+// Insert the js definitions globally. We do it right before `const translations = {`
+const trIndex = jsContent.indexOf('const translations = {');
+if (trIndex === -1) {
+    console.error('Cannot find translations object?');
+} else {
+    jsContent = jsContent.slice(0, trIndex) + pagesDataJs + '\n\n        ' + jsContent.slice(trIndex);
+}
+
+// Ensure `main` updates `#page-content` in JS too dynamically:
+const renderEnd = jsContent.lastIndexOf('observeElements();');
+const injectDynamic = `
+            const pathname = window.location.pathname.replace(/\\/$/, '') || '/';
+            const dynamicPaths = ['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'];
+            
+            const pc = document.getElementById('page-content');
+            if (pc && dynamicPaths.includes(pathname)) {
+                pc.innerHTML = generatePageHtml(pathname, currentLang, t);
+                if (window.lucide) window.lucide.createIcons(); // Reactivate icons
+            }
+`;
+if (renderEnd !== -1) {
+    jsContent = jsContent.slice(0, renderEnd) + injectDynamic + '\n            ' + jsContent.slice(renderEnd);
+}
+
+$('script').filter((i, el) => $(el).html().includes('function renderApp()')).html(jsContent);
+
+// Add global fix for translation missing in logo
+// Actually we leave logo as is, it has <img ...>
+// We DO NOT write index.html here anymore.
+
+// Now, we generate the static files by interpreting pagesDataJs and calling generatePageHtml
+eval(pagesDataJs);
+
+// Helper
+function generateStaticPage(p) {
+    const virtualDOM = cheerio.load(fs.readFileSync('index.html', 'utf-8'));
+    // Build html text with default 'el'
+    const mockT = { nav: { services: 'Υπηρεσίες', contact: 'Επικοινωνία' } };
+    const htmlOutput = generatePageHtml(p, 'el', mockT);
+    
+    // Inject #reviews after main-content if not present
+    if (virtualDOM('#reviews').length === 0 && reviewsHtml) {
+        virtualDOM('main#main-content').after('<section id="reviews">' + reviewsHtml + '</section>');
+    }
+    
+    if (htmlOutput) {
+        // Strip the existing <div id="page-content">...</div> in the generic index.html
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>`);
+    }
+
+    if (p !== '/') {
+        // If not home, ensure home's own hero and portfolio don't bleed.
+        // Actually our base template is index.html. So we MUST wipe out the specific home stuff inside `main#main-content`.
+        // The above replace already wipes `main-content`.
+        // What about `#hero`, `#stats`, `#services`, etc? They are directly inside the body.
+        virtualDOM('main#main-content').siblings('section, div:not(#reviews):not(#contact):not(footer):not(header):not(#mobile-menu):not(#toast-container)').remove();
+    }
+    
+    // We also need to fix contact section inside `/contact` to NOT display the generic contact block at the bottom again!
+    // Or we just let the generic footer contact exist on all pages. The user said:
+    // "footer menu, the reviews and the contact section are in ALL pages exactly the same"
+    // "and that there is a completely seperate page of contact with just the contact options and menus"
+    // Wait, if /contact has the contact section twice, that's weird. We'll hide it for /contact.
+    if (p === '/contact') {
+        const contactOuter = virtualDOM('#contact-container').prop('outerHTML') || '<div id="contact-container" class="max-w-7xl mx-auto px-6 text-center relative z-10"></div>';
+        virtualDOM('#contact').remove();
+        virtualDOM('main#main-content').html(`<div id="page-content">${htmlOutput}</div>
+            <section id="contact" class="py-10 relative bg-gradient-to-b from-transparent to-[#0a1418]">
+               ${contactOuter}
+            </section>`);
+    }
+
+    const tp = path.join(__dirname, p);
+    if (!fs.existsSync(tp)) fs.mkdirSync(tp, { recursive: true });
+    fs.writeFileSync(path.join(tp, 'index.html'), virtualDOM.html(), 'utf-8');
+}
+
+['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'].forEach(generateStaticPage);
+
+// Important fallback, we modify the original homepage to ensure it keeps its sections inside main.
+// Actually, earlier I made it single `<main id="main-content"> <div id="page-content"></div> <footer> </main>`. That's already the case for the base `index.html` if I had changed it...? No! My index.html still has `#hero`, `#services` etc dynamically created logic.
+// wait, `index.html` has all its sections hard-coded. So `generateStaticPage` above wiping sections `siblings` works beautifully.
+
+console.log("Pages regenerated globally and completely translated");
+
+)}`;
+
+const pagesData = {
+    '/kataskevi-istoselidas': {
+        el: {
+            title: 'Δωρεάν Κατασκευή Ιστοσελίδας',
+            price: 'ΔΩΡΕΑΝ',
+            priceNote: '(μόνο 10.83€/μήνα hosting και δώρο το domain name)',
+            cta: 'Ξεκινήστε Τώρα',
+            cards: [
+                { icon: 'gift', title: 'Δεν είναι μάρκετινγκ τρικ', desc: 'Όντως η κατασκευή που κοστίζει κανονικά 700-2000€+, είναι <strong class="text-white">εντελώς δωρεάν</strong>.' },
+                { icon: 'server', title: 'Μικρό Κόστος Hosting', desc: 'Το μόνο κόστος που δεν μπορούμε να καλύψουμε είναι η φιλοξενία και το domain name (περίπου 10.83€/μήνα). Εμείς αναλαμβάνουμε όλες τις διαδικασίες!' },
+                { icon: 'briefcase', title: 'Χτίζουμε το Πορτφόλιο μας', desc: 'Το κάνουμε αυτό γιατί θέλουμε να προσθέσουμε όσες περισσότερες ιστοσελίδες γίνεται, ώστε στο μέλλον να έχουμε ανταγωνιστικές τιμές.' },
+                { icon: 'trending-up', title: 'Αυξήστε τις Πωλήσεις', desc: 'Αναβαθμίστε την επαγγελματική σας παρουσία και μετατρέψτε τους επισκέπτες σε αφοσιωμένους πελάτες.' },
+                { icon: 'search', title: 'SEO & Κατάταξη', desc: 'Το 2025, η κατοχή μιας επαγγελματικής ιστοσελίδας που κατακτά υψηλότερες θέσεις στη Google είναι αναγκαιότητα.' },
+                { icon: 'layout-template', title: 'Ψηφιακή Βιτρίνα', desc: 'Λειτουργεί ως η ψηφιακή σας βιτρίνα, ενισχύοντας την επαγγελματική σας εικόνα 24/7 στους επισκέπτες.' }
+            ]
+        },
+        en: {
+            title: 'Free Website Creation',
+            price: 'FREE',
+            priceNote: '(only 10.83€/month hosting + free domain)',
+            cta: 'Start Now',
+            cards: [
+                { icon: 'gift', title: 'Not a marketing trick', desc: 'The creation that normally costs 700-2000€+ is <strong class="text-white">completely free</strong>.' },
+                { icon: 'server', title: 'Low Hosting Cost', desc: 'The only cost we cannot cover is the hosting and domain name (about 10.83€/month). We handle the process for you!' },
+                { icon: 'briefcase', title: 'Building our Portfolio', desc: 'We do this to add as many websites as possible to our portfolio, so we can charge higher rates in the future.' },
+                { icon: 'trending-up', title: 'Increase Sales', desc: 'Upgrade your professional presence online and turn visitors into loyal clients.' },
+                { icon: 'search', title: 'SEO & Rankings', desc: 'A well-designed website helps you achieve higher positions in search engines.' },
+                { icon: 'layout-template', title: 'Digital Storefront', desc: 'It acts as your digital storefront, offering easy access to information 24/7.' }
+            ]
+        }
+    },
+    '/google-reviews-nfc': {
+        el: {
+            title: 'Ανέπαφη Βάση Αξιολογήσεων',
+            price: '25€',
+            priceNote: 'εφάπαξ (Χωρίς μηνιαία συνδρομή)',
+            cta: 'Αγορά Τώρα',
+            descTop: 'Ανεβείτε στη κορυφή της Google και αποκτήστε 150 νέες αξιολογήσεις σε λιγότερο απο 3 μήνες.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Χάνετε πελάτες;</strong> Το πρώτο που κάνει κάποιος όταν αναζητεί μια επιχείρηση είναι να δει τις κριτικές της. Αν έχετε ελάχιστες είναι πολύ πιθανό να χάσετε πελάτες από τον ανταγωνισμό.',
+                '<strong class="text-white">Κυριαρχήστε στα Google Results.</strong> Η Google θέλει να παρέχει τα πιο στοχευμένα και έγκυρα αποτελέσματα δίνοντας έτσι κύρια σημασία στις αξιολογήσεις.',
+                '<strong class="text-white">Η λύση στην ξεχασιά.</strong> Όταν το ζητάτε από τους πελάτες σας συνήθως το ξεχνάνε. Με την ανέπαφη βάση μας αποκτάτε τουλάχιστον 50 νέες κριτικές κάθε μήνα εύκολα!',
+                '<strong class="text-white">Μαθηματικά:</strong> 8 πελάτες/ημέρα x 20 μέρες = 160. Ακόμα και 50 να αφήσουν κριτική, έχετε 150 νέες σε 3 μήνες.'
+            ]
+        },
+        en: {
+            title: 'Contactless Review Stand',
+            price: '25€',
+            priceNote: 'one-time fee (No monthly subscription)',
+            cta: 'Buy Now',
+            descTop: 'Reach the top of Google and get 150 new reviews in less than 3 months.',
+            image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6724bf7a4eb48eb705a7b389.gif',
+            list: [
+                '<strong class="text-white">Losing clients?</strong> The first thing people do when searching for a business is check its reviews. With few reviews, you likely lose to competitors.',
+                '<strong class="text-white">Dominate Google Results.</strong> Google prioritizes businesses with higher and more valid reviews in local search results.',
+                '<strong class="text-white">The solution to forgetfulness.</strong> Customers forget to leave a review when asked. Our contactless stand makes it instantaneous and frictionless!',
+                '<strong class="text-white">The Math:</strong> 8 customers/day x 20 days = 160. Even if only 50 leave a review, you get 150 new reviews in 3 months.'
+            ]
+        }
+    },
+    '/diaxeirisi-social-media': {
+        el: {
+            title: 'Διαχείριση Social Media',
+            price: '87€/μήνα',
+            priceNote: '7 Ημέρες δωρεάν δοκιμή. No contracts.',
+            cta: 'Δωρεάν Δοκιμή',
+            featuresTitle: 'Τι περιλαμβάνει:',
+            whyTitle: 'Γιατί να Μας Επιλέξετε:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Επαγγελματικά Posts:</strong><br/>Χρησιμοποιούμε εργαλεία αξίας 300+€ (Photoshop, Canvas Pro, Photoroom κ.ά).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Έρευνα Hashtags:</strong><br/>Στοχευμένα hashtags για να βρεθείτε μπροστά σε νέο κοινό.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Κειμενογραφία:</strong><br/>Copywriting που οδηγεί σε πωλήσεις και ραντεβού.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Επαγγελματικό Bio:</strong><br/>Στήσιμο ενός βιογραφικού προφίλ.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Αναφορές Προόδου:</strong><br/>Μηνιαία ανάλυση ανάπτυξης & αλληλεπίδρασης.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Απόλυτη Άνεση:</strong><br/>Μας στέλνετε φώτο, κάνουμε τα πάντα (ή δημιουργούμε δικά μας).' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Χωρίς Ρίσκο', text: 'Μόνο 87€ το μήνα με εγγύηση επιστροφής χρημάτων. Αν δεν ικανοποιηθείτε, επιστρέφουμε τα χρήματα χωρίς ερωτήσεις.' },
+                { icon: 'palette', title: 'Προσωποποιημένα', text: 'Προσαρμόζουμε το περιεχόμενο σύμφωνα με την ταυτότητα της επιχείρησής σας.' },
+                { icon: 'unlock', title: 'Καμία Δέσμευση', text: 'Διακόψτε οποιαδήποτε στιγμή χωρίς μακροχρόνια συμβόλαια και μικρά γράμματα.' }
+            ]
+        },
+        en: {
+            title: 'Social Media Management',
+            price: '87€/month',
+            priceNote: '7-Days free trial. No contracts.',
+            cta: 'Free Trial',
+            featuresTitle: 'What is included:',
+            whyTitle: 'Why Choose Us:',
+            features: [
+                { icon: 'image', text: '<strong class="text-white text-base">Professionally Edited Posts:</strong><br/>We use top-tier tools worth 300+€ (Photoshop, Canva Pro, Photoroom, etc).' },
+                { icon: 'hash', text: '<strong class="text-white text-base">Hashtag Research:</strong><br/>Targeted hashtags to bring you in front of new audiences.' },
+                { icon: 'pen-tool', text: '<strong class="text-white text-base">Professional Copywriting:</strong><br/>Copy designed to convert readers into clients.' },
+                { icon: 'user-check', text: '<strong class="text-white text-base">Profile Setup:</strong><br/>Crafting a professional and converting profile bio.' },
+                { icon: 'bar-chart', text: '<strong class="text-white text-base">Analytics Reports:</strong><br/>Monthly analysis of your growth and interactions.' },
+                { icon: 'send', text: '<strong class="text-white text-base">Ultimate Comfort:</strong><br/>Just send us your photos or we create original engaging designs.' }
+            ],
+            why: [
+                { icon: 'shield-check', title: 'Risk Free', text: 'Only 87€/month with money-back guarantee. Not happy? Get a refund no questions asked.' },
+                { icon: 'palette', title: 'Personalized Service', text: 'Content strictly tailored to your business identity and style.' },
+                { icon: 'unlock', title: 'No Commitment', text: "Cancel anytime. We don't lock you in long term contracts." }
+            ]
+        }
+    },
+    '/contact': {
+        el: {
+            title: 'Επικοινωνία',
+            desc: 'Είμαστε εδώ για να απαντήσουμε στις ερωτήσεις σας και να απογειώσουμε την επιχείρησή σας.',
+        },
+        en: {
+            title: 'Contact Us',
+            desc: 'We are here to answer all your questions and skyrocket your business.',
+        }
+    }
+};
+
+function generatePageHtml(path, lang, pt) {
+    let html = '';
+    const data = pagesData[path][lang];
+    if (path === '/kataskevi-istoselidas') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20 px-6">
+            ${data.cards.map((c, i) => `
+                <div class="glass-panel p-10 rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 ${(i === 0 || i === 1) ? 'md:col-span-1 lg:col-span-1' : ''} shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-electric-cyan/20">
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-16 h-16 rounded-full bg-electric-cyan/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${c.icon}" class="w-8 h-8 text-electric-cyan"></i>
+                    </div>
+                    <h3 class="text-2xl font-black font-display text-white mb-4 tracking-wide">${c.title}</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">${c.desc}</p>
+                </div>
+            `).join('')}
+        </div>
+        <div class="text-center max-w-7xl mx-auto px-6 mb-20">
+            <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+        ${portfolioHtmlStatic}
+        `;
+    } else if (path === '/google-reviews-nfc') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 space-y-8">
+                <p class="text-2xl font-bold font-display text-white mb-8 leading-tight">${data.descTop}</p>
+                <div class="space-y-4">
+                    ${data.list.map((item) => `
+                        <div class="flex items-start gap-4 glass-panel p-6 rounded-3xl group hover:border-electric-cyan/40 transition-colors shadow-xl">
+                            <div class="p-3 rounded-full bg-electric-cyan/10 shrink-0 group-hover:bg-electric-cyan/20 transition-colors">
+                                <i data-lucide="check" class="w-6 h-6 text-electric-cyan"></i>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed text-lg">${item}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="pt-8">
+                    <a href="#contact" class="inline-flex items-center gap-3 px-10 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_30px_rgba(71,200,245,0.5)]">
+                        ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center perspective-1000">
+                <div class="relative group transform hover:rotate-y-12 transition-transform duration-700">
+                    <div class="absolute -inset-4 bg-electric-cyan/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <img src="${data.image}" class="relative w-full max-w-md rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10" alt="NFC Stand">
+                </div>
+            </div>
+        </div>
+        `;
+    } else if (path === '/diaxeirisi-social-media') {
+        html = `
+        <div class="text-center mb-16 px-6">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.services : 'SERVICES'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <div class="flex items-center justify-center gap-4 text-xl flex-wrap">
+                <span class="font-black text-electric-cyan">${data.price}</span>
+                <span class="text-gray-400 font-medium">${data.priceNote}</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mb-20 space-y-16">
+            
+            <div class="bg-[#050a0e]/40 p-10 md:p-16 rounded-[3rem] border border-white/5 shadow-2xl backdrop-blur-sm">
+                <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.featuresTitle}</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${data.features.map(f => `
+                        <div class="glass-panel p-8 rounded-3xl flex flex-col gap-4 group hover:-translate-y-2 transition-all shadow-lg hover:shadow-electric-cyan/10">
+                            <i data-lucide="${f.icon}" class="w-12 h-12 text-electric-cyan drop-shadow-md"></i>
+                            <p class="text-gray-400 text-sm leading-relaxed">${f.text}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <div class="relative rounded-[3rem] p-1 overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-electric-cyan/40 via-purple-500/40 to-electric-cyan/40 animate-shimmer bg-[length:200%_auto]"></div>
+                <div class="relative bg-[#050a0e] rounded-[calc(3rem-4px)] p-10 md:p-16 backdrop-blur-xl">
+                    <h3 class="text-3xl font-black font-display text-white mb-12 text-center">${data.whyTitle}</h3>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        ${data.why.map(w => `
+                            <div class="text-center group border border-white/5 bg-white/[0.02] p-8 rounded-3xl hover:bg-white/[0.05] transition-colors">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-electric-cyan to-blue-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(71,200,245,0.4)]">
+                                    <i data-lucide="${w.icon}" class="w-10 h-10 text-[#050a0e]"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-4">${w.title}</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">${w.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8">
+                <a href="#contact" class="inline-flex items-center gap-3 px-12 py-5 bg-electric-cyan text-[#050a0e] font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-white transition-all shadow-[0_0_40px_rgba(71,200,245,0.5)] hover:scale-105">
+                    ${data.cta} <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+        `;
+    } else if (path === '/contact') {
+        html = `
+        <div class="text-center mb-16 px-6 max-w-7xl mx-auto">
+            <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${pt.nav ? pt.nav.contact : 'CONTACT'}</span>
+            <h1 class="text-5xl md:text-7xl font-black font-display mb-6 text-white drop-shadow-xl">${data.title}</h1>
+            <p class="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed">${data.desc}</p>
+        </div>
+        `;
+    } else {
+        // Keeps it identical for blog/faq/legal, since they don't break translation flows necessarily.
+        return '';
+    }
+    
+    return `<section class="min-h-[50vh] pt-40 pb-20 relative">${html}</section>`;
+}
+
+
+
         // --- TRANSLATION & DATA ---
-        let currentLang = 'el';
+        let currentLang = localStorage.getItem('lang');
+        if (!currentLang) {
+            currentLang = window.location.pathname.startsWith('/en') ? 'en' : 'el'; // fallback detection
+            localStorage.setItem('lang', currentLang);
+        }
         const DEFAULT_AVATAR = 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=';
 
         // HELPER: Strips Greek accents for perfect capitalization styling
@@ -769,6 +1624,7 @@
             
             setTimeout(() => {
                 currentLang = currentLang === 'el' ? 'en' : 'el';
+                localStorage.setItem('lang', currentLang);
                 document.documentElement.lang = currentLang; // Update HTML Lang Tag
                 document.title = translations[currentLang].title; // Update Page Title
                 
@@ -1084,13 +1940,8 @@
                 </div>
                 <div class="flex gap-8 text-sm font-bold tracking-wider uppercase">
                     <a href="#services" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.services)}</a>
-                    <a href="#portfolio" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.portfolio)}</a>
+                    <a href="/kataskevi-istoselidas#portfolio" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.portfolio)}</a>
                     <a href="#contact" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.contact)}</a>
-
-                    <a href="/privacy-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Απορρήτου</a>
-                    <a href="/cookies-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Cookies</a>
-                    <a href="/terms-of-use" class="hover:text-electric-cyan transition-colors">Όροι Χρήσης</a>
-    
 
                     <a href="/privacy-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Απορρήτου</a>
                     <a href="/cookies-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Cookies</a>
@@ -1099,7 +1950,7 @@
                 </div>
             `;
 
-            if (window.lucide) window.lucide.createIcons();
+            lucide.createIcons();
             observeElements();
         }
 
@@ -1133,6 +1984,7 @@
             const visibleItems = portfolioItems.slice(start, end);
 
             const grid = document.getElementById('portfolio-grid');
+            if (!grid) return;
             grid.innerHTML = visibleItems.map((item, index) => {
                 const displayName = (currentLang === 'en' && item.nameEn) ? item.nameEn : item.name;
                 return `
@@ -1158,8 +2010,8 @@
             prevBtn.disabled = currentPage === 0;
             nextBtn.disabled = currentPage === totalPages - 1;
             
-            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); if (window.lucide) window.lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
-            nextBtn.onclick = () => { if(totalPages - 1 > currentPage) { currentPage++; renderPortfolioGrid(); if (window.lucide) window.lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            prevBtn.onclick = () => { if(currentPage > 0) { currentPage--; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
+            nextBtn.onclick = () => { if(totalPages - 1 > currentPage) { currentPage++; renderPortfolioGrid(); lucide.createIcons(); observeElements(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }};
 
             // Dots
             const el_pagination_dots = document.getElementById('pagination-dots');
@@ -1167,7 +2019,7 @@
                 <div class="h-2 rounded-full transition-all duration-500 ${i === currentPage ? 'w-10 bg-electric-cyan shadow-[0_0_10px_#47c8f5]' : 'w-2 bg-white/20'}"></div>
             `).join('');
             
-            if (window.lucide) window.lucide.createIcons();
+            lucide.createIcons();
             observeElements();
         }
 
@@ -1188,11 +2040,21 @@
         }
 
         // Modal
-        const modalOverlay = document.getElementById('modal-overlay');
-        const modalBackdrop = document.getElementById('modal-backdrop');
-        const modalContent = document.getElementById('modal-content');
+        let modalOverlay = document.getElementById('modal-overlay');
+let modalBackdrop = document.getElementById('modal-backdrop');
+let modalContent = document.getElementById('modal-content');
+window.addEventListener('DOMContentLoaded', () => { 
+  modalOverlay = document.getElementById('modal-overlay');
+  modalBackdrop = document.getElementById('modal-backdrop');
+  modalContent = document.getElementById('modal-content');
+  if(modalBackdrop) { /* listener moved to DOMContentLoaded */ }
+});
         
         window.openModal = function(id) {
+    if(!modalOverlay) modalOverlay = document.getElementById('modal-overlay');
+    if(!modalBackdrop) modalBackdrop = document.getElementById('modal-backdrop');
+    if(!modalContent) modalContent = document.getElementById('modal-content');
+    if(!modalOverlay || !modalBackdrop || !modalContent) return;
             const data = services[currentLang].find(s => s.id === id);
             if (!data) return;
 
@@ -1217,6 +2079,10 @@
         }
 
         window.closeModal = function() {
+    if(!modalOverlay) modalOverlay = document.getElementById('modal-overlay');
+    if(!modalBackdrop) modalBackdrop = document.getElementById('modal-backdrop');
+    if(!modalContent) modalContent = document.getElementById('modal-content');
+    if(!modalOverlay || !modalBackdrop || !modalContent) return;
             modalBackdrop.classList.add('opacity-0');
             modalContent.classList.remove('opacity-100', 'scale-100');
             modalContent.classList.add('opacity-0', 'scale-95');
@@ -1226,8 +2092,7 @@
                 document.body.classList.remove('modal-open');
             }, 400);
         }
-        modalBackdrop.addEventListener('click', closeModal);
-
+        
         // Scroll Observer
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
@@ -1244,11 +2109,10 @@
 
         // --- Star Canvas Animation ---
         const canvas = document.getElementById('star-canvas');
-        const ctx = canvas ? canvas.getContext('2d') : null;
+        const ctx = canvas.getContext('2d');
         let width, height, stars = [], shootingStars = [];
 
         function initStars() {
-            if (!canvas || !ctx) return;
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width;
@@ -1269,7 +2133,6 @@
         }
 
         function animateStars() {
-            if (!canvas || !ctx) return;
             ctx.clearRect(0, 0, width, height);
             
             stars.forEach(star => {
@@ -1362,6 +2225,16 @@
             initStars();
             animateStars();
             renderCursor();
+            
+            const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+            const dynamicPaths = ['/kataskevi-istoselidas', '/google-reviews-nfc', '/diaxeirisi-social-media', '/contact'];
+            
+            const pc = document.getElementById('page-content');
+            if (pc && dynamicPaths.includes(pathname)) {
+                pc.innerHTML = generatePageHtml(pathname, currentLang, t);
+                if (window.lucide) window.lucide.createIcons(); // Reactivate icons
+            }
+
             renderApp(); // Renders DOM, applies translations, fires logic
         });
 
@@ -1410,7 +2283,5 @@
             }
         });
 
-    </script>
-<script type="module" src="/index.tsx"></script>
-
-</body></html>
+    
+    

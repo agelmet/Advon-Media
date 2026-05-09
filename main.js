@@ -1,492 +1,10 @@
-<!DOCTYPE html><html lang="el" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Πολιτική Απορρήτου | Advon Media</title>
-    <meta name="description" content="Κορυφαία κατασκευή ιστοσελίδων στην Ελλάδα. Επαγγελματικό Web Design, ταχύτατη φόρτωση, Mobile Responsive και πλήρης SEO βελτιστοποίηση. Ανεβείτε στην 1η σελίδα της Google.">
-    <meta name="keywords" content="κατασκευή ιστοσελίδων Ελλάδα, web design Ελλάδα, κατασκευή eshop, δημιουργία ιστοσελίδας, SEO ιστοσελίδων">
-    <link rel="icon" href="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ['Playfair Display', 'serif'],
-              body: ['Inter', 'sans-serif'],
-            },
-            colors: {
-              'electric-cyan': '#47c8f5',
-              'deep-void': '#050a0e',
-              'space-black': '#0a1418',
-            },
-            animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'shimmer': 'shimmer 3s linear infinite',
-              'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              shimmer: {
-                '0%': { backgroundPosition: '-200% 0' },
-                '100%': { backgroundPosition: '200% 0' },
-              },
-              'glow-pulse': {
-                '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
-                '50%': { opacity: 1, transform: 'scale(1.2)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
 
-    <script src="https://unpkg.com/lucide@latest" defer=""></script>
-
-    <style>
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #050a0e; }
-      ::-webkit-scrollbar-thumb { background: rgba(71, 200, 245, 0.4); border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #47c8f5; box-shadow: 0 0 10px #47c8f5; }
-      
-      body { background-color: #050a0e; color: white; overflow-x: hidden; cursor: default; }
-      
-      main { transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-      /* --- Animated Cyber Grid --- */
-      .cyber-grid {
-        position: absolute;
-        bottom: 0;
-        left: -50%;
-        width: 200%;
-        height: 100vh;
-        background-image: 
-          linear-gradient(to right, rgba(71, 200, 245, 0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(71, 200, 245, 0.05) 1px, transparent 1px);
-        background-size: 60px 60px;
-        transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px);
-        animation: grid-scroll 20s linear infinite;
-        mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%);
-        z-index: 1;
-        pointer-events: none;
-      }
-      @keyframes grid-scroll {
-        0% { transform: perspective(600px) rotateX(70deg) translateY(0) translateZ(-200px); }
-        100% { transform: perspective(600px) rotateX(70deg) translateY(60px) translateZ(-200px); }
-      }
-
-      /* --- Updated Laser Beam Animation --- */
-      .laser-beam-main {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px; /* Wider beam */
-        height: 100%;
-        background: linear-gradient(180deg,
-          rgba(71, 200, 245, 0.1) 0%,
-          rgba(71, 200, 245, 0.4) 10%,
-          rgba(71, 200, 245, 0.9) 30%,
-          rgba(71, 200, 245, 1) 50%,
-          rgba(71, 200, 245, 0.9) 70%,
-          rgba(71, 200, 245, 0.4) 90%,
-          rgba(71, 200, 245, 0.1) 100%
-        );
-        box-shadow: 
-          0 0 30px rgba(71, 200, 245, 0.9),
-          0 0 60px rgba(71, 200, 245, 0.7);
-        animation: laser-pour 1.5s ease-in-out infinite, laser-glow 2s ease-in-out infinite;
-        border-radius: 10px;
-        will-change: transform, opacity;
-        z-index: 2;
-      }
-      
-      .laser-beam-main::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 200px; /* Wider glow */
-        height: 100%;
-        background: linear-gradient(180deg,
-          transparent 0%,
-          rgba(71, 200, 245, 0.05) 20%,
-          rgba(71, 200, 245, 0.15) 50%,
-          rgba(71, 200, 245, 0.05) 80%,
-          transparent 100%
-        );
-        filter: blur(20px);
-      }
-      
-      /* Splash Effect at Bottom */
-      .laser-splash {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 300px;
-        height: 150px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.6) 0%,
-          rgba(71, 200, 245, 0.3) 30%,
-          rgba(71, 200, 245, 0.1) 60%,
-          transparent 100%
-        );
-        filter: blur(30px);
-        animation: splash-pulse 1.5s ease-in-out infinite;
-        will-change: transform, opacity;
-        z-index: 3;
-      }
-      
-      .laser-splash::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 80px;
-        background: radial-gradient(ellipse at center bottom,
-          rgba(71, 200, 245, 0.8) 0%,
-          rgba(71, 200, 245, 0.4) 40%,
-          transparent 100%
-        );
-        filter: blur(15px);
-        animation: splash-inner 1s ease-in-out infinite;
-      }
-      
-      /* Particle drops falling */
-      .laser-particles {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 80px; /* Adjusted for wider beam */
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      
-      .mask-vertical {
-          -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-      }
-      @keyframes verticalScroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-      }
-      .animate-vertical-scroll {
-          animation: verticalScroll 50s linear infinite;
-      }
-      .animate-vertical-scroll:hover {
-          animation-play-state: paused;
-      }
-      
-      .glass-panel {
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      
-      .laser-particle {
-        position: absolute;
-        width: 4px;
-        height: 30px;
-        background: linear-gradient(180deg, transparent, rgba(71, 200, 245, 0.8), transparent);
-        border-radius: 2px;
-        animation: particle-fall 0.8s linear infinite;
-      }
-      
-      .laser-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-      .laser-particle:nth-child(2) { left: 30%; animation-delay: 0.2s; }
-      .laser-particle:nth-child(3) { left: 50%; animation-delay: 0.4s; }
-      .laser-particle:nth-child(4) { left: 70%; animation-delay: 0.6s; }
-      .laser-particle:nth-child(5) { left: 90%; animation-delay: 0.3s; }
-      
-      @keyframes particle-fall {
-        0% { top: -30px; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { top: 100%; opacity: 0; }
-      }
-      
-      @keyframes laser-pour {
-        0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
-        25% { opacity: 1; transform: translateX(-50%) scaleY(1.02); }
-        50% { opacity: 0.9; transform: translateX(-50%) scaleY(0.98); }
-        75% { opacity: 1; transform: translateX(-50%) scaleY(1.01); }
-      }
-      
-      @keyframes laser-glow {
-        0%, 100% {
-          box-shadow: 0 0 30px rgba(71, 200, 245, 0.9), 0 0 60px rgba(71, 200, 245, 0.7);
-        }
-        50% {
-          box-shadow: 0 0 50px rgba(71, 200, 245, 1), 0 0 100px rgba(71, 200, 245, 0.8);
-        }
-      }
-      
-      @keyframes splash-pulse {
-        0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-        50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
-      }
-      
-      @keyframes splash-inner {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-      
-      /* Secondary beams */
-      .laser-beam-secondary {
-        position: absolute;
-        top: 0;
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent 0%, rgba(71, 200, 245, 0.1) 15%, rgba(71, 200, 245, 0.4) 40%, rgba(71, 200, 245, 0.5) 50%, rgba(71, 200, 245, 0.4) 60%, rgba(71, 200, 245, 0.1) 85%, transparent 100%);
-        box-shadow: 0 0 10px rgba(71, 200, 245, 0.5);
-        animation: laser-pour-secondary 2s ease-in-out infinite;
-        border-radius: 2px;
-        z-index: 1;
-      }
-      
-      @keyframes laser-pour-secondary { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-
-      #star-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-      
-      /* --- Custom Ambient Cursor --- */
-      #cursor-glow {
-        position: fixed;
-        top: 0; left: 0;
-        width: 400px; height: 400px;
-        background: radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 9998;
-        transition: width 0.3s, height 0.3s;
-        will-change: transform;
-      }
-
-      .logo-glow { filter: drop-shadow(0 0 10px rgba(71, 200, 245, 0.5)); transition: filter 0.3s ease; }
-      .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(71, 200, 245, 1)); }
-      .text-shimmer { background: linear-gradient(to right, #47c8f5 20%, #ffffff 50%, #47c8f5 80%); background-size: 200% auto; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shimmer 4s linear infinite; }
-      
-      /* --- Enhanced Glass Panel & 3D Tilt --- */
-      .glass-panel { 
-        background: rgba(8, 18, 25, 0.5); 
-        backdrop-filter: blur(16px); 
-        -webkit-backdrop-filter: blur(16px); 
-        border: 1px solid rgba(71, 200, 245, 0.15); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.05), 0 8px 32px rgba(0, 0, 0, 0.5); 
-        transition: border-color 0.4s ease, box-shadow 0.4s ease; 
-      }
-      .glass-panel:hover { 
-        border-color: rgba(71, 200, 245, 0.5); 
-        box-shadow: inset 0 0 20px rgba(71,200,245,0.1), 0 15px 40px rgba(71, 200, 245, 0.2); 
-      }
-
-      .service-list-item { transition: transform 0.2s ease-in-out, color 0.2s; }
-      .glass-panel:hover .service-list-item:hover { transform: translateX(8px); color: white; }
-      .service-check-icon { transition: all 0.3s ease; }
-      .glass-panel:hover .service-list-item:hover .service-check-icon { filter: drop-shadow(0 0 8px #47c8f5); transform: scale(1.2); }
-      
-      .trust-badge-shimmer { position: relative; overflow: hidden; }
-      .trust-badge-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: badge-shimmer 3s infinite; }
-      @keyframes badge-shimmer { 0%, 80% { transform: skewX(-20deg) translateX(-150%); } 100% { transform: skewX(-20deg) translateX(150%); } }
-      
-      .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-      .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
-      .modal-open { overflow: hidden; }
-      
-      /* Glowing Text Selection */
-      ::selection { background: rgba(71, 200, 245, 0.4); color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      
-      @keyframes btn-shine {
-        0% { transform: translateX(-150%) skewX(-20deg); }
-        100% { transform: translateX(150%) skewX(-20deg); }
-      }
-      .btn-shine-effect {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-        transform: translateX(-150%) skewX(-20deg);
-        animation: btn-shine 3s infinite;
-      }
-    </style>
-<link rel="stylesheet" href="/index.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Advon Media",
-  "url": "https://advonmedia.com/",
-  "logo": "https://advonmedia.com/logo-url-here.jpg",
-  "description": "Εταιρεία Digital Marketing και Κατασκευής Ιστοσελίδων στην Ελλάδα.",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Greece"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Υπηρεσίες Κατασκευής Ιστοσελίδων",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Κατασκευή Ιστοσελίδας"
-        }
-      }
-    ]
-  }
-}
-</script>
-
-    <style>html, body { max-width: 100vw; overflow-x: hidden; }</style>
-
-    <style>html, body { max-width: 100vw; overflow-x: hidden; }</style>
-</head>
-<body class="font-body antialiased">
-
-    <div id="cursor-glow"></div>
-
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050a0e]">
-      <div class="absolute inset-0 bg-gradient-to-b from-[#050a0e] via-[#0a1418] to-[#0d1a20]"></div>
-      <canvas id="star-canvas"></canvas>
-      <div class="cyber-grid"></div>
-      
-      <div class="laser-beam-main">
-        <div class="laser-particles">
-          <div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div><div class="laser-particle"></div>
-        </div>
-      </div>
-      <div class="laser-splash"></div>
-      
-      <!-- Secondary beams for extra effect -->
-      <div class="laser-beam-secondary" style="left: 45%;"></div>
-      <div class="laser-beam-secondary" style="left: 55%;"></div>
-
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[60vh] bg-[rgba(71,200,245,0.08)] blur-[120px]"></div>
-      <div class="absolute bottom-1/3 left-0 w-1/2 h-1/2 bg-[rgba(71,200,245,0.04)] blur-[150px] rounded-full"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,10,15,0.85)_100%)]"></div>
-    </div>
-
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a0e]/70 backdrop-blur-xl border-b border-electric-cyan/10 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" id="main-header">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
-            <a href="#" class="flex items-center gap-3 group">
-                <img src="https://assets.cdn.filesafe.space/NkFUgZER3rrdnofCwAIl/media/648dd017a1f733fa5b51e5e9.png" alt="Advon Media" referrerpolicy="no-referrer" fetchpriority="high" width="40" height="40" class="h-10 w-auto logo-glow">
-            </a>
-
-            <nav id="desktop-nav" class="hidden md:flex items-center gap-10 text-sm font-semibold text-electric-cyan tracking-wide">
-                </nav>
-
-            <div class="flex items-center gap-2 md:gap-4">
-                <button onclick="triggerLanguageSwitch()" id="mobile-lang-btn" class="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-electric-cyan/40 bg-electric-cyan/10 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] transition-all duration-300 cursor-pointer">
-                    </button>
-                
-                <button onclick="triggerLanguageSwitch()" id="lang-btn" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-electric-cyan/10 border border-electric-cyan/40 text-xs font-bold text-electric-cyan hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_25px_rgba(71,200,245,0.6)] transition-all duration-300 cursor-pointer">
-                    </button>
-                
-                <button class="md:hidden text-electric-cyan p-2 hover:bg-electric-cyan/10 rounded-lg transition-colors" id="mobile-menu-btn">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="md:hidden bg-[#050a0e]/95 backdrop-blur-xl border-b border-electric-cyan/20 overflow-hidden transition-all duration-300 max-h-0 relative z-0" id="mobile-menu">
-            <nav id="mobile-nav-content" class="flex flex-col p-6 gap-4 text-lg font-medium text-electric-cyan">
-                </nav>
-        </div>
-    </header>
-
-    <main class="relative z-10" id="main-content">
-    <div id="page-content">
-        <section class="min-h-[50vh] pt-40 pb-20 relative px-6">
-            <div class="max-w-4xl mx-auto text-white">
-                
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black font-display text-white drop-shadow-xl">Πολιτική Απορρήτου &amp; Προστασίας Προσωπικών Δεδομένων</h1>
-        </div>
-        <div class="glass-panel p-8 md:p-14 rounded-3xl shadow-2xl text-lg text-gray-300 leading-relaxed space-y-8">
-            
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">1. Εισαγωγή</h2>
-<p>Η Advon Media (εφεξής η "Εταιρεία", "εμείς", "μας") σέβεται απόλυτα το απόρρητό σας και δεσμεύεται να προστατεύει τα προσωπικά σας δεδομένα. Η παρούσα Πολιτική Απορρήτου σας ενημερώνει για το πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα δεδομένα σας όταν επισκέπτεστε την ιστοσελίδα μας ή χρησιμοποιείτε τις υπηρεσίες μας, σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (GDPR).</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">2. Ποια δεδομένα συλλέγουμε</h2>
-<p>Συλλέγουμε μόνο τα απαραίτητα δεδομένα για την παροχή των υπηρεσιών μας: Στοιχεία Επικοινωνίας: Όνομα/Επωνυμία, Email, Τηλέφωνο, καθώς και οποιαδήποτε πληροφορία μοιράζεστε μαζί μας μέσω της φόρμας επικοινωνίας. Τεχνικά Δεδομένα: Διεύθυνση IP, τύπος περιηγητή (browser), συσκευή, και δεδομένα πλοήγησης (βλ. Πολιτική Cookies).</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">3. Πώς χρησιμοποιούμε τα δεδομένα σας</h2>
-<p>Τα δεδομένα σας χρησιμοποιούνται αποκλειστικά για: Την επικοινωνία μαζί σας και την απάντηση στα αιτήματά σας (π.χ. ραντεβού, εκδήλωση ενδιαφέροντος). Την παροχή των υπηρεσιών Web Design, SEO, και διαχείρισης Social Media που έχετε ζητήσει. Τη βελτίωση της εμπειρίας χρήστη στην ιστοσελίδα μας. Την αποστολή ενημερώσεων ή προσφορών, μόνο εφόσον έχετε δώσει τη ρητή συγκατάθεσή σας.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">4. Πώς προστατεύουμε τα δεδομένα σας</h2>
-<p>Λαμβάνουμε όλα τα απαραίτητα τεχνικά και οργανωτικά μέτρα (π.χ. κρυπτογράφηση SSL, ασφαλείς servers) για να διασφαλίσουμε ότι τα προσωπικά σας δεδομένα είναι ασφαλή έναντι μη εξουσιοδοτημένης πρόσβασης, αλλοίωσης ή απώλειας.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">5. Τα δικαιώματά σας</h2>
-<p>Βάσει του GDPR, έχετε τα εξής δικαιώματα: Δικαίωμα πρόσβασης: Να ζητήσετε αντίγραφο των δεδομένων που διατηρούμε για εσάς. Δικαίωμα διόρθωσης: Να ζητήσετε τη διόρθωση ανακριβών στοιχείων. Δικαίωμα διαγραφής (δικαίωμα στη λήθη): Να ζητήσετε τη διαγραφή των δεδομένων σας, εφόσον δεν υπάρχει νομική υποχρέωση διατήρησής τους. Δικαίωμα ανάκλησης συγκατάθεσης: Να ανακαλέσετε οποιαδήποτε στιγμή τη συγκατάθεσή σας. Για να ασκήσετε οποιοδήποτε από τα παραπάνω δικαιώματα, επικοινωνήστε μαζί μας στο: angelos@advonmedia.com</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">6. Χρόνος διατήρησης</h2>
-<p>Διατηρούμε τα δεδομένα σας μόνο για όσο χρονικό διάστημα είναι απαραίτητο για την εκπλήρωση των σκοπών για τους οποίους συλλέχθηκαν ή μέχρι να μας ζητήσετε τη διαγραφή τους.</p>
-
-<h2 class="text-2xl font-bold text-white uppercase text-electric-cyan">7. Αλλαγές στην Πολιτική</h2>
-<p>Ενδέχεται να ανανεώνουμε την παρούσα πολιτική περιστασιακά. Σας προτείνουμε να την ελέγχετε τακτικά.</p>
-
-        </div>
-    
-            </div>
-        </section>
-    </div>
-    <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container"></div>
-    </section>
-</main>
-
-    <footer class="py-10 bg-[#050a0e] border-t border-electric-cyan/30 text-gray-400 relative z-20 shadow-[0_-10px_40px_rgba(71,200,245,0.1)]">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6" id="footer-content">
-            </div>
-    </footer>
-
-    <div id="modal-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-[#050a0e]/90 backdrop-blur-md transition-opacity opacity-0" id="modal-backdrop"></div>
-        <div id="modal-content" class="relative bg-[#0a1418]/95 backdrop-blur-xl border border-electric-cyan/50 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl shadow-[0_0_60px_rgba(71,200,245,0.2)] transform scale-95 opacity-0 transition-all duration-400 cubic-bezier(0.16, 1, 0.3, 1)">
-            <div class="sticky top-0 right-0 p-4 flex justify-end bg-gradient-to-b from-[#0a1418] to-transparent z-10">
-                <button onclick="closeModal()" class="p-2 rounded-full bg-electric-cyan/10 hover:bg-electric-cyan hover:text-[#050a0e] text-electric-cyan transition-all">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <div class="px-8 pb-10 pt-2">
-                <h3 id="modal-title" class="text-3xl font-display font-black text-white mb-8 text-center leading-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"></h3>
-                <div id="modal-image-container" class="mb-8 hidden"></div>
-                <div id="modal-body" class="space-y-5 text-gray-300 leading-relaxed font-body text-lg"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
         // --- TRANSLATION & DATA ---
-        let currentLang = 'el';
+        let currentLang = localStorage.getItem('lang');
+        if (!currentLang) {
+            currentLang = window.location.pathname.startsWith('/en') ? 'en' : 'el'; // fallback detection
+            localStorage.setItem('lang', currentLang);
+        }
         const DEFAULT_AVATAR = 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=';
 
         // HELPER: Strips Greek accents for perfect capitalization styling
@@ -614,16 +132,26 @@
 
         const faqs = {
             el: [
-                { question: 'Τι είναι η Advon Media;', answer: 'Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο.' },
-                { question: 'Ποιες υπηρεσίες προσφέρετε;', answer: 'Κατασκευή ιστοσελίδων, δημιουργία περιεχομένου + διαχείριση social media και ανέπαφες (NFC) βάσεις αξιολογήσεων.' },
-                { question: 'Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;', answer: 'Από τη στιγμή που έχουμε λάβει όλο το υλικό, μπορούμε να ολοκληρώσουμε την κατασκευή σε 5-10 ημέρες.' },
-                { question: 'Πώς μπορώ να επικοινωνήσω;', answer: 'Στείλτε μας email στο angelos@advonmedia.com και θα επικοινωνήσουμε άμεσα μαζί σας.' }
+                { question: 'Τι είναι η Advon Media;', answer: 'Είμαστε ένα ψηφιακό marketing agency που ειδικεύεται σε στρατηγική, social media και περιεχόμενο. Δουλεύουμε κυρίως με τοπικές επιχειρήσεις και ελεύθερους επαγγελματίες — ψυχολόγους, θεραπευτές, οδοντίατρους, παιδίατρους, φυσικοθεραπευτές, coaches κλπ.' },
+                { question: 'Ποιες υπηρεσίες προσφέρετε;', answer: 'Προσφέρουμε τρεις βασικές υπηρεσίες:<br>1. Κατασκευή Ιστοσελίδας<br>2. Ανέπαφη Βάση Αξιολογήσεων (NFC)<br>3. Διαχείριση Social Media' },
+                { question: 'Γιατί η κατασκευή ιστοσελίδας είναι δωρεάν; Ποιο είναι το catch;', answer: 'Δεν υπάρχει catch. Πληρώνεις μόνο το hosting — 10,83€ τον μήνα. Θέλουμε να προσθέσουμε ιστοσελίδες στο πορτφόλιο μας.' },
+                { question: 'Τι σημαίνει «hosting» και γιατί κοστίζει €10,83/μήνα;', answer: 'Το hosting είναι το "ενοίκιο" για τον χώρο στον server. Καλύπτει server χώρο, ασφάλεια, backups και συνεχή λειτουργία.' },
+                { question: 'Μπορώ να σταματήσω το hosting όποτε θέλω;', answer: 'Ναι. Δεν υπάρχει ελάχιστη περίοδος, ούτε ποινή ακύρωσης.' },
+                { question: 'Πόσο διαρκεί η παράδοση μιας ιστοσελίδας;', answer: 'Από τη στιγμή που έχουμε λάβει όλο το υλικό, παραδίδουμε σε 5-10 εργάσιμες ημέρες.' },
+                { question: 'Χρειάζομαι ιστοσελίδα αν έχω ήδη σελίδα στα social media;', answer: 'Ναι. Η ιστοσελίδα φέρνει πελάτες από τη Google και δίνει απόλυτο επαγγελματισμό και αξιοπιστία.' },
+                { question: 'Τι είναι η Ανέπαφη Βάση Αξιολογήσεων (NFC);', answer: 'Φυσική κάρτα όπου ο πελάτης αγγίζει το κινητό του και πάει κατευθείαν στη σελίδα αξιολογήσεων στη Google. Κοστίζει 25€ εφάπαξ.' },
+                { question: 'Πώς μπορώ να επικοινωνήσω μαζί σας;', answer: 'Στείλτε μας email στο angelos@advonmedia.com ή κλείστε ένα δωρεάν ραντεβού.' }
             ],
             en: [
-                { question: 'What is Advon Media?', answer: 'We are a digital marketing agency specializing in strategy, social media, and content creation.' },
-                { question: 'What services do you offer?', answer: 'Website construction, content creation + social media management, and contactless (NFC) review stands.' },
-                { question: 'How long does website delivery take?', answer: 'From the moment we receive all the material, we can complete the construction in 5-10 days.' },
-                { question: 'How can I contact you?', answer: 'Send us an email at angelos@advonmedia.com and we will contact you immediately.' }
+                { question: 'What is Advon Media?', answer: 'We are a digital marketing agency specializing in strategy, social media, and content. We work primarily with local businesses and freelancers.' },
+                { question: 'What services do you offer?', answer: 'We offer three main services:<br>1. Website Construction<br>2. Contactless Review Stand (NFC)<br>3. Social Media Management' },
+                { question: 'Why is website creation free? What\'s the catch?', answer: 'There is no catch. You only pay for hosting — €10.83 per month. We want to build our portfolio.' },
+                { question: 'What does "hosting" mean and why does it cost €10.83/month?', answer: 'Hosting is the "rent" for server space. It covers server space, security, backups, and continuous operation.' },
+                { question: 'Can I stop hosting whenever I want?', answer: 'Yes. There is no minimum period or cancellation penalty.' },
+                { question: 'How long does website delivery take?', answer: 'Once we have received all material, we deliver in 5-10 working days.' },
+                { question: 'Do I need a website if I already have a social media page?', answer: 'Yes. A website brings clients from Google and provides total professionalism and reliability.' },
+                { question: 'What is the Contactless Review Stand (NFC)?', answer: 'A physical card where the client taps their phone and goes directly to your Google reviews page. It costs €25 one-time.' },
+                { question: 'How can I contact you?', answer: 'Send us an email at angelos@advonmedia.com or book a free appointment.' }
             ]
         };
 
@@ -769,6 +297,7 @@
             
             setTimeout(() => {
                 currentLang = currentLang === 'el' ? 'en' : 'el';
+                localStorage.setItem('lang', currentLang);
                 document.documentElement.lang = currentLang; // Update HTML Lang Tag
                 document.title = translations[currentLang].title; // Update Page Title
                 
@@ -790,32 +319,32 @@
                 <div class="relative group py-2">
                     <a href="#" class="hover:text-white transition-colors text-shadow-sm flex items-center gap-1 cursor-default">Υπηρεσίες <i data-lucide="chevron-down" class="w-4 h-4"></i></a>
                     <div class="absolute top-full left-0 mt-2 w-64 bg-[#050a0e]/95 backdrop-blur-xl border border-electric-cyan/20 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col p-2 z-50">
-                        <a href="/kataskevi-istoselidas" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">Κατασκευή Ιστοσελίδας</a>
-                        <a href="/google-reviews-nfc" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">Ανέπαφες Αξιολογήσεις</a>
-                        <a href="/diaxeirisi-social-media" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">Διαχείριση Social Media</a>
+                        <a href="/kataskevi-istoselidas" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">${isEn ? "Website Creation" : "Κατασκευή Ιστοσελίδας"}</a>
+                        <a href="/google-reviews-nfc" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">${isEn ? "NFC Reviews" : "Ανέπαφες Αξιολογήσεις"}</a>
+                        <a href="/diaxeirisi-social-media" class="p-3 hover:bg-electric-cyan/10 rounded-lg text-white hover:text-electric-cyan transition-colors">${isEn ? "Social Media Management" : "Διαχείριση Social Media"}</a>
                     </div>
                 </div>
-                <a href="/kataskevi-istoselidas#portfolio" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">Πορτφόλιο<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
-                <a href="/#reviews" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">Αξιολογήσεις<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
-                <a href="/faq" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">FAQ<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
+                <a href="/portfolio" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">${t.nav.portfolio}<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
+                <a href="/#reviews" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">${t.nav.reviews}<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
+                <a href="/faq" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">${t.nav.faq}<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
                 <a href="/blog" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">Blog<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
-                <a href="#contact" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">Επικοινωνία<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
+                <a href="#contact" class="relative group py-2 hover:text-white transition-colors text-shadow-sm">${t.nav.contact}<span class="absolute bottom-0 left-0 w-full h-[2px] bg-electric-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300 shadow-[0_0_10px_#47c8f5]"></span></a>
 `;
             
             const el_mobile_nav_content = document.getElementById('mobile-nav-content');
             if (el_mobile_nav_content) el_mobile_nav_content.innerHTML = `
-                <a href="/" class="mobile-link" onclick="closeMobileMenu()">Αρχική</a>
+                <a href="/" class="mobile-link" onclick="closeMobileMenu()">${isEn ? "Home" : "Αρχική"}</a>
                 <div class="flex flex-col gap-2">
-                    <span class="text-white/50 text-sm font-bold uppercase tracking-wider pl-2">Υπηρεσίες</span>
-                    <a href="/kataskevi-istoselidas" class="mobile-link pl-6" onclick="closeMobileMenu()">Κατασκευή Ιστοσελίδας</a>
-                    <a href="/google-reviews-nfc" class="mobile-link pl-6" onclick="closeMobileMenu()">Ανέπαφες Αξιολογήσεις</a>
-                    <a href="/diaxeirisi-social-media" class="mobile-link pl-6" onclick="closeMobileMenu()">Διαχείριση Social Media</a>
+                    <span class="text-white/50 text-sm font-bold uppercase tracking-wider pl-2">${t.nav.services}</span>
+                    <a href="/kataskevi-istoselidas" class="mobile-link pl-6" onclick="closeMobileMenu()">${isEn ? "Website Creation" : "Κατασκευή Ιστοσελίδας"}</a>
+                    <a href="/google-reviews-nfc" class="mobile-link pl-6" onclick="closeMobileMenu()">${isEn ? "NFC Reviews" : "Ανέπαφες Αξιολογήσεις"}</a>
+                    <a href="/diaxeirisi-social-media" class="mobile-link pl-6" onclick="closeMobileMenu()">${isEn ? "Social Media Management" : "Διαχείριση Social Media"}</a>
                 </div>
-                <a href="/kataskevi-istoselidas#portfolio" class="mobile-link" onclick="closeMobileMenu()">Πορτφόλιο</a>
-                <a href="/#reviews" class="mobile-link" onclick="closeMobileMenu()">Αξιολογήσεις</a>
-                <a href="/faq" class="mobile-link" onclick="closeMobileMenu()">FAQ</a>
+                <a href="/portfolio" class="mobile-link" onclick="closeMobileMenu()">${t.nav.portfolio}</a>
+                <a href="/#reviews" class="mobile-link" onclick="closeMobileMenu()">${t.nav.reviews}</a>
+                <a href="/faq" class="mobile-link" onclick="closeMobileMenu()">${t.nav.faq}</a>
                 <a href="/blog" class="mobile-link" onclick="closeMobileMenu()">Blog</a>
-                <a href="#contact" class="mobile-link" onclick="closeMobileMenu()">Επικοινωνία</a>
+                <a href="#contact" class="mobile-link" onclick="closeMobileMenu()">${t.nav.contact}</a>
 `;
 
             // Language Buttons (Desktop and Mobile in Header)
@@ -850,7 +379,7 @@
                             <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
                         </span>
                     </a>
-                    <a href="#portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.6)] transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(71,200,245,0.2)]">
+                    <a href="/portfolio" class="group px-10 py-5 bg-transparent border-2 border-electric-cyan text-electric-cyan font-black text-lg uppercase tracking-[0.1em] rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] hover:shadow-[0_0_40px_rgba(71,200,245,0.6)] transition-all flex items-center gap-3 backdrop-blur-md shadow-[0_0_15px_rgba(71,200,245,0.2)]">
                         <i data-lucide="play" class="w-6 h-6 fill-current"></i>
                         ${elUpper(t.hero.ctaSecondary)}
                     </a>
@@ -908,6 +437,17 @@
                     ${t.sectionTitles.noCommitment}
                 </span>
             `;
+
+            
+            const path = window.location.pathname;
+            const el_portfolio_section = document.getElementById('portfolio');
+            if (el_portfolio_section) {
+                if (path === '/kataskevi-istoselidas' || path === '/kataskevi-istoselidas/' || path.startsWith('/portfolio')) {
+                    el_portfolio_section.style.display = 'block';
+                } else {
+                    el_portfolio_section.style.display = 'none';
+                }
+            }
 
             // --- 5. Portfolio Header ---
             const el_portfolio_header = document.getElementById('portfolio-header');
@@ -979,7 +519,7 @@
                                     <div class="flex gap-1">
                                         ${Array(5).fill('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>').join('')}
                                     </div>
-                                    <p class="text-gray-300 text-sm font-medium leading-relaxed">"${review.text}"</p>
+                                    <p class="text-gray-300 text-sm font-medium leading-relaxed">"${isEn && review.textEn ? review.textEn : review.text}"</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -1012,7 +552,15 @@
             const el_contact_container = document.getElementById('contact-container');
             if (el_contact_container) el_contact_container.innerHTML = `
                 <span class="reveal text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.contact)}</span>
-                <h2 class="reveal text-5xl md:text-7xl font-black font-display mb-16 text-white drop-shadow-2xl">${t.sectionTitles.contactMain}</h2>
+                
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
+                        </div>
+                        <span class="text-white font-black text-xl">5.0</span>
+                        <span class="text-gray-400 font-medium">(75+)</span>
+                    </div>
+<h2 class="reveal text-5xl md:text-7xl font-black font-display mb-16 text-white drop-shadow-2xl">${t.sectionTitles.contactMain}</h2>
                 
                 <div class="grid md:grid-cols-2 gap-8 mb-16">
                     <div class="reveal glass-panel p-10 rounded-3xl text-left">
@@ -1084,17 +632,12 @@
                 </div>
                 <div class="flex gap-8 text-sm font-bold tracking-wider uppercase">
                     <a href="#services" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.services)}</a>
-                    <a href="#portfolio" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.portfolio)}</a>
+                    <a href="/portfolio" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.portfolio)}</a>
                     <a href="#contact" class="hover:text-electric-cyan transition-colors">${elUpper(t.nav.contact)}</a>
 
-                    <a href="/privacy-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Απορρήτου</a>
-                    <a href="/cookies-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Cookies</a>
-                    <a href="/terms-of-use" class="hover:text-electric-cyan transition-colors">Όροι Χρήσης</a>
-    
-
-                    <a href="/privacy-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Απορρήτου</a>
-                    <a href="/cookies-policy" class="hover:text-electric-cyan transition-colors">Πολιτική Cookies</a>
-                    <a href="/terms-of-use" class="hover:text-electric-cyan transition-colors">Όροι Χρήσης</a>
+                    <a href="/privacy-policy" class="hover:text-electric-cyan transition-colors">${isEn ? "Privacy Policy" : "Πολιτική Απορρήτου"}</a>
+                    <a href="/cookies-policy" class="hover:text-electric-cyan transition-colors">${isEn ? "Cookies Policy" : "Πολιτική Cookies"}</a>
+                    <a href="/terms-of-use" class="hover:text-electric-cyan transition-colors">${isEn ? "Terms of Use" : "Όροι Χρήσης"}</a>
     
                 </div>
             `;
@@ -1133,6 +676,7 @@
             const visibleItems = portfolioItems.slice(start, end);
 
             const grid = document.getElementById('portfolio-grid');
+            if (!grid) return;
             grid.innerHTML = visibleItems.map((item, index) => {
                 const displayName = (currentLang === 'en' && item.nameEn) ? item.nameEn : item.name;
                 return `
@@ -1188,11 +732,21 @@
         }
 
         // Modal
-        const modalOverlay = document.getElementById('modal-overlay');
-        const modalBackdrop = document.getElementById('modal-backdrop');
-        const modalContent = document.getElementById('modal-content');
+        let modalOverlay = document.getElementById('modal-overlay');
+let modalBackdrop = document.getElementById('modal-backdrop');
+let modalContent = document.getElementById('modal-content');
+window.addEventListener('DOMContentLoaded', () => { 
+  modalOverlay = document.getElementById('modal-overlay');
+  modalBackdrop = document.getElementById('modal-backdrop');
+  modalContent = document.getElementById('modal-content');
+  if(modalBackdrop) { /* listener moved to DOMContentLoaded */ }
+});
         
         window.openModal = function(id) {
+    if(!modalOverlay) modalOverlay = document.getElementById('modal-overlay');
+    if(!modalBackdrop) modalBackdrop = document.getElementById('modal-backdrop');
+    if(!modalContent) modalContent = document.getElementById('modal-content');
+    if(!modalOverlay || !modalBackdrop || !modalContent) return;
             const data = services[currentLang].find(s => s.id === id);
             if (!data) return;
 
@@ -1217,6 +771,10 @@
         }
 
         window.closeModal = function() {
+    if(!modalOverlay) modalOverlay = document.getElementById('modal-overlay');
+    if(!modalBackdrop) modalBackdrop = document.getElementById('modal-backdrop');
+    if(!modalContent) modalContent = document.getElementById('modal-content');
+    if(!modalOverlay || !modalBackdrop || !modalContent) return;
             modalBackdrop.classList.add('opacity-0');
             modalContent.classList.remove('opacity-100', 'scale-100');
             modalContent.classList.add('opacity-0', 'scale-95');
@@ -1226,8 +784,7 @@
                 document.body.classList.remove('modal-open');
             }, 400);
         }
-        modalBackdrop.addEventListener('click', closeModal);
-
+        
         // Scroll Observer
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
@@ -1337,23 +894,23 @@
         function renderCursor() {
             currentX += (mouseX - currentX) * 0.1;
             currentY += (mouseY - currentY) * 0.1;
-            cursorGlow.style.transform = `translate(calc(${currentX}px - 50%), calc(${currentY}px - 50%))`;
+            if (cursorGlow) cursorGlow.style.transform = `translate(calc(${currentX}px - 50%), calc(${currentY}px - 50%))`;
             requestAnimationFrame(renderCursor);
         }
 
         // Enhance cursor on clickable elements
         document.addEventListener('mouseover', (e) => {
             if (e.target.closest('a') || e.target.closest('button')) {
-                cursorGlow.style.width = '200px';
-                cursorGlow.style.height = '200px';
-                cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.3) 0%, transparent 70%)';
+                if (cursorGlow) cursorGlow.style.width = '200px';
+                if (cursorGlow) cursorGlow.style.height = '200px';
+                if (cursorGlow) cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.3) 0%, transparent 70%)';
             }
         });
         document.addEventListener('mouseout', (e) => {
             if (e.target.closest('a') || e.target.closest('button')) {
-                cursorGlow.style.width = '400px';
-                cursorGlow.style.height = '400px';
-                cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%)';
+                if (cursorGlow) cursorGlow.style.width = '400px';
+                if (cursorGlow) cursorGlow.style.height = '400px';
+                if (cursorGlow) cursorGlow.style.background = 'radial-gradient(circle, rgba(71,200,245,0.15) 0%, transparent 70%)';
             }
         });
 
@@ -1410,7 +967,4 @@
             }
         });
 
-    </script>
-<script type="module" src="/index.tsx"></script>
-
-</body></html>
+    
