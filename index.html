@@ -179,6 +179,28 @@
         pointer-events: none;
       }
       
+      .mask-vertical {
+          -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+      }
+      @keyframes verticalScroll {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+      }
+      .animate-vertical-scroll {
+          animation: verticalScroll 50s linear infinite;
+      }
+      .animate-vertical-scroll:hover {
+          animation-play-state: paused;
+      }
+      
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
       .laser-particle {
         position: absolute;
         width: 4px;
@@ -421,18 +443,10 @@
             </div>
         </section>
 
-        <section id="reviews" class="py-32 relative overflow-hidden">
+        <section id="reviews" class="py-32 relative overflow-hidden bg-[#050a0e]">
              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[80%] bg-electric-cyan/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="reveal text-center mb-20" id="reviews-header">
-                    </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="reviews-grid">
-                     </div>
-
-                <div class="reveal text-center" id="reviews-footer">
-                    </div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10" id="reviews-container">
             </div>
         </section>
 
@@ -447,7 +461,7 @@
         </section>
 
         <section id="contact" class="py-32 relative border-t border-electric-cyan/10 bg-gradient-to-b from-transparent to-[#0a1418]">
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10" id="contact-container">
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10" id="contact-container">
                 </div>
         </section>
     </main>
@@ -510,9 +524,9 @@
                 },
                 stats: [
                     { num: "3+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
-                    { num: "80+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
+                    { num: "120+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
                     { num: "100%", label: "ΕΠΙΤΥΧΙΑ" },
-                    { num: "65+", label: "5-STAR REVIEWS" }
+                    { num: "75+", label: "5-STAR REVIEWS" }
                 ],
                 sectionTitles: {
                     services: 'Υπηρεσίες',
@@ -555,9 +569,9 @@
                 },
                 stats: [
                     { num: "3+", label: "YEARS OF EXPERIENCE" },
-                    { num: "80+", label: "SATISFIED CLIENTS" },
+                    { num: "120+", label: "SATISFIED CLIENTS" },
                     { num: "100%", label: "SUCCESS" },
-                    { num: "65+", label: "5-STAR REVIEWS" }
+                    { num: "75+", label: "5-STAR REVIEWS" }
                 ],
                 sectionTitles: {
                     services: 'Services',
@@ -631,7 +645,7 @@
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/roumelioti.jpg', url: 'https://mariannaroumelioti.gr', name: 'Μαριάννα Ρουμελιώτη Ψυχολόγος και Συνθετική Ψυχοθεραπεύτρια', nameEn: 'Marianna Roumelioti Psychologist and Integrative Psychotherapist' },
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/ntinop.jpg', url: 'https://healyouwell.gr', name: 'ΑΡΙΑΔΝΗ Α. ΝΤΙΝΟΠΟΥΛΟΥ Ψυχολόγος & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Ariadni A. Ntinopoulou Psychologist & Systemic Psychotherapist' },
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/simitsi.jpg', url: 'https://drsimitsi-psychologist.gr', name: 'Χριστίνα Σιμιτσή Διδάκτωρ Κλινικής Δικαστικής Ψυχολογίας & Συστημική Ψυχοθεραπεύτρια', nameEn: 'Christina Simitsi Doctor of Clinical Forensic Psychology & Systemic Psychotherapist' },
-            { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/69958e45905d47854e96f553.jpg', url: 'https://parthenis-psychotherapy.gr', name: 'Αλέξανδρος Παρθένης Ψυχολόγος', nameEn: 'Alexandros Parthenis Psychologist' },
+            { image: 'https://raw.githubusercontent.com/agelmet/Image-hosting-/refs/heads/main/parth.jpg', url: 'https://parthenis-psychotherapy.gr', name: 'Αλέξανδρος Παρθένης Ψυχολόγος', nameEn: 'Alexandros Parthenis Psychologist' },
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/labrinou.jpg', url: 'https://evalamprinou-psychologist.gr', name: 'Mind Your Emotion - Εύα Λαμπρινού, Ψυχολόγος και Κλινική Σεξολόγος', nameEn: 'Mind Your Emotion - Eva Lamprinou, Psychologist and Clinical Sexologist' },
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/boubaliki.jpg', url: 'https://boubaliki-psychologos.gr', name: 'Ηλιάνα Μπουμπαλίκη Ψυχολόγος', nameEn: 'Iliana Boubaliki Psychologist' },
             { image: 'https://raw.githubusercontent.com/agelmet/ASIMIADOU/main/emirza.jpg', url: 'https://skepsyxi.gr', name: 'Σαββίνα Εμιρζά (MSc) Ψυχολόγος και Οικογενειακή Ψυχοθεραπεύτρια', nameEn: 'Savvina Emirza (MSc) Psychologist and Family Psychotherapist' },
@@ -649,7 +663,7 @@
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d918c33576a4352530.jpg', url: 'https://menetian-psychologist.gr', name: 'Μενετιάν Λοράνς - Ψυχολόγος', nameEn: 'Menetian Lorans - Psychologist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d913fe2b4ebda2afef.jpg', url: 'https://giotakarampetsou.gr', name: 'Καραμπέτσου Παναγιώτα - Ψυχολόγος', nameEn: 'Karampetsou Panagiota - Psychologist' },
             { image: 'https://assets.cdn.filesafe.space/61icdoMiJ2pHklO6mmKW/media/6983a0d926ea6442a7a91af5.jpg', url: 'https://fatourou-ioulia-psychologos.gr', name: 'Φατούρου Ιουλία - Ψυχολόγος', nameEn: 'Fatourou Ioulia - Psychologist' },
-            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/11.jpg', url: 'https://talamagka-psychologos.gr/home', name: 'Ταλαμάγκα Ελπίδα - Ψυχολόγος', nameEn: 'Talamagka Elpida - Psychologist' },
+            { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/11.jpg', url: 'https://talamagka-psychologos.gr', name: 'Ταλαμάγκα Ελπίδα - Ψυχολόγος', nameEn: 'Talamagka Elpida - Psychologist' },
             { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/22.jpg', url: 'https://roza-psychologist.gr', name: 'Χαρουτιουνιάν Ρόζα - Ψυχολόγος', nameEn: 'Haroutiounian Roza - Psychologist' },
             { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/33.jpg', url: 'https://zampelis-psychology.gr', name: 'Ζαμπέλης Στέφανος - Ψυχολόγος', nameEn: 'Zampelis Stefanos - Psychologist' },
             { image: 'https://cdn.jsdelivr.net/gh/agelmet/Image-hosting-@main/44.jpg', url: 'https://nakou-psychologos.gr', name: 'Νάκου Δήμητρα - Ψυχολόγος', nameEn: 'Nakou Dimitra - Psychologist' },
@@ -875,36 +889,72 @@
             renderPortfolioGrid();
 
             // --- 6. Reviews ---
-            document.getElementById('reviews-header').innerHTML = `
-                <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.reviews)}</span>
-                <h2 class="text-4xl md:text-6xl font-black font-display mb-4 text-white drop-shadow-xl">${t.sectionTitles.reviewsMain}</h2>
-            `;
+            const specificReviews = [
+                { name: 'Χριστόφορος Παπ', text: 'Άμεση ανταπόκριση σε αυτά που ήθελα να γίνουν για την ιστοσελίδα μου, είμαι πολύ ευχαριστημένος με τη δουλειά τους' },
+                { name: 'maria baloti', text: 'Υπέροχη συνεργασία! Μεγάλη συνέπεια! Ευχαριστώ' },
+                { name: 'Constantina Skourla', text: 'Εξαιρετική συνεργασία. Κωνσταντίνα Σκουρλά, Ψυχολόγος- Ψυχοθεραπεύτρια' },
+                { name: 'Marina', text: 'Είχαμε μια πολύ καλή συνεργασία! Ευχαριστώ πολύ παιδιά!' },
+                { name: 'Ariadne Ntinopoulou', text: 'Εξαιρετική συνεργασία από την αρχή μέχρι το τέλος! Η ομάδα έδειξε πραγματικό επαγγελματισμό, συνέπεια και δημιουργικότητα σε κάθε στάδιο της κατασκευής του site μου. Άκουσαν προσεκτικά τις ανάγκες μου, πρότειναν λύσεις και το τελικό αποτέλεσμα ξεπέρασε τις προσδοκίες μου. Είμαι απόλυτα ικανοποιημένη τόσο από την ποιότητα της δουλειάς τους όσο και από την άψογη επικοινωνία και υποστήριξη που είχα καθ’ όλη τη διάρκεια της συνεργασίας μας. Τους ευχαριστώ θερμά για τον χρόνο, το μεράκι και την αφοσίωση που έδειξαν. Τους συστήνω ανεπιφύλακτα!' },
+                { name: 'Ελένη Μίχα', text: 'Πολύ ευχάριστη συνεργασία. Προθυμία και όρεξη για customized δουλειά. Ελένη Μίχα, Ψυχολόγος - Ψυχοθεραπεύτρια' },
+                { name: 'Σαββινα Εμιρζα', text: 'Η συνεργασία μας ήταν εξαιρετική ! Ο Άγγελος πάντα παρών σε ο,τιδηποτε χρειάστηκε , άμεσος και εξυπηρετικότατος! Πολύ καλή και γρήγορη δουλειά ! Τους προτείνω ανεπιφύλακτα !' },
+                { name: 'Maria G.', text: 'Εξαιρετική συνεργασία!! Έμεινα απόλυτα ικανοποιημένη! Γρήγορη εξυπηρέτηση και πολύ καλή επικοινωνία! Το τελικό αποτέλεσμα υπέροχο!' },
+                { name: 'Katerina Keletseki', text: 'Η συνεργασία με την ομάδα ήταν εξαιρετική από την αρχή μέχρι το τέλος. Ανταποκρίθηκαν άμεσα σε κάθε μου ανάγκη, με ταχύτητα και επαγγελματισμό, ενώ η επικοινωνία μας ήταν πάντα ξεκάθαρη και αποτελεσματική. Ξεχώρισαν για την ευγένεια και τη διάθεσή τους να βοηθήσουν, κάνοντας όλη τη διαδικασία ευχάριστη και χωρίς άγχος. Το τελικό αποτέλεσμα ανταποκρίνεται πλήρως σε αυτό που είχα φανταστεί. Τους συστήνω ανεπιφύλακτα!' },
+                { name: 'Dionysia Kontaxopoulou', text: 'Ο επαγγελματισμός, η συνέπεια και η ποιότητα της δουλειάς ήταν πραγματικά άψογα! Η επικοινωνία μας ήταν εξαιρετική, πάντα πρόθυμος να βοηθήσει, με προσοχή και πραγματικό ενδιαφέρον για το αποτέλεσμα. Το τελικό αποτέλεσμα είναι υπέροχο, πλήρως προσαρμοσμένο σε όσα συζητήσαμε. Τον προτείνω ανεπιφύλακτα σε οποιονδήποτε θέλει σοβαρή και ποιοτική δουλειά. Ευχαριστώ πραγματικά για την άψογη συνεργασία!' },
+                { name: 'deppy pantazi', text: 'Ο Άγγελος με προσέγγισε και από την πρώτη στιγμή ένιωσα ότι έχω απέναντί μου έναν άνθρωπο που πραγματικά ενδιαφέρεται για αυτό που κάνει. Δημιούργησε μια υπέροχη ιστοσελίδα, με προσοχή στη λεπτομέρεια και αισθητική που ταιριάζει απόλυτα σε αυτό που ήθελα να εκφράσω. Ήταν πάντα διαθέσιμος, συνεργάσιμος και με πολύ καλή ενέργεια. Χαίρομαι πολύ για αυτή τη συνεργασία και τον προτείνω με σιγουριά.' },
+                { name: 'Panagiota Kalliontzaki', text: 'Παρά πολύ καλοί στην δουλειά τους, υπεύθυνοι, εξυπηρετικοί, με άμεση ανταπόκριση στην επικοινωνία μας , έμεινα πολύ ευχαριστημένη από την συνεργασία μας!!' },
+                { name: 'Roni Tzatzadaki', text: 'Εξαιρετικοί επαγγελματίες, πολύ όμορφη κι άμεση δουλειά με συνέπεια στην επικοινωνία,ευγένεια κι ανταπόκριση!' }
+            ];
+
+            const repeatedReviews = [...specificReviews, ...specificReviews];
             
-            const currentReviews = reviews.map(r => ({ ...r, text: (isEn && r.textEn) ? r.textEn : r.text }));
-            document.getElementById('reviews-grid').innerHTML = currentReviews.slice(0, 9).map((review, i) => `
-                <div class="reveal glass-panel p-8 rounded-3xl" style="transition-delay: ${i * 50}ms">
-                    <div class="flex gap-1 mb-8">
-                        ${Array(5).fill(0).map((_, idx) => `<i data-lucide="star" class="w-5 h-5 ${idx < review.rating ? 'fill-electric-cyan text-electric-cyan drop-shadow-[0_0_8px_rgba(71,200,245,0.8)]' : 'text-gray-700'}"></i>`).join('')}
-                    </div>
-                    <p class="text-gray-300 mb-8 italic leading-relaxed min-h-[100px] text-sm font-medium">"${review.text}"</p>
-                    <div class="flex items-center gap-4">
-                        <div class="relative">
-                           <div class="absolute inset-0 bg-electric-cyan blur-md rounded-full opacity-50"></div>
-                           <img src="${review.image}" alt="${review.name}" referrerPolicy="no-referrer" class="relative w-14 h-14 rounded-full object-cover border-2 border-[#050a0e]">
+            document.getElementById('reviews-container').innerHTML = `
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-5 lg:sticky lg:top-32 reveal">
+                        <span class="text-electric-cyan text-xs font-black tracking-[0.4em] uppercase mb-4 block drop-shadow-[0_0_15px_rgba(71,200,245,0.6)]">${elUpper(t.sectionTitles.reviews)}</span>
+                        <h2 class="text-4xl md:text-6xl font-black font-display mb-6 text-white drop-shadow-xl">${t.sectionTitles.reviewsMain}</h2>
+                        <div class="flex items-center gap-2 mb-8">
+                            <div class="flex gap-1">
+                                ${Array(5).fill('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-400"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>').join('')}
+                            </div>
+                            <span class="text-xl font-bold text-white flex items-center gap-2">5.0 <span class="text-gray-400 font-medium text-sm">(75+)</span></span>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-md text-white tracking-wide">${review.name}</h4>
-                            <span class="text-xs text-electric-cyan/80 font-bold uppercase tracking-wider flex items-center gap-1 mt-1"><i data-lucide="check-circle" class="w-3 h-3"></i> VERIFIED</span>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">${isEn ? 'See what our clients say about the digital solutions we provide.' : 'Δείτε τι λένε οι πελάτες μας για τις ψηφιακές λύσεις που προσφέρουμε. Η ικανοποίησή σας είναι η μεγαλύτερη ανταμοιβή μας.'}</p>
+                        <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 border border-electric-cyan/40 bg-electric-cyan/10 text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(71,200,245,0.15)] hover:shadow-[0_0_40px_rgba(71,200,245,0.4)] group">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path></svg>
+                            ${elUpper(t.sectionTitles.viewAllReviews)}
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="lg:col-span-7 h-[700px] overflow-hidden mask-vertical reveal relative" style="transition-delay: 200ms;">
+                        <div class="flex flex-col gap-6 animate-vertical-scroll hover:[animation-play-state:paused] py-4">
+                            ${repeatedReviews.map((review) => `
+                                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-12 h-12 rounded-full bg-electric-cyan/20 border border-electric-cyan/50 flex items-center justify-center text-xl font-bold text-electric-cyan shadow-[0_0_15px_rgba(71,200,245,0.2)] uppercase">
+                                                ${review.name.charAt(0)}
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-white tracking-wide">${review.name}</h4>
+                                                <div class="flex items-center gap-1 mt-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 text-green-500"><path d="M20 6 9 17l-5-5"/></svg>
+                                                    <span class="text-[0.6rem] tracking-[0.2em] text-green-500 uppercase font-black">VERIFIED</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-8 h-8 rounded-full bg-white p-1.5 flex items-center justify-center border border-white/20">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path></svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        ${Array(5).fill('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-[#FBBC05]"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>').join('')}
+                                    </div>
+                                    <p class="text-gray-300 text-sm font-medium leading-relaxed">"${review.text}"</p>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 </div>
-            `).join('');
-
-            document.getElementById('reviews-footer').innerHTML = `
-                <a href="https://share.google/zWUQyGTmywjaljaMW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-10 py-5 border-2 border-electric-cyan text-electric-cyan rounded-xl hover:bg-electric-cyan hover:text-[#050a0e] transition-all font-black uppercase tracking-[0.1em] shadow-[0_0_30px_rgba(71,200,245,0.2)] hover:shadow-[0_0_50px_rgba(71,200,245,0.6)]">
-                    ${elUpper(t.sectionTitles.viewAllReviews)}
-                    <i data-lucide="external-link" class="w-5 h-5"></i>
-                </a>
             `;
 
             // --- 7. FAQ ---
