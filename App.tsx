@@ -617,9 +617,9 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { num: "3+", label: "ΧΡΟΝΙΑ ΕΜΠΕΙΡΙΑΣ" },
-              { num: "80+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
+              { num: "120+", label: "ΙΚΑΝΟΠΟΙΗΜΕΝΟΙ ΠΕΛΑΤΕΣ" },
               { num: "100%", label: "ΕΠΙΤΥΧΙΑ" },
-              { num: "65+", label: "5-STAR REVIEWS" }
+              { num: "75+", label: "5-STAR REVIEWS" }
             ].map((stat, i) => (
               <div 
                 key={i}
