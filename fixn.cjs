@@ -1,8 +1,13 @@
 const fs = require('fs');
-const cheerio = require('cheerio');
+let html = fs.readFileSync('index.html', 'utf8');
 
-const indexHtml = fs.readFileSync('index.html', 'utf8');
-const $ = cheerio.load(indexHtml);
+// Replace literal '\\n' with actual newline
+html = html.replace(/\\n            renderApp\(\)/g, '\n            renderApp()');
+
+fs.writeFileSync('index.html', html, 'utf8');
+
+const cheerio = require('cheerio');
+const $ = cheerio.load(html);
 
 let scriptsContent = '';
 $('script').each((i, el) => {
@@ -13,4 +18,3 @@ $('script').each((i, el) => {
 });
 
 fs.writeFileSync('test_scripts_new.js', scriptsContent, 'utf8');
-console.log('Test logic generated');
