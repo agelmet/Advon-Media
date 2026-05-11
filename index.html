@@ -869,9 +869,9 @@
 
             // --- 3. Stats ---
             document.getElementById('stats-grid').innerHTML = t.stats.map((stat, i) => `
-                <div class="reveal text-center relative group" style="transition-delay: ${i * 100}ms">
+                <div class="text-center relative group" style="transition-delay: ${i * 100}ms">
                     <div class="absolute inset-0 bg-electric-cyan/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
-                    <div class="text-5xl md:text-7xl font-black font-display text-transparent bg-clip-text bg-gradient-to-br from-electric-cyan to-white mb-2 drop-shadow-[0_0_25px_rgba(71,200,245,0.5)] relative z-10">${stat.num}</div>
+                    <div class="text-5xl md:text-7xl font-black font-display text-electric-cyan mb-2 drop-shadow-[0_0_20px_rgba(71,200,245,0.3)] relative z-10">${stat.num}</div>
                     <div class="text-xs font-bold tracking-[0.25em] text-gray-400 uppercase relative z-10 group-hover:text-white transition-colors">${elUpper(stat.label)}</div>
                 </div>
             `).join('');
