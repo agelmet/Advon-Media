@@ -1,9 +1,1 @@
 @import "tailwindcss";
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Playfair Display", ui-serif, system-ui, serif;
-  --color-electric-cyan: #47c8f5;
-  --color-deep-void: #050a0e;
-  --color-space-black: #050a0e;
-}
